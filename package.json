@@ -14,9 +14,12 @@
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.20.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
+    "babel-polyfill": "^6.26.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "vue-template-compiler": "^2.6.14"
@@ -36,8 +39,15 @@
     "rules": {}
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
+    ">= 0.5%",
+    "last 2 major versions",
+    "not dead",
+    "Chrome >= 60",
+    "Firefox >= 60",
+    "Firefox ESR",
+    "iOS >= 12",
+    "Safari >= 12",
+    "not Explorer <= 11",
+    "ie 11"
   ]
 }
