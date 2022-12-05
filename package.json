@@ -9,7 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "vue-router": "^3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -22,6 +23,14 @@
     "babel-polyfill": "^6.26.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "postcss-css-variables": "^0.18.0",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-gap-properties": "^3.0.5",
+    "postcss-import": "^15.0.1",
+    "postcss-nested": "^6.0.0",
+    "postcss-preset-env": "^7.8.3",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
@@ -36,18 +45,16 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": 0
+    }
   },
   "browserslist": [
-    ">= 0.5%",
-    "last 2 major versions",
-    "not dead",
-    "Chrome >= 60",
-    "Firefox >= 60",
-    "Firefox ESR",
-    "iOS >= 12",
-    "Safari >= 12",
-    "not Explorer <= 11",
-    "ie 11"
+    "> 0.2%",
+    "last 1 chrome version",
+    "last 1 firefox version",
+    "last 1 safari version",
+    "last 2 ie version",
+    "IE 10"
   ]
 }
