@@ -34,6 +34,7 @@ export default {
 }
 .hello {
   display: grid;
+  grid-template-columns: auto;
   text-align: center;
 
   > * {
