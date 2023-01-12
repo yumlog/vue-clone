@@ -2,6 +2,16 @@ const { defineConfig } = require('@vue/cli-service')
 const postcss = require('postcss')
 
 module.exports = {
+  // publicPath: process.env.NODE_ENV === 'production'
+  //   ? '/'
+  //   : '/'
+
+  // webpack set
+  // configureWebpack: {
+  //   plugins: [
+  //     new MyAwesomeWebpackPlugin()
+  //   ]
+  // }
   chainWebpack: (config) => {
     const svgRule = config.module.rule('svg')
 
