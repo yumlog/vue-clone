@@ -1,22 +1,20 @@
 const { defineConfig } = require('@vue/cli-service')
 const postcss = require('postcss')
+// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-module.exports = {
-  // publicPath: process.env.NODE_ENV === 'production'
-  //   ? '/'
-  //   : '/'
+module.exports = defineConfig({
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/'
+    : '/',
 
-  // webpack set
-  // configureWebpack: {
-  //   plugins: [
-  //     new MyAwesomeWebpackPlugin()
-  //   ]
-  // }
+  configureWebpack: (config) => {
+    plugins: [
+      // new MyAwesomeWebpackPlugin()
+    ]
+  },
   chainWebpack: (config) => {
     const svgRule = config.module.rule('svg')
-
     svgRule.uses.clear()
-
     svgRule
       .use('babel-loader')
       .loader('babel-loader')
@@ -24,9 +22,6 @@ module.exports = {
       .use('vue-svg-loader')
       .loader('vue-svg-loader')
   },
-}
-
-module.exports = defineConfig({
   transpileDependencies: true,
   css: {
     extract: {
@@ -46,7 +41,6 @@ module.exports = defineConfig({
             require('postcss-preset-env')({
               autoprefixer: {
                 flexbox: 'no-2009',
-                grid: 'autoplace',
               },
             }),
             require('postcss-import'),

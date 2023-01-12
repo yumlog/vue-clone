@@ -1,7 +1,9 @@
 <template>
   <div class="hello">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <VueLogo class="logo" />
+    <div>
+      <img src="@/assets/vue.svg" width="200" />
+    </div>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -13,13 +15,9 @@
 </template>
 
 <script>
-import VueLogo from '@/assets/vue.svg'
-
 export default {
   name: 'Home',
-  components: {
-    VueLogo
-  },
+ 
   props: {
     msg: String
   }
@@ -34,7 +32,6 @@ export default {
 }
 .hello {
   display: grid;
-  grid-template-columns: auto;
   text-align: center;
 
   > * {
