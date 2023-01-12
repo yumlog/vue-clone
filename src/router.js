@@ -3,9 +3,11 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const Home = () => import(/* webpackChunkName: "home" */'./views/Home.vue')
-const PageOne = () => import(/* webpackChunkName: "page-one" */ './views/PageOne.vue')
-const PageTwo = () => import(/* webpackChunkName: "page-two" */ './views/PageTwo.vue')
+const Home = () => import(/* webpackChunkName: "home" */'@/views/Home.vue')
+const PageOne = () =>
+  import(/* webpackChunkName: "page-one" */ '@/views/PageOne.vue')
+const PageTwo = () =>
+  import(/* webpackChunkName: "page-two" */ '@/views/PageTwo.vue')
 
 const routes = [
   {
