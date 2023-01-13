@@ -1,7 +1,7 @@
 <template>
   <div>
 
-  <img src="@/assets/test.svg" width="100px" />
+  <img :src="require('@/assets/images/test.svg')" width="100px" />
   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa in eligendi maiores odit ut quisquam magni nulla. Suscipit inventore ipsa itaque similique quo. Voluptatum ex corrupti similique eaque pariatur distinctio!</p>
   </div>
 </template>

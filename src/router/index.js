@@ -11,25 +11,26 @@ const PageTwo = () =>
 
 const routes = [
   {
-    path: "/",
-    redirect: "/home"
+    path: '/',
+    redirect: '/home',
   },
   {
-    path: "/home",
-    name: "홈",
+    path: '/home',
+    name: '홈',
     component: Home,
   },
   {
-    path: "/page-one",
-    name: "페이지1",
+    path: '/page-one',
+    name: '페이지1',
     component: PageOne,
+    meta: { layout: 'CustomLayout' },
   },
   {
-    path: "/page-two",
-    name: "페이지2",
+    path: '/page-two',
+    name: '페이지2',
     component: PageTwo,
   },
-];
+]
 
 // eslint-disable-line no-unused-vars
 const router = new VueRouter({

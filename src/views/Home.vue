@@ -1,9 +1,28 @@
 <template>
   <div class="hello">
-    <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-    <div>
-      <img src="@/assets/vue.svg" width="200" />
-    </div>
+    
+    <figure style="padding: 1rem 0">
+      <figcaption>png, 정적이미지</figcaption>
+      <img alt="Vue logo" src="../../public/logo.png" width="100px">
+    </figure>
+    
+    <hr>
+    
+    <figure style="padding: 1rem 0">
+      <figcaption>png, 동적이미지</figcaption>
+      <img :src="require('@/assets/images/logo.png')" width="100px" />
+    </figure>
+    
+    <hr>
+    
+    <figure style="padding: 1rem 0">
+      <figcaption>SVG, 동적이미지</figcaption>
+      <img src="../assets/images/icon.svg" width="100px" />
+    </figure>
+    
+    
+
+
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -15,12 +34,19 @@
 </template>
 
 <script>
+
 export default {
   name: 'Home',
- 
+  
   props: {
     msg: String
-  }
+  },
+  data() {
+    return {
+      // imageTest: require('../../public/vue.svg'),
+      // imageTest: require('@/assets/images/vue.svg'),
+    };
+  },
 }
 </script>
 

@@ -1,0 +1,65 @@
+// Buttons
+
+%btn-reset {
+  transition: all 0.2s ease;
+  appearance: none;
+  box-sizing: border-box;
+  box-shadow: none;
+  border-width: 0;
+  outline: none;
+  background-color: transparent;
+  border-color: transparent;
+  border-style: solid;
+  color: inherit;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+  cursor: pointer;
+}
+
+button {
+  @extend %btn-reset;
+}
+
+// bg,border,invert-color & hover,focus
+@mixin button-theme($color-palette) {
+  @each $name, $color in $color-palette {
+    &-#{'' + $name} {
+      background-color: #{$color};
+      border-color: #{$color};
+      @include color-invert($color);
+
+      &:hover,
+      &:focus {
+        background-color: lighten($color, 3%);
+      }
+      &:active {
+        background-color: darken($color, 3%);
+      }
+    }
+  }
+}
+
+@mixin button-sizing($btn-sizes) {
+  @each $name, $size in $btn-sizes {
+    &#{'' + $name} {
+      padding: $size;
+      font-size: 1rem;
+      @if $name == '-sm' {
+        font-size: 0.875rem;
+      }
+      @if $name == '-lg' {
+        font-size: 1.125rem;
+      }
+      @if $name == '-xl' {
+        font-size: 1.45rem;
+      }
+    }
+  }
+}
+
+.btn {
+  @include button-theme($color-palette);
+  @include button-sizing($btn-sizes);
+}

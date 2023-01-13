@@ -1,0 +1,147 @@
+// My Variables
+
+/* ---------------------------------------------------------- 
+    colors palette
+ ---------------------------------------------------------- */
+
+$gray-100: #f7f9fb;
+$gray-200: #e8e9ea;
+$gray-300: #d1d3d5;
+$gray-400: #babcc0;
+$gray-500: #a3a6ab;
+$gray-600: #757a81;
+$gray-700: #5e646c;
+$gray-800: #474d57;
+$gray-900: #303742;
+
+$grays: (
+  gray-1: $gray-100,
+  gray-2: $gray-200,
+  gray-3: $gray-300,
+  gray-4: $gray-400,
+  gray-5: $gray-500,
+  gray-6: $gray-600,
+  gray-7: $gray-700,
+  gray-8: $gray-800,
+  gray-9: $gray-900
+) !default;
+
+
+$blue: #3d75a3;
+$navy: #003d5b;
+$green: #127039;
+$teal: #00798c;
+$yellow: #edae49;
+$orange: #e58f65;
+$red: #d1495b;
+$gray: $gray-600;
+$dark: $gray-800;
+$light: $gray-200;
+
+$color-palette: (
+  primary: $orange,
+  secondary: $gray,
+  success: $teal,
+  warning: $yellow,
+  error: $red,
+  dark: $dark,
+  light: $light,
+  gray: $gray
+) !default;
+
+/* ---------------------------------------------------------- 
+    Typography
+ ---------------------------------------------------------- */
+$text-base: 1rem;
+
+$text-sizes: (
+  'xs': $text-base * 0.75,
+  'sm': $text-base * 0.875,
+  'md': $text-base,
+  'lg': $text-base * 1.25,
+  'xl': $text-base * 1.5,
+  '2xl': $text-base * 1.75,
+  '3xl': $text-base * 2
+) !default;
+
+$headings: (
+  1: $text-base * 3.5,
+  2: $text-base * 3,
+  3: $text-base * 2.5,
+  4: $text-base * 2,
+  5: $text-base * 1.5,
+  6: $text-base * 1
+) !default;
+
+$font-weight: (
+  'thin': 100,
+  'light': 300,
+  'normal': 400,
+  'medium': 500,
+  'bold': 600,
+  'extrabold': 700
+) !default;
+
+/* ---------------------------------------------------------- 
+    Grid & Container & BreakPoint
+ ---------------------------------------------------------- */
+// BreakPoint
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1200px,
+  xl: 1400px
+) !default;
+
+// Cotainer
+$container-max-widths: (
+  sm: 575px,
+  md: 767px,
+  lg: 1199px,
+  xl: 1399px
+) !default;
+
+$grid-count: 12 !default;
+$grid-gutter: 1rem !default;
+
+
+$border-width: 1px;
+$border-width-lg: 2px;
+
+$rounded: 4px;
+$rounded-xs: 2px;
+$rounded-sm: 4px;
+$rounded-lg: 12px;
+$rounded-full: 24px;
+$rounded-0: 0;
+
+$rounded-sizes: (
+  '': $rounded,
+  '-xs': $rounded-xs,
+  '-sm': $rounded-sm,
+  '-lg': $rounded-lg,
+  '-full': $rounded-full,
+  '-0': $rounded-0,
+) !default;
+
+/* ---------------------------------------------------------- 
+    Buttons
+ ---------------------------------------------------------- */
+$btn-size: 12px 16px !default;
+$btn-size-sm: 4px 8px;
+$btn-size-lg: 20px 24px;
+$btn-size-xl: 28px 32px;
+
+$btn-sizes: (
+  '': $btn-size,
+  '-sm': $btn-size-sm,
+  '-lg': $btn-size-lg,
+  '-xl': $btn-size-xl,
+);
+
+/* ---------------------------------------------------------- 
+    Spacing
+ ---------------------------------------------------------- */
+$spacing: 0.5rem !default;
+$space-count: 20 !default;

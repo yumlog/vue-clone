@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <GlobalNav />
-    <router-view></router-view>
+    <AppLayout />
   </div>
 </template>
 
 <script>
-import GlobalNav from "./components/GlobalNav.vue";
-  import "./assets/global.scss";
+import AppLayout from '@/layouts/AppLayout'
+import "@/assets/styles/main.scss";
 
   export default {
     name: "App",
     components: {
-      GlobalNav
+      AppLayout
     }
   }
 </script>
