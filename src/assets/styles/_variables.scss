@@ -1,5 +1,4 @@
 // My Variables
-
 /* ---------------------------------------------------------- 
     colors palette
  ---------------------------------------------------------- */
@@ -58,6 +57,17 @@ $color-palette: (
   black: $black,
   white: $white,
 ) !default;
+
+// var(--colors)
+:root {
+  @each $name, $value in $color-palette {
+    --#{''+$name}: #{$value};
+  }
+  @each $name, $value in $grays {
+    --#{''+$name}: #{$value};
+  }
+}
+
 
 /* ---------------------------------------------------------- 
     Typography

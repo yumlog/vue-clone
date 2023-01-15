@@ -1,11 +1,3 @@
-:root {
-  @each $name, $value in $color-palette {
-    --#{''+$name}: #{$value};
-  }
-  @each $name, $value in $grays {
-    --#{''+$name}: #{$value};
-  }
-}
 
 // Color Invert
 @mixin color-invert($background) {
@@ -32,7 +24,6 @@ $color-property: (
 );
 
 @each $name, $value in $color-palette {
-
   @each $selector,
   $property in $color-property {
     .#{$selector}-#{'' + $name} {
@@ -48,7 +39,6 @@ $color-property: (
 
 
 @each $name, $value in $grays {
-
   @each $selector,
   $property in $color-property {
     .#{$selector}-#{'' + $name} {
