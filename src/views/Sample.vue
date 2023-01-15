@@ -38,19 +38,27 @@
 
     <hr />
 
-    <form>
-      <div class="fieldset" v-for="item in formItems" :key="item.index">
+    <form @submit="onSubmit">
+      <!-- baseInput -->
+      <div v-for="item in forms" :key="item.id" class="fieldset">
         <label :for="item.id">{{ item.label }}</label>
         <div class="form-input">
           <input
-            v-model="item.value"
+            v-model="item.name"
             :id="item.id"
             :placeholder="item.placeholder"
             :required="item.required"
             type="text"
+            autofocus="true"
           />
         </div>
+        <div v-if="errors.length" class="text-error text-sm mt-1">
+          <p v-for="error in errors" :key="error">{{ error }}</p>
+        </div>
       </div>
+
+      <button type="submit">확인</button>
+      <button type="reset">reset</button>
     </form>
   </div>
 </template>
@@ -65,22 +73,48 @@
     data() {
       return {
         showModal: false,
-        formItems: [
+
+        errors: '',
+        forms: [
           {
+            name: null,
+            id: 'username',
             label: '사용자명',
-            value: 'user',
-            placeholder: '무엇이든 입력하세요',
+            placeholder: '입력하세요',
             required: true,
+          },
+          {
+            name: null,
+            id: 'age',
+            label: '나이',
+            placeholder: '입력하세요',
+            required: false,
           },
         ],
       };
     },
     computed: {},
+
     methods: {
       goBack() {
         window.history.length > 1
           ? this.$router.go(-1)
           : this.$router.push('/');
+      },
+
+      // forms
+      onSubmit(e) {
+        
+        this.errors = [];
+        
+        if (this.forms.name === 'test') {
+          alert('success')
+          return true;
+        } else {
+          this.errors.push('기억못함?ㅋ');
+        }
+
+        e.preventDefault();
       },
     },
   };
