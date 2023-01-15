@@ -5,7 +5,7 @@
     <section class="flex text-center">
       <figure style="padding: 1rem 0">
         <figcaption>png, 정적이미지</figcaption>
-        <img alt="Vue logo" src="../../public/logo.png" width="100px" />
+        <img alt="Vue logo" src="../../../public/logo.png" width="100px" />
         <pre>/public/logo.png</pre>
       </figure>
 
@@ -60,16 +60,40 @@
       <button type="submit">확인</button>
       <button type="reset">reset</button>
     </form>
+
+    <hr>
+
+
+    <Tabs>
+      <Tab name="Tab01" :selected="true">
+        <h6>Tab01 Content</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+      </Tab>
+      <Tab name="Tab02">
+        <h6>Tab02 Content</h6>
+        <p>Dolore omnis nisi molestias placeat vero praesentium molestiae modi ducimus optio fugit ratione voluptatum
+          aliquam odio maxime, vitae quaerat? Et, repellendus assumenda!</p>
+      </Tab>
+      <Tab name="Tab03">
+        <h6>Tab03 Content</h6>
+        <p>Quas, vitae minus necessitatibus illum ad quibusdam, sapiente neque corrupti eaque earum accusamus optio beatae
+          rem quaerat sunt, ut facere fuga quisquam.</p>
+      </Tab>
+    </Tabs>
+
+    
   </div>
 </template>
 
 <script>
   import SvgImg from '@/assets/images/vue.svg';
   import Modal from '@/components/Modal.vue';
+  import Tabs from '@/components/Tabs/Tabs.vue'
+  import Tab from '@/components/Tabs/Tab.vue'
 
   export default {
-    name: 'Sample',
-    components: { SvgImg, Modal },
+    name: 'Example',
+    components: { SvgImg, Modal, Tabs, Tab },
     data() {
       return {
         showModal: false,
@@ -107,7 +131,7 @@
         
         this.errors = [];
         
-        if (this.forms.name === 'test') {
+        if (this.forms.name) {
           alert('success')
           return true;
         } else {

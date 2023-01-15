@@ -8,7 +8,7 @@ import NotFound from '@/views/NotFound.vue'
 import One from '@/views/One/index.vue'
 import OneProfile from '@/views/One/OneProfile.vue'
 import Two from '@/views/Two.vue'
-import SamplePage from '@/views/Sample.vue'
+import Example from '@/views/Example/index.vue'
 
 const routes = [
   {
@@ -39,9 +39,9 @@ const routes = [
     component: Two,
   },
   {
-    path: '/sample',
-    name: '샘플페이지',
-    component: SamplePage,
+    path: '/example',
+    name: '예제페이지',
+    component: Example,
   },
 ]
 
