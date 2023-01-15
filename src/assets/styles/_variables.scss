@@ -34,6 +34,12 @@ $teal: #00798c;
 $yellow: #edae49;
 $orange: #e58f65;
 $red: #d1495b;
+
+$primary: $navy;
+$secondary: $blue;
+$success: $teal;
+$warning: $yellow;
+$error: $red;
 $gray: $gray-600;
 $dark: $gray-800;
 $light: $gray-200;
@@ -41,11 +47,11 @@ $black: #000;
 $white: #fff;
 
 $color-palette: (
-  primary: $orange,
-  secondary: $gray,
-  success: $teal,
-  warning: $yellow,
-  error: $red,
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  warning: $warning,
+  error: $error,
   dark: $dark,
   light: $light,
   gray: $gray,
@@ -164,11 +170,11 @@ $btn-sizes: (
 // ----------------------------------------------------------
 //    Forms
 // ----------------------------------------------------------
-$form-bg-color: var(--gray-0);
-$form-bg-disabled-color: var(--gray-2);
-$form-border-color: var(--gray-3);
-$form-border-active-color: var(--primary);
-$form-border-disabled-color: var(--gray-3);
+$form-bg-color: $gray-100;
+$form-bg-disabled-color: $gray-200;
+$form-border-color: $gray-300;
+$form-border-active-color: $primary;
+$form-border-disabled-color: $gray-300;
 $form-border-width: 1px;
 $form-padding: 1rem 1rem;
 $form-padding-sm: 0.5rem 0.75rem;
