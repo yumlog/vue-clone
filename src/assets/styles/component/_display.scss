@@ -1,20 +1,20 @@
 //
-// display: grid
+// displays
 //
-.grid {
-  display: grid !important;
-}
 
-//
-// display: flex
-//
-.flex {
-  display: flex !important;
-}
+$displays: (
+  block: block,
+  inline: inline,
+  inline-block: inline-block,
+  none: none,
+  grid: grid,
+  flex: flex,
+  inline-flex: inline-flex,
+  table: table,
+  table-cell: table-cell
+);
 
-$flex: (
-  inline: inline-flex,
-  inherit: inherit,
+$flex-layout: (
   1: 1 1 0%,
   auto: 1 1 auto,
   initial: 0 1 auto,
@@ -65,10 +65,18 @@ $flex-gap: (
   row: row,
 );
 
+@mixin display-properties($name, $prop, $arr) {
+  @each $mod, $dir in $arr {
+    .#{$mod} {
+      #{$prop}: #{$dir} !important;
+    }
+  }
+}
+
 @mixin flex-properties($name, $prop, $arr) {
   @each $mod, $dir in $arr {
     .#{$name}-#{$mod} {
-      #{$prop}: #{$dir};
+      #{$prop}: #{$dir} !important;
     }
   }
 }
@@ -79,7 +87,7 @@ $flex-gap: (
     @if $mod == 'col' or 'row' {
       @for $i from 0 through $space-count {
         .#{$name}-#{$mod}-#{$i} {
-          #{$dir}-#{$prop}: $spacing * $i + rem !important;
+          #{$dir}-#{$prop}: $spacing * $i !important;
         }
       }
     } @else {
@@ -92,13 +100,12 @@ $flex-gap: (
   }
 }
 
-@include flex-properties('flex', 'flex', $flex);
+@include display-properties('', 'display', $displays);
+@include flex-properties('flex', 'flex', $flex-layout);
 @include flex-properties('flex', 'flex-wrap', $flex-wrap);
 @include flex-properties('flex', 'flex-direction', $flex-direction);
 @include flex-properties('grow', 'flex-grow', $flex-grow);
 @include flex-properties('shrink', 'flex-shrink', $flex-shrink);
 @include flex-properties('justify', 'justify-content', $justify-content);
 @include flex-properties('align', 'align-items', $align-items);
-@include flex-spacing('gap', 'gap', $flex-gap);
-
-// order
+// @include flex-spacing('gap', 'gap', $flex-gap);

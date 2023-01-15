@@ -62,4 +62,5 @@ button {
 .btn {
   @include button-theme($color-palette);
   @include button-sizing($btn-sizes);
+  border-radius: $rounded;
 }

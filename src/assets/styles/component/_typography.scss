@@ -5,6 +5,12 @@
     line-height: normal;
   }
 }
+// text align
+@each $key, $value in $text-align {
+  .text-#{$key} {
+    text-align: $value;
+  }
+}
 
 // headings
 @each $key, $value in $headings {
