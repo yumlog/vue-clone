@@ -1,5 +1,6 @@
-const { defineConfig } = require('@vue/cli-service')
-const postcss = require('postcss')
+const { defineConfig } = require('@vue/cli-service');
+const postcss = require('postcss');
+const postcssPresetEnv = require('postcss-preset-env');
 // process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 module.exports = defineConfig({
@@ -37,16 +38,17 @@ module.exports = defineConfig({
                   grid: 'autoplace',
                 },
                 features: {
-                  'nesting-rules': true,
-                  'custom-media-queries': true,
-                  'color-mod-function': true,
-                  'custom-properties': true,
+                  'custom-properties': false,
                 },
               },
             ],
             'postcss-gap-properties',
-            'postcss-css-variables',
+            [
+              'postcss-css-variables',
+              { preserve: false, preserveAtRulesOrder: true },
+            ],
             'postcss-nested',
+            'cssnano'
           ],
         },
       },
@@ -57,7 +59,7 @@ module.exports = defineConfig({
   },
 
   chainWebpack: (config) => {
-    config.module.rules.delete('svg')
+    config.module.rules.delete('svg');
   },
   configureWebpack: {
     module: {
@@ -69,4 +71,4 @@ module.exports = defineConfig({
       ],
     },
   },
-})
+});
