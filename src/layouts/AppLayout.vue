@@ -6,6 +6,7 @@
 
 <script>
 const defaultLayout = 'BaseLayout'
+
 export default {
   name: "AppLayout",
   computed: {

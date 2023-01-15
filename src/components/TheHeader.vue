@@ -1,14 +1,15 @@
 <template>
-  <nav class="nav">
-
-    <p>TheHeader Component</p>
-    <ul class="flex-list">
-      <li v-for="nav in navItems" :key="nav.id">
-        <router-link :to="nav.path" :class="{active: isActive}">{{ nav.name }}</router-link>
-      </li>
-      
-    </ul>
-  </nav>
+  <div>
+    <nav class="nav">
+      <ul class="flex-list">
+        <li v-for="(nav, index) in navItems" :key="index">
+          <router-link :to="nav.path" :class="{ active: nav.path === $route.path }">{{ nav.name }}</router-link>
+        </li>
+      </ul>
+  
+    </nav>
+    
+  </div>
   
 </template>
 
@@ -18,11 +19,15 @@ export default {
   data() {
     return {
       navItems: [
-        { id: 1, name: 'home', path: '/'},
-        { id: 2, name: 'page1', path: '/page-one'},
-        { id: 3, name: 'page2', path: '/page-two'},
+        { name: 'home', path: '/' },
+        { name: 'one', path: '/one' },
+        { name: 'two', path: '/two' },
+        { name: 'sample', path: '/sample' },
       ]
     }
+  },
+  computed: {
+    
   },
   methods: {
     
@@ -31,7 +36,7 @@ export default {
 </script>
 
 
-<style lang="scss" >
+<style lang="scss" scoped>
 .nav {
   border:2px solid black;
   padding: 1rem;
@@ -46,9 +51,9 @@ export default {
   li a {
     display: inline-block;
     padding: 1rem;
+    &.active {
+      background-color: red;
+    }
   }
-}
-.router-link-active {
-  background-color: red;
 }
 </style>

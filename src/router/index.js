@@ -3,40 +3,53 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const Home = () => import(/* webpackChunkName: "home" */'@/views/Home.vue')
-const PageOne = () =>
-  import(/* webpackChunkName: "page-one" */ '@/views/PageOne.vue')
-const PageTwo = () =>
-  import(/* webpackChunkName: "page-two" */ '@/views/PageTwo.vue')
+import Home from '@/views/Home/Home.vue'
+import NotFound from '@/views/NotFound.vue'
+import One from '@/views/One/index.vue'
+import OneProfile from '@/views/One/OneProfile.vue'
+import Two from '@/views/Two.vue'
+import SamplePage from '@/views/Sample.vue'
 
 const routes = [
   {
     path: '/',
-    redirect: '/home',
-  },
-  {
-    path: '/home',
     name: '홈',
     component: Home,
   },
   {
-    path: '/page-one',
-    name: '페이지1',
-    component: PageOne,
-    meta: { layout: 'CustomLayout' },
+    path: '*',
+    name: 'Error404', // 404
+    component: NotFound,
   },
   {
-    path: '/page-two',
-    name: '페이지2',
-    component: PageTwo,
+    path: '/one',
+    name: 'One',
+    component: One,
+    children: [
+      {
+        path: '/one/profile',
+        name: 'OneProfile',
+        component: OneProfile,
+      },
+    ],
+  },
+  {
+    path: '/two',
+    name: 'Two',
+    component: Two,
+  },
+  {
+    path: '/sample',
+    name: '샘플페이지',
+    component: SamplePage,
   },
 ]
 
 // eslint-disable-line no-unused-vars
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: __dirname,
   routes,
-});
+})
 
 export default router

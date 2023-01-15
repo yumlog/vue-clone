@@ -1,11 +1,13 @@
 <template>
   <div class="base-layout">
-    <p>BaseLayout</p>
+    
     <TheHeader />
+    
     <main class="main">
-      <h1>Contents</h1>
+      <h1>{{ pageName }}</h1>
       <router-view />
     </main>
+
     <TheFooter />
   </div>
 </template>
@@ -16,11 +18,16 @@ import TheHeader from "@/components/TheHeader.vue";
 
 export default {
   name: 'BaseLayout',
-
   components: {
     TheHeader,
     TheFooter
-}
+  },
+  computed: {
+    pageName() {
+      return this.$route.name;
+    },
+  },
+  methods: {},
 }
 </script>
 
