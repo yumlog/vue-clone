@@ -30,14 +30,18 @@ const routes = [
     path: '/two',
     name: 'Two',
     component: () => import('@/views/Two.vue'),
+    meta: {
+      layout: 'EmptyLayout',
+    },
   },
   {
     path: '/example',
     name: '예제페이지',
     component: () => import('@/views/Example/index.vue'),
   },
-]
+];
 
+// eslint-disable-next-lin
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,

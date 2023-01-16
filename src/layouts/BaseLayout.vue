@@ -5,6 +5,7 @@
     
     <main class="main">
       <h1>{{ pageName }}</h1>
+      
       <router-view />
     </main>
 

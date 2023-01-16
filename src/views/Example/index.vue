@@ -5,7 +5,9 @@
     <section class="flex text-center">
       <figure style="padding: 1rem 0">
         <figcaption>png, 정적이미지</figcaption>
+
         <img alt="Vue logo" src="../../../public/logo.png" width="100px" />
+
         <pre>/public/logo.png</pre>
       </figure>
 
@@ -20,8 +22,10 @@
       <hr />
 
       <figure style="padding: 1rem 0">
-        <figcaption>SVG 컴포넌트 사용</figcaption>
+        <figcaption>SVG 컴포넌트로만 사용</figcaption>
+        
         <SvgImg class="svg-img" />
+
         <pre>import SvgImg from '...'</pre>
       </figure>
     </section>
@@ -32,11 +36,15 @@
       Modal Open
     </button>
 
-    <Modal v-if="showModal" @close="showModal = false" title="">
-      <template #body>Modal Body Slot</template>
+    <Modal v-if="showModal" @close="showModal = false" title="aaa">
+      <template #body>
+        <div>
+          sadkdfkdlfj
+        </div>
+      </template>
     </Modal>
+    
 
-    <hr />
 
     <form @submit="onSubmit">
       <!-- baseInput -->
@@ -60,6 +68,14 @@
       <button type="submit">확인</button>
       <button type="reset">reset</button>
     </form>
+
+    <hr />
+    
+    <div class="fieldset">
+      <div class="form-check">
+        <input type="text" />
+      </div>
+    </div>
 
     <hr>
 

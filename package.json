@@ -67,12 +67,7 @@
     },
     "rules": {
       "vue/multi-word-component-names": 0
-    },
-    "plugins": [
-      "html",
-      "standard",
-      "vue"
-    ]
+    }
   },
   "browserslist": [
     "> 0.2%",
