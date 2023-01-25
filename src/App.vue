@@ -8,10 +8,10 @@
 import AppLayout from '@/layouts/AppLayout'
 import "@/assets/styles/main.scss";
 
-  export default {
-    name: "App",
-    components: {
-      AppLayout
-    }
+export default {
+  name: "App",
+  components: {
+    AppLayout
   }
+}
 </script>

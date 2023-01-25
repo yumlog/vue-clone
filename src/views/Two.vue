@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <vue-custom-scrollbar class="scroll-area" :settings="settings" @ps-scroll-y="scrollHanle">
       <img src="https://raw.githubusercontent.com/Binaryify/vue-custom-scrollbar/master/docs/azusa.jpg" height="720"
         width="1280" alt="">

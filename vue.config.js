@@ -1,7 +1,4 @@
 const { defineConfig } = require('@vue/cli-service');
-const postcss = require('postcss');
-const postcssPresetEnv = require('postcss-preset-env');
-// process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
 module.exports = defineConfig({
   transpileDependencies: true,
@@ -26,34 +23,13 @@ module.exports = defineConfig({
       },
       // IE 10~
       postcss: {
-        postcssOptions: {
-          plugins: [
-            'postcss-import',
-            'postcss-flexbugs-fixes',
-            [
-              'postcss-preset-env',
-              {
-                autoprefixer: {
-                  flexbox: 'no-2009',
-                  grid: 'autoplace',
-                },
-                features: {
-                  'custom-properties': false,
-                },
-              },
-            ],
-            'postcss-gap-properties',
-            [
-              'postcss-css-variables',
-              { preserve: false, preserveAtRulesOrder: true },
-            ],
-            'postcss-nested',
-            'cssnano'
-          ],
-        },
+        postcssOptions: {},
       },
       scss: {
-        additionalData: `@import "@/assets/styles/_variables.scss";`,
+        additionalData: `
+        @import "@/assets/styles/_variables.scss";
+        @import "@/assets/styles/_mixins.scss";
+        `,
       },
     },
   },
@@ -66,7 +42,7 @@ module.exports = defineConfig({
       rules: [
         {
           test: /\.svg$/,
-          loader: 'vue-svg-loader',
+          use: ['babel-loader','vue-svg-loader'],
         },
       ],
     },

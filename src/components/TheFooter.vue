@@ -1,7 +1,11 @@
 <template>
-  <h1>
-    The Footer
-  </h1>
+  <footer>
+    <div class="container">
+      <p>
+        The Footer
+      </p>
+    </div>
+  </footer>
 </template>
 
 <script>

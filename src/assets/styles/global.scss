@@ -8,12 +8,38 @@
   box-sizing: border-box;
 }
 
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700;
+	font-display: swap;
+	src: local('Pretendard Bold'), url('@/assets/fonts/woff2/Pretendard-Bold.woff2') format('woff2'), url('@/assets/fonts/woff/Pretendard-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 600;
+	font-display: swap;
+	src: local('Pretendard SemiBold'), url('@/assets/fonts/woff2/Pretendard-SemiBold.woff2') format('woff2'), url('@/assets/fonts/woff/Pretendard-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+	src: local('Pretendard Medium'), url('@/assets/fonts/woff2/Pretendard-Medium.woff2') format('woff2'), url('@/assets/fonts/woff/Pretendard-Medium.woff') format('woff');
+}
+
+
+html,
 body {
   margin: 0;
   padding: 0;
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
     Roboto, 'Helvetica Neue', 'Segoe UI';
-  font-weight: 400;
+    font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  -webkit-font-smoothing: antialiased;
 }
 
 ul,
@@ -27,9 +53,14 @@ dd {
 
 a {
   text-decoration: none;
+  color: $black;
+  &:is(:hover,:focus,:visited, :active) {
+    color: inherit;
+  }
 }
 
 p {
+  line-height: 1.4;
   margin:0;
   padding:0;
 }

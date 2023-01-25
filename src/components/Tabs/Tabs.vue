@@ -1,50 +1,68 @@
 <template>
-  <div>
+  <div class="tab-wrap">
     <ul class="tabs">
-      <li v-for="(tab, index) in tabs" :key="index" :class="{ active: tab.isActive }">
-        <a :href="tab.href" @click="selectTab(tab)">{{ tab.name }}</a>
-      </li>
+      <TabItem
+        v-for="item in list"
+        v-bind="item" :key="item.id"
+        v-model="currentID"
+      />
     </ul>
-
     <div class="tab-content">
-      <slot />
+      <transition>
+        <section class="item" :key="currentID">
+          {{ current.content }}
+        </section>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
+import TabItem from './Tab.vue'
 export default {
+  components: {TabItem},
   data() {
     return {
-      tabs: [],
+      currentID: 1,
+      list: [
+        { id: 1, label: 'Tab1', content: '콘텐츠11111' },
+        { id: 2, label: 'Tab2', content: '콘텐츠2' },
+        { id: 3, label: 'Tab3', content: '콘텐츠3' },
+      ]
     };
   },
-  created() {
-    this.tabs = this.$children;
-  },
-
-  methods: {
-    selectTab(selectedTab) {
-      this.tabs.forEach((tab) => {
-        tab.isActive = tab.name == selectedTab.name;
-      });
-    },
-  },
-};
+  computed: {
+    current() {
+      return this.list.find(el => el.id === this.currentID) || {}
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .tabs {
   display: flex;
+  width: 100%;
 
-  >li {
-    a {
-      padding: 1rem;
-    }
-    &.active a{
-      background-color: var(--gray-3);
-    }
+  >li { width: 100%;
   }
 
+}
+.tab-content {
+  padding-top: 40px;
+
+  >section {
+    transition: all .1s;
+  }
+}
+
+.v-leave-active {
+  position: absolute;
+}
+.v-enter {
+  opacity: 0;
+}
+.v-leave-to {
+  opacity: 1;
 }
 </style>

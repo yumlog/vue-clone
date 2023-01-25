@@ -17,12 +17,13 @@
 }
 
 @mixin form-elements($padding) {
+
   input:not([type='checkbox']):not([type='radio']),
   select,
   textarea {
     appearance: none;
     outline: none;
-    border: none;
+    border: 0;
     border-radius: inherit;
     background-color: transparent;
     vertical-align: middle;
@@ -48,12 +49,14 @@
     -webkit-transition: background-color 9999s ease-out;
     -webkit-text-fill-color: inherit;
   }
+
   input::-ms-clear,
   input::-ms-reveal {
     display: none;
     width: 0;
     height: 0;
   }
+
   input::-webkit-search-decoration,
   input::-webkit-search-cancel-button,
   input::-webkit-search-results-button,
@@ -69,9 +72,11 @@
     padding-right: 1.5rem;
   }
 
-  input[type='search'] {
+  input[type='text']:focus,
+  input[type='search']:focus {
     &::-webkit-search-cancel-button {
-      // background: url('@/assets/images/l-ico-20-del.svg?url') no-repeat;
+      // 이미지 반입예정
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iOSIgZmlsbD0iI0QzRDNEMyIvPgo8cGF0aCBkPSJNOS4yODkwNiA5LjI5Njg4TDE0LjY4OTEgMTQuNjk2OSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNOS4yODkwNiAxNC43MDMxTDE0LjY4OTEgOS4zMDMxMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K');
       background-size: 100% 100%;
       background-position: center center;
       width: 16px;
@@ -84,32 +89,25 @@
 @mixin form-pseudo {
   transition: 0.3s;
 
+  // 추가
+  &:is(:focus, :focus-within, :active) {
+    border-color: $form-border-active-color;
+  }
+
   input,
   select,
   textarea {
-    &:focus,
-    &:focus-within {
+    &:is(:focus, :focus-within, :active) {
       outline: none;
-      border-color: $form-border-active-color;
-      color: var(--gray-8);
-    }
-    &:active {
-      border-color: $form-border-active-color;
-    }
-
-    &:invalid {
-      border-color: var(--error) !important;
     }
   }
 
-  &.error {
-    border-color: var(--error) !important;
-  }
-
+  &[disabled],
   &.disabled {
     background-color: $form-bg-disabled-color !important;
     border-color: $form-border-disabled-color !important;
-    color: var(--gray-6) !important;
+    color: var(--gray-4) !important;
+
     input {
       cursor: not-allowed;
     }
@@ -124,58 +122,44 @@
 /* ================================= form-input ================================= */
 
 .form-input {
-  @include form-input($rounded-lg);
+  @include form-input($rounded);
   @include form-elements($form-padding);
   @include form-pseudo;
-
   font-size: $text-md;
 
-  &.small {
-    @include form-input($rounded-xs);
-    @include form-elements($form-padding-sm);
-
-    .prefix,
-    .suffix {
-      padding: 0 6px;
-    }
-    .suffix {
-      padding-left: 8px;
-    }
-
-    select {
-      background-position: right 0.5rem center;
-      padding-right: 2rem;
-    }
-  }
-
-  .prefix,
-  .suffix {
+  @mixin prefix($padding) {
     flex-shrink: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
     margin: 0;
-    padding: 0 12px;
+    padding: $padding;
+    // test
+    background-color: $black;
+    color: white;
+    text-align: center;
   }
 
-  // 예외사항
-  &.gray {
-    background-color: var(--gray-1);
-    border-color: transparent;
-  }
-  &.none {
-    border-width: 0;
-    background-color: transparent;
-    input {
-      background-color: transparent !important;
-    }
+  .prefix {
+    @include prefix(0 8px 0 12px)
   }
 
-  &[readonly='readonly'] {
-    border: 0;
-    background-color: transparent !important;
-    color: var(--gray-9);
+  .suffix {
+    @include prefix(0 12px 0 8px)
+  }
+
+  // &[readonly='readonly'] {
+  //   border: 0;
+  //   background-color: transparent !important;
+  //   color: var(--gray-9);
+  // }
+
+  // 추가
+  &.invalid {
+    background-color: #FFF9F9;
+    border-color: var(--red) !important;
+    color: var(--red) !important;
   }
 }
 
@@ -188,17 +172,18 @@
   }
 }
 
+// 추가 수정
+.help-text,
 .invalid-feedback {
   transition: all 0.3s ease-out;
-  margin: 4px 12px 4px 12px;
-  font-size: $text-xs;
+  margin-top: 5px;
+  font-size: $text-sm;
   list-style: normal;
-  color: var(--error);
+  color: var(--red);
   animation: fadeUp 0.2s ease-in-out forwards;
-  display: inline-flex;
-  column-gap: 0.25rem;
+  display: inline-block;
 
-  > svg {
+  >svg {
     flex-shrink: 0;
   }
 
@@ -207,6 +192,7 @@
       opacity: 0;
       transform: translateX(-1rem);
     }
+
     to {
       opacity: 1;
       transform: translateX(0);
@@ -214,8 +200,13 @@
   }
 }
 
+.help-text {
+  color: var(--black);
+  text-align: right;
+}
+
 @function svgIcon($color) {
-  $color: '%23' + $color;
+  $color: '%23'+ $color;
   $icon: "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10px' height='8px' viewBox='0 0 10 8' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg stroke='none' stroke-width='1' fill='none'%3E%3Cg id='l' transform='translate(-6.000000, -8.000000)' fill='#{$color}' fill-rule='nonzero'%3E%3Cpath d='M15.5351068,8.53510678 C15.9256311,8.92563107 15.9256311,9.55879605 15.5351068,9.94932034 L10.5943125,14.890866 C10.5914787,14.8937683 10.5886237,14.8966577 10.5857475,14.8995339 C10.4655861,15.0196952 10.3224529,15.1028838 10.1704844,15.1490997 L10.054684,15.1763632 L10.054684,15.1763632 L9.93767207,15.190694 L9.93767207,15.190694 L9.81922115,15.1902279 C9.74058626,15.1856063 9.66239314,15.1717416 9.58640886,15.1486336 L9.4746981,15.1075054 C9.45036777,15.0967721 9.42637783,15.0850213 9.40279281,15.0722531 C9.31976925,15.0271313 9.24151801,14.9694401 9.17114575,14.8990678 L6.34310678,12.0711068 C5.95258249,11.6805825 5.95258249,11.0474175 6.34310678,10.6568932 C6.73363107,10.2663689 7.36679605,10.2663689 7.75732034,10.6568932 L9.87721356,12.7772136 L14.1208932,8.53510678 C14.5114175,8.14458249 15.1445825,8.14458249 15.5351068,8.53510678 Z' %3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E";
   @return url($icon);
 }
@@ -226,7 +217,7 @@
   display: inline-block;
   height: 22px;
 
-  input + label {
+  input+label {
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -237,7 +228,7 @@
   }
 
   input {
-    &[type='checkbox'] + label:before {
+    &[type='checkbox']+label:before {
       content: '';
       flex-shrink: 0;
       box-sizing: border-box;
@@ -254,34 +245,34 @@
       margin-right: 0.5rem;
     }
 
-    + label:active:before {
+    +label:active:before {
       transform-origin: center;
       transform: scale(0.5);
     }
 
-    &:checked + label:before {
+    &:checked+label:before {
       background: $light svgIcon(fff) no-repeat center center;
       border-color: $light;
     }
 
-    &:disabled + label:before {
+    &:disabled+label:before {
       transform: scale(1);
       background: var(--gray-2);
       border-color: var(--gray-2);
     }
 
-    &:disabled + label,
-    &:checked:disabled + label {
+    &:disabled+label,
+    &:checked:disabled+label {
       color: var(--gray-4);
     }
 
-    &:not(:checked):disabled + label,
-    &:checked:disabled + label {
+    &:not(:checked):disabled+label,
+    &:checked:disabled+label {
       cursor: not-allowed;
     }
 
     // radio
-    &[type='radio'] + label:before {
+    &[type='radio']+label:before {
       content: '';
       box-sizing: border-box;
       position: relative;
@@ -289,25 +280,19 @@
       width: 22px;
       height: 22px;
       border: 0;
-      background: transparent
-        url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='10' fill='none' stroke='%23e4e4e4' stroke-width='2'/%3E%3Ccircle r='4' transform='matrix(1 0 0 -1 11 11)' fill='%23e4e4e4'/%3E%3C/svg%3E%0A")
-        no-repeat center center;
+      background: transparent url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='10' fill='none' stroke='%23e4e4e4' stroke-width='2'/%3E%3Ccircle r='4' transform='matrix(1 0 0 -1 11 11)' fill='%23e4e4e4'/%3E%3C/svg%3E%0A") no-repeat center center;
       border-radius: $rounded-full;
       transition: 0.2s;
       margin-right: 0.5rem;
     }
 
-    &[type='radio']:checked + label:before {
-      background: transparent
-        url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23ee7e6d' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-        no-repeat center center;
+    &[type='radio']:checked+label:before {
+      background: transparent url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23ee7e6d' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat center center;
       border: 0;
     }
 
-    &[type='radio']:disabled + label:before {
-      background: transparent
-        url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23e4e4e4' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-        no-repeat center center;
+    &[type='radio']:disabled+label:before {
+      background: transparent url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23e4e4e4' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E") no-repeat center center;
       border: 0;
     }
   }
@@ -325,7 +310,7 @@
   position: relative;
   cursor: pointer;
 
-  > label {
+  >label {
     display: block;
     width: $switch-width;
     height: $switch-height;
@@ -339,7 +324,7 @@
     cursor: pointer;
   }
 
-  input:checked ~ .control {
+  input:checked~.control {
     background-color: $switch-bg-color-on;
     cursor: pointer;
 
@@ -377,6 +362,7 @@
 
 .form-input.textarea {
   height: auto;
+
   textarea {
     font-family: inherit;
     resize: none;

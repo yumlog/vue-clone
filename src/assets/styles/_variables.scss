@@ -3,15 +3,18 @@
     colors palette
  ---------------------------------------------------------- */
 
-$gray-100: #f7f9fb;
-$gray-200: #e8e9ea;
-$gray-300: #d1d3d5;
-$gray-400: #babcc0;
-$gray-500: #a3a6ab;
-$gray-600: #757a81;
-$gray-700: #5e646c;
-$gray-800: #474d57;
-$gray-900: #303742;
+$gray-100: #333333;
+$gray-200: #555555;
+$gray-300: #70747e;
+$gray-400: #96979b;
+$gray-500: #d3d3d3;
+$gray-600: #f2f2f2;
+$gray-700: #f9f9f9;
+$gray-800: #fcfcfe;
+
+$black: #161616;
+$white: #fff;
+
 
 $grays: (
   gray-1: $gray-100,
@@ -22,40 +25,44 @@ $grays: (
   gray-6: $gray-600,
   gray-7: $gray-700,
   gray-8: $gray-800,
-  gray-9: $gray-900
 ) !default;
 
+$blue-1: #2763f6;
+$blue-2: #0236b4;
+$blue-3: #102043;
+$blue-4: #28aefe;
+$blue-5: #d4efff;
+$blue-6: #f2faff;
+$blue-7: #e8eef2;
 
-$blue: #3d75a3;
-$navy: #003d5b;
-$green: #127039;
-$teal: #00798c;
-$yellow: #edae49;
-$orange: #e58f65;
-$red: #d1495b;
-
-$primary: $navy;
-$secondary: $blue;
-$success: $teal;
-$warning: $yellow;
-$error: $red;
-$gray: $gray-600;
-$dark: $gray-800;
-$light: $gray-200;
-$black: #000;
-$white: #fff;
+$primary-1: $blue-1;
+$primary-2: $blue-2;
+$primary-3: $blue-3;
+$primary-4: $blue-4;
+$primary-5: $blue-5;
+$primary-6: $blue-6;
+$primary-7: $blue-7;
+$lime: #92ff3e;
+$dim: rgba($black, 0.3);
+$red: #e71f2a;
+$gray: $gray-400;
+$light: $gray-500;
+// $red-bg: #fff9f9;
 
 $color-palette: (
-  primary: $primary,
-  secondary: $secondary,
-  success: $success,
-  warning: $warning,
-  error: $error,
-  dark: $dark,
-  light: $light,
-  gray: $gray,
+  primary-1: $blue-1,
+  primary-2: $blue-2,
+  primary-3: $blue-3,
+  primary-4: $blue-4,
+  primary-5: $blue-5,
+  primary-6: $blue-6,
+  primary-7: $blue-7,
+  red: $red,
+  lime: $lime,
   black: $black,
   white: $white,
+  gray: $gray,
+  light: $light,
 ) !default;
 
 // var(--colors)
@@ -96,21 +103,22 @@ $text-sizes: (
 ) !default;
 
 $headings: (
-  1: $text-base * 3.5,
-  2: $text-base * 3,
-  3: $text-base * 2.5,
-  4: $text-base * 2,
-  5: $text-base * 1.5,
-  6: $text-base * 1
+  1: 40px,
+  2: 30px,
+  3: 28px,
+  4: 24px,
+  5: 20px,
+  6: 18px
 ) !default;
+
 
 $font-weight: (
   'thin': 100,
   'light': 300,
   'normal': 400,
   'medium': 500,
-  'bold': 600,
-  'extrabold': 700
+  'bold': 700,
+  'extrabold': 800
 ) !default;
 
 /* ---------------------------------------------------------- 
@@ -134,13 +142,13 @@ $container-max-widths: (
 ) !default;
 
 $grid-count: 12 !default;
-$grid-gutter: 1rem !default;
+$grid-gutter: 10px !default;
 
 
 $border-width: 1px;
 $border-width-lg: 2px;
 
-$rounded: 4px;
+$rounded: 6px;
 $rounded-xs: 2px;
 $rounded-sm: 4px;
 $rounded-lg: 12px;
@@ -165,36 +173,65 @@ $space-count: 20 !default;
 /* ---------------------------------------------------------- 
     Buttons
  ---------------------------------------------------------- */
-$btn-size: 12px 16px !default;
-$btn-size-sm: 4px 8px;
-$btn-size-lg: 20px 24px;
-$btn-size-xl: 28px 32px;
+$btn-padding: 13px 14px;
+$btn-padding-xs: 6px 8px;
+$btn-padding-sm: 6px 12px;
+$btn-padding-md: 9px 15px;
+$btn-padding-lg: 7px 32px;
+$btn-padding-xl: 17px 44px;
 
-$btn-sizes: (
-  '': $btn-size,
-  '-sm': $btn-size-sm,
-  '-lg': $btn-size-lg,
-  '-xl': $btn-size-xl,
-);
+$btn-padding-sizes: (
+  '':    $btn-padding,
+  '-xs': $btn-padding-xs,
+  '-sm': $btn-padding-sm,
+  '-md': $btn-padding-md,
+  '-lg': $btn-padding-lg,
+  '-xl': $btn-padding-xl,
+) !default;
+
+$btn-height: 46px;
+$btn-height-xs: 28px;
+$btn-height-sm: 32px;
+$btn-height-md: 40px;
+$btn-height-lg: 56px;
+$btn-height-xl: 60px;
+
+$btn-height-sizes: (
+  '':    $btn-height,
+  '-xs': $btn-height-xs,
+  '-sm': $btn-height-sm,
+  '-md': $btn-height-md,
+  '-lg': $btn-height-lg,
+  '-xl': $btn-height-xl,
+) !default;
+
+$btn-font-sizes: (
+  '':    $text-base,
+  '-xs': $text-xs,
+  '-sm': $text-sm,
+  '-md': $text-lg,
+  '-lg': $text-lg,
+  '-xl': $text-xl,
+) !default;
 
 // ----------------------------------------------------------
 //    Forms
 // ----------------------------------------------------------
-$form-bg-color: $gray-100;
-$form-bg-disabled-color: $gray-200;
-$form-border-color: $gray-300;
-$form-border-active-color: $primary;
-$form-border-disabled-color: $gray-300;
+$form-bg-color: transparent;
+$form-bg-disabled-color: $gray-600;
+$form-border-color: $gray-500;
+$form-border-active-color: $black;
+$form-border-disabled-color: $gray-500;
 $form-border-width: 1px;
-$form-padding: 1rem 1rem;
+$form-padding: 13px 16px 13px 12px;
 $form-padding-sm: 0.5rem 0.75rem;
 
 // ----------------------------------------------------------
 // Toggle Switch
 // ----------------------------------------------------------
-$switch-bg-color-on: var(--primary);
+$switch-bg-color-on: var(--blue-1);
 $switch-bg-color-off: var(--gray-3);
-$switch-shadow-on: -0.5px 0.5px 2px 0 var(--primary);
+$switch-shadow-on: -0.5px 0.5px 2px 0 var(--blue-1);
 $switch-shadow-off: 0.5px 0.5px 2px 0 var(--gray-4);
 $switch-control-color: white;
 $switch-width: 42px;

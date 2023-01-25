@@ -43,97 +43,131 @@
         </div>
       </template>
     </Modal>
-    
-
-
-    <form @submit="onSubmit">
-      <!-- baseInput -->
-      <div v-for="item in forms" :key="item.id" class="fieldset">
-        <label :for="item.id">{{ item.label }}</label>
-        <div class="form-input">
-          <input
-            v-model="item.name"
-            :id="item.id"
-            :placeholder="item.placeholder"
-            :required="item.required"
-            type="text"
-            autofocus="true"
-          />
-        </div>
-        <div v-if="errors.length" class="text-error text-sm mt-1">
-          <p v-for="error in errors" :key="error">{{ error }}</p>
-        </div>
-      </div>
-
-      <button type="submit">확인</button>
-      <button type="reset">reset</button>
-    </form>
-
-    <hr />
-    
-    <div class="fieldset">
-      <div class="form-check">
-        <input type="text" />
-      </div>
-    </div>
 
     <hr>
 
+    <div class="tab-wrap">
+      <ul class="tabs">
+        <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentID" />
+      </ul>
+      <div class="tab-content">
+        <transition>
+          <section class="item" :key="currentID">
+            <router-view>
+              {{ current.content }}
+            </router-view>
+          </section>
+        </transition>
+      </div>
+    </div>
 
-    <Tabs>
-      <Tab name="Tab01" :selected="true">
-        <h6>Tab01 Content</h6>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-      </Tab>
-      <Tab name="Tab02">
-        <h6>Tab02 Content</h6>
-        <p>Dolore omnis nisi molestias placeat vero praesentium molestiae modi ducimus optio fugit ratione voluptatum
-          aliquam odio maxime, vitae quaerat? Et, repellendus assumenda!</p>
-      </Tab>
-      <Tab name="Tab03">
-        <h6>Tab03 Content</h6>
-        <p>Quas, vitae minus necessitatibus illum ad quibusdam, sapiente neque corrupti eaque earum accusamus optio beatae
-          rem quaerat sunt, ut facere fuga quisquam.</p>
-      </Tab>
-    </Tabs>
+    <div style="display: flex;">
+      <div style="margin: 10px;">
+        <TableSt01 class="style-01"
+          :columns="columns"
+          :rows="rows"/>
+      </div>
+      <div style="margin: 10px;">
+        <TableSt01 class="style-01 tb-small" />
+      </div>
+    </div>
 
-    
+    <!-- <div style="display: flex;">
+      <div style="margin: 10px;">
+        <TableSt02 class="style-02" />
+      </div>
+      <div style="margin: 10px;">
+        <TableSt02 class="style-02 tb-small" />
+      </div>
+    </div> -->
+
+
+    <section class="my-5 flex">
+      <div class="w-50 flex flex-col align-center mx-3" style="gap: 1rem">
+        <BaseButton label="Button" />
+        <BaseButton label="Button" />
+        <BaseButton label="Button" block />
+      </div>
+      <div class="w-50 flex flex-col align-center mx-3" style="gap: 1rem">
+        <BaseButton label="Button" />
+      </div>
+    </section>
+
+    <hr />
+
+    <section class="my-5 flex">  
+      <div class="flex flex-col mx-3" style="gap: 1rem">
+        <TextField v-model="text0" />
+        <TextField v-model="text1" message="일반 메세지 출력....아 없나?" align="right" />
+        <TextField :value="text2" invalid="돈이 좀 부족해요.. 😰" message="원" />
+        <TextField value="text3" disabled />
+      </div>
+      <div class="flex flex-col mx-3" style="gap: 1rem">
+        <TextField>
+          <template #prefix><SvgImg /></template>
+        </TextField>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <script>
   import SvgImg from '@/assets/images/vue.svg';
   import Modal from '@/components/Modal.vue';
-  import Tabs from '@/components/Tabs/Tabs.vue'
-  import Tab from '@/components/Tabs/Tab.vue'
+  import TabItem from '@/components/Tabs/Tab.vue';
+  import TableSt01 from '@/components/TableSt01.vue';
+  // import TableSt02 from '@/components/TableSt02.vue'
+import TextField from '@/components/Forms/TextField.vue';
+import BaseButton from '@/components/Buttons/BaseButton.vue';
 
   export default {
     name: 'Example',
-    components: { SvgImg, Modal, Tabs, Tab },
+    components: { SvgImg, Modal, TabItem, TableSt01, TextField, BaseButton },
     data() {
       return {
         showModal: false,
+        text0: '',
+        text1: 'v-model',
+        text2: 'Invalid State',
+        text3: '',
 
-        errors: '',
-        forms: [
+        currentID: 1,
+        list: [
+          { id: 1, label: 'Tab Test', content: '콘텐츠 테스트', path: '' },
+          { id: 2, label: 'Tab2', content: '콘텐츠2', path: '' },
+          { id: 3, label: 'Tab3', content: '콘텐츠3', path: '' },
+        ],
+
+        columns: [
           {
-            name: null,
-            id: 'username',
-            label: '사용자명',
-            placeholder: '입력하세요',
-            required: true,
+            label: 'name',
+            field: 'name',
           },
           {
-            name: null,
-            id: 'age',
-            label: '나이',
-            placeholder: '입력하세요',
-            required: false,
+            label: 'age',
+            field: 'age',
+            type: 'number',
+          },
+          {
+            label: 'percent',
+            field: 'score',
+            type: 'percentage',
           },
         ],
+        rows: [
+          { id: 1, name: "john", age: "20", score: "10.5" },
+          { id: 2, name: "jay", age: "20", score: "23.5" },
+          { id: 3, name: "jun", age: "20", score: "12.5" },
+        ],
+
       };
     },
-    computed: {},
+    computed: {
+      current() {
+        return this.list.find(el => el.id === this.currentID) || {}
+      }
+    },
 
     methods: {
       goBack() {
@@ -142,21 +176,9 @@
           : this.$router.push('/');
       },
 
-      // forms
-      onSubmit(e) {
-        
-        this.errors = [];
-        
-        if (this.forms.name) {
-          alert('success')
-          return true;
-        } else {
-          this.errors.push('기억못함?ㅋ');
-        }
-
-        e.preventDefault();
-      },
+      
     },
+    
   };
 </script>
 

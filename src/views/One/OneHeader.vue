@@ -1,24 +1,23 @@
 <template>
   <div>
-    <h5>OnePage Header</h5>
-    <div class="flex" style="gap: 1rem">
-      <router-link to="/one/profile">OneProfile</router-link>
-    </div>
+    <h5>OnePage Header: {{ oneId }}</h5>
+    <p>나는 헤더입니다</p>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'OneHeader',
 
     data() {
-      return {};
+      return {
+      }
     },
 
-    mounted() {},
-
-    methods: {},
-  };
+    computed: {
+      oneId() {
+        return this.$route.params.id
+      },
+    },
+  }
 </script>
 
-<style lang="scss" scoped></style>

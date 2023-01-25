@@ -1,14 +1,14 @@
 // text-size
 @each $key, $value in $text-sizes {
   .text-#{$key} {
-    font-size: $value;
+    font-size: $value !important;
     line-height: normal;
   }
 }
 // text align
 @each $key, $value in $text-align {
   .text-#{$key} {
-    text-align: $value;
+    text-align: $value !important;
   }
 }
 
@@ -16,14 +16,15 @@
 @each $key, $value in $headings {
   h#{$key},
   .h#{$key} {
-    font-size: $value;
-    font-weight: bold;
+    font-size: $value !important;
+    font-weight: 500;
+    padding:0;
   }
 }
 
 // font-weight
 @each $key, $value in $font-weight {
   .font-#{$key} {
-    font-weight: $value;
+    font-weight: $value !important;
   }
 }

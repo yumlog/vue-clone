@@ -1,12 +1,15 @@
 <template>
   <div class="base-layout">
-    
+
     <TheHeader />
+
     
-    <main class="main">
-      <h1>{{ pageName }}</h1>
-      
-      <router-view />
+    <main class="container flex flex-1">
+      <router-view name="left" style="width: 300px" />
+      <router-view class="w-100">
+        container
+      </router-view>
+      <router-view name="right" style="width: 300px" />
     </main>
 
     <TheFooter />
@@ -34,12 +37,10 @@ export default {
 
 <style lang="scss" scoped>
 .base-layout {
-  height: 100vh;
-  background-color: bisque;
-}
-.main {
-  border: 2px solid black;
-  background-color: white;
-  overflow: hidden;
+  
+  .sidebars {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 </style>

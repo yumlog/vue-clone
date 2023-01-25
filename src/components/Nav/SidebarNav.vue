@@ -1,12 +1,12 @@
 <template>
   <div>
-    나는 One의 'OneProfile' 페이지입니다
+    Sidebar Navigation
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OneProfile',
+  name: 'SidebarNav',
 
   data() {
     return {
