@@ -209,7 +209,7 @@ $btn-font-sizes: (
   '':    $text-base,
   '-xs': $text-xs,
   '-sm': $text-sm,
-  '-md': $text-lg,
+  '-md': $text-md,
   '-lg': $text-lg,
   '-xl': $text-xl,
 ) !default;
@@ -223,7 +223,7 @@ $form-border-color: $gray-500;
 $form-border-active-color: $black;
 $form-border-disabled-color: $gray-500;
 $form-border-width: 1px;
-$form-padding: 13px 16px 13px 12px;
+$form-padding: 13px 11px 13px 12px;
 $form-padding-sm: 0.5rem 0.75rem;
 
 // ----------------------------------------------------------

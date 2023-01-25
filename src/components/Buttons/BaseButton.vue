@@ -6,13 +6,13 @@
     :disabled="disabled"
     >
 
-    <span :class="prefix" v-if="prefix">
+    <span class="prefix" v-if="isSlotVisible">
       <slot name="prefix" />
     </span>
 
     <span class="label">{{ label || 'Label' }}</span>
     
-    <span :class="suffix" v-if="suffix">
+    <span class="suffix" v-if="isSlotVisible">
       <slot name="suffix" />
     </span>
 
@@ -49,7 +49,9 @@ export default {
     }
   },
   computed: {
-    
+    isSlotVisible() {
+      return this.$slots.prefix || this.$slots.suffix ? true : false;
+    }
   },
 }
 </script>

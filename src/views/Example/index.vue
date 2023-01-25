@@ -1,13 +1,106 @@
 <template>
   <div class="flex flex-col align-center">
-    <button @click="goBack" class="btn btn-light">뒤로가기</button>
+    <section>
+      <h5>Headings</h5>
+      <div class="my-2">
+        <h1>H1 - 보다 당신의 일에 가깝게</h1>
+        <h2>H2 - 보다 당신의 일에 가깝게</h2>
+        <h3>H3 - 보다 당신의 일에 가깝게</h3>
+        <h4>H4 - 보다 당신의 일에 가깝게</h4>
+        <h5>H5 - 보다 당신의 일에 가깝게</h5>
+        <h6>H6 - 보다 당신의 일에 가깝게</h6>
+      </div>
+      <hr>
+      <div class="my-2">
+        <p class="text-lg">Body1 - 보다 당신의 일에 가깝게</p>
+        <p class="text-md">Body2 - 보다 당신의 일에 가깝게</p>
+        <p class="text-sm">Body3 - 보다 당신의 일에 가깝게</p>
+        <p class="text-xs">Body4 - 보다 당신의 일에 가깝게</p>
+      </div>
+    </section>
+
+    <section>
+      <div>
+        <h5>Button - Colors</h5>
+        <div class="flex align-center" style="gap: 1rem">
+          <BaseButton color='primary-1' label="Button" />
+          <BaseButton color='primary-2' label="Button" />
+          <BaseButton color='primary-3' label="Button" />
+          <BaseButton color='primary-4' label="Button" />
+          <BaseButton color='primary-5' label="Button" />
+          <BaseButton color='gray' label="Button" />
+          <BaseButton color='light' label="Button" />
+          <BaseButton color='light' label="Disabled" disabled />
+        </div>
+      </div>
+      <div>
+        <h5>Button - Outline</h5>
+        <div class="flex align-center" style="gap: 1rem">
+          <BaseButton color='outline-primary-1' label="Button" />
+          <BaseButton color='outline-primary-2' label="Button" />
+          <BaseButton color='outline-primary-3' label="Button" />
+          <BaseButton color='outline-primary-4' label="Button" />
+          <BaseButton color='outline-primary-5' label="Button" />
+          <BaseButton color='outline-gray' label="Button" />
+          <BaseButton color='outline-light' label="Button" />
+        </div>
+      </div>
+      <div>
+        <h5>Button Type, Size</h5>
+        <div class="flex align-center" style="gap: 1rem">
+          <BaseButton label="Prefix">
+            <template #prefix><SvgImg /></template>
+          </BaseButton>
+          <BaseButton label="Suffix">
+            <template #suffix><SvgImg /></template>
+          </BaseButton>
+          <BaseButton label="Disabled" disabled />
+          <BaseButton label="xl" size="xl" />
+          <BaseButton label="lg" size="lg" />
+          <BaseButton label="Default" />
+          <BaseButton label="md" size="md" />
+          <BaseButton label="sm" size="sm" />
+          <BaseButton label="xs" size="xs" />
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="flex" style="gap: 2rem;">
+      <div class="flex flex-col w-50" style="gap: 1rem">
+        <h5>TextField</h5>
+        <TextField v-model="text0" placeholder="Default Input" />
+        <TextField v-model="text1" placeholder="Default Input" message="일반 메세지 출력....아 없나?" />
+        <TextField :value="text2" invalid="돈이 좀 부족해요.. 😰" message="원" />
+        <TextField value="text3" disabled />
+        <TextField type="search" value="text3" />
+        <TextField prefix suffix>
+          <template #prefix><SvgImg /></template>
+          <template #suffix><SvgImg /></template>
+        </TextField>
+      </div>
+      <div class="flex flex-col w-50" style="gap: 1rem">
+        <h5>SelectBox</h5>
+        <SelectBox :options="[
+          { label: '옵션아이템1', value: '00' },
+          { label: '옵션아이템2', value: '01' },
+        ]" unit="원" />
+        <SelectBox :options="[
+          { label: '옵션아이템001', value: '000' },
+          { label: '옵션아이템002', value: '001' },
+        ]" disabled />
+        <SelectBox :options="[
+          { label: '옵션아이템001', value: '000' },
+          { label: '옵션아이템002', value: '001' },
+        ]" invalid="뭔가 잘못됐어요!" />
+      </div>
+    </section>
 
     <section class="flex text-center">
       <figure style="padding: 1rem 0">
         <figcaption>png, 정적이미지</figcaption>
-
         <img alt="Vue logo" src="../../../public/logo.png" width="100px" />
-
         <pre>/public/logo.png</pre>
       </figure>
 
@@ -23,54 +116,51 @@
 
       <figure style="padding: 1rem 0">
         <figcaption>SVG 컴포넌트로만 사용</figcaption>
-        
+
         <SvgImg class="svg-img" />
 
         <pre>import SvgImg from '...'</pre>
       </figure>
     </section>
 
-    <hr />
+    <section>
+      <button class="btn btn-light" id="show-modal" @click="showModal = true">
+        Modal Open
+      </button>
 
-    <button class="btn btn-light" id="show-modal" @click="showModal = true">
-      Modal Open
-    </button>
+      <Modal v-if="showModal" @close="showModal = false" title="aaa">
+        <template #body>
+          <div>
+            sadkdfkdlfj
+          </div>
+        </template>
+      </Modal>
+    </section>
 
-    <Modal v-if="showModal" @close="showModal = false" title="aaa">
-      <template #body>
-        <div>
-          sadkdfkdlfj
-        </div>
-      </template>
-    </Modal>
 
-    <hr>
-
-    <div class="tab-wrap">
+    <section class="tab-wrap">
       <ul class="tabs">
         <TabItem v-for="item in list" v-bind="item" :key="item.id" v-model="currentID" />
       </ul>
       <div class="tab-content">
         <transition>
-          <section class="item" :key="currentID">
+          <div class="item" :key="currentID">
             <router-view>
               {{ current.content }}
             </router-view>
-          </section>
+          </div>
         </transition>
       </div>
-    </div>
+    </section>
 
-    <div style="display: flex;">
+    <section style="display: flex;">
       <div style="margin: 10px;">
-        <TableSt01 class="style-01"
-          :columns="columns"
-          :rows="rows"/>
+        <TableSt01 class="style-01" :columns="columns" :rows="rows" />
       </div>
       <div style="margin: 10px;">
         <TableSt01 class="style-01 tb-small" />
       </div>
-    </div>
+    </section>
 
     <!-- <div style="display: flex;">
       <div style="margin: 10px;">
@@ -82,109 +172,92 @@
     </div> -->
 
 
-    <section class="my-5 flex">
-      <div class="w-50 flex flex-col align-center mx-3" style="gap: 1rem">
-        <BaseButton label="Button" />
-        <BaseButton label="Button" />
-        <BaseButton label="Button" block />
-      </div>
-      <div class="w-50 flex flex-col align-center mx-3" style="gap: 1rem">
-        <BaseButton label="Button" />
-      </div>
-    </section>
-
-    <hr />
-
-    <section class="my-5 flex">  
-      <div class="flex flex-col mx-3" style="gap: 1rem">
-        <TextField v-model="text0" />
-        <TextField v-model="text1" message="일반 메세지 출력....아 없나?" align="right" />
-        <TextField :value="text2" invalid="돈이 좀 부족해요.. 😰" message="원" />
-        <TextField value="text3" disabled />
-      </div>
-      <div class="flex flex-col mx-3" style="gap: 1rem">
-        <TextField>
-          <template #prefix><SvgImg /></template>
-        </TextField>
-      </div>
-    </section>
-
   </div>
 </template>
 
 <script>
-  import SvgImg from '@/assets/images/vue.svg';
-  import Modal from '@/components/Modal.vue';
-  import TabItem from '@/components/Tabs/Tab.vue';
-  import TableSt01 from '@/components/TableSt01.vue';
-  // import TableSt02 from '@/components/TableSt02.vue'
+import SvgImg from '@/assets/images/vue.svg';
+import Modal from '@/components/Modal.vue';
+import TabItem from '@/components/Tabs/Tab.vue';
+import TableSt01 from '@/components/TableSt01.vue';
+// import TableSt02 from '@/components/TableSt02.vue'
 import TextField from '@/components/Forms/TextField.vue';
 import BaseButton from '@/components/Buttons/BaseButton.vue';
+import SelectBox from '@/components/Forms/SelectBox.vue';
 
-  export default {
-    name: 'Example',
-    components: { SvgImg, Modal, TabItem, TableSt01, TextField, BaseButton },
-    data() {
-      return {
-        showModal: false,
-        text0: '',
-        text1: 'v-model',
-        text2: 'Invalid State',
-        text3: '',
+export default {
+  name: 'Example',
+  components: { SvgImg, Modal, TabItem, TableSt01, TextField, BaseButton, SelectBox },
+  data() {
+    return {
+      showModal: false,
+      text0: '',
+      text1: 'v-model',
+      text2: 'Invalid State',
+      text3: '',
 
-        currentID: 1,
-        list: [
-          { id: 1, label: 'Tab Test', content: '콘텐츠 테스트', path: '' },
-          { id: 2, label: 'Tab2', content: '콘텐츠2', path: '' },
-          { id: 3, label: 'Tab3', content: '콘텐츠3', path: '' },
-        ],
+      currentID: 1,
+      list: [
+        { id: 1, label: 'Tab Test', content: '콘텐츠 테스트', path: '' },
+        { id: 2, label: 'Tab2', content: '콘텐츠2', path: '' },
+        { id: 3, label: 'Tab3', content: '콘텐츠3', path: '' },
+      ],
 
-        columns: [
-          {
-            label: 'name',
-            field: 'name',
-          },
-          {
-            label: 'age',
-            field: 'age',
-            type: 'number',
-          },
-          {
-            label: 'percent',
-            field: 'score',
-            type: 'percentage',
-          },
-        ],
-        rows: [
-          { id: 1, name: "john", age: "20", score: "10.5" },
-          { id: 2, name: "jay", age: "20", score: "23.5" },
-          { id: 3, name: "jun", age: "20", score: "12.5" },
-        ],
+      columns: [
+        {
+          label: 'name',
+          field: 'name',
+        },
+        {
+          label: 'age',
+          field: 'age',
+          type: 'number',
+        },
+        {
+          label: 'percent',
+          field: 'score',
+          type: 'percentage',
+        },
+      ],
+      rows: [
+        { id: 1, name: "john", age: "20", score: "10.5" },
+        { id: 2, name: "jay", age: "20", score: "23.5" },
+        { id: 3, name: "jun", age: "20", score: "12.5" },
+      ],
 
-      };
+    };
+  },
+  computed: {
+    current() {
+      return this.list.find(el => el.id === this.currentID) || {}
+    }
+  },
+
+  methods: {
+    goBack() {
+      window.history.length > 1
+        ? this.$router.go(-1)
+        : this.$router.push('/');
     },
-    computed: {
-      current() {
-        return this.list.find(el => el.id === this.currentID) || {}
-      }
-    },
 
-    methods: {
-      goBack() {
-        window.history.length > 1
-          ? this.$router.go(-1)
-          : this.$router.push('/');
-      },
 
-      
-    },
-    
-  };
+  },
+
+};
 </script>
 
 <style lang="scss" scoped>
-  .svg-img {
-    width: 100px;
-    height: 100px;
-  }
+section {
+  width: 100%;
+  max-width: 800px;
+}
+section + section {
+  margin-top: 80px;
+  
+}
+
+.svg-img {
+  width: 100px;
+  height: 100px;
+}
 </style>

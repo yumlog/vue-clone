@@ -1,22 +1,28 @@
 <template>
-  <div :class="`fieldset ${align ? 'text-'+align : null}`">
-    <div :class="[{ 'form-input': true }, { 'invalid': invalid }, { 'disabled': disabled }]">
-      <span v-if="prefix" :class="{ 'prefix': prefix }">
-        <slot name='prefix' />
+  <div class="fieldset">
+    <div :class="[
+        { 'form-input': true },
+        { 'invalid': invalid },
+        { 'disabled': disabled },
+        { 'prefix': prefix },
+        { 'suffix': suffix },
+      ]">
+      <span v-show="prefix" class="icon">
+        <slot name="prefix" />
       </span>
       <input v-bind="{ ...$attrs }" @input="$emit('input', $event.target.value)"
         :placeholder="placeholder" :disabled="disabled">
       <!-- svg & img icon -->
-      <span v-if="suffix" :class="{ 'suffix': suffix }">
-        b
+      <span v-show="suffix" class="icon">
+        <slot name="suffix" />
       </span>
     </div>
 
-    <div class="flex justify-between w-100">
-      <p v-if="invalid" class="invalid-feedback">
+    <div class="flex justify-between">
+      <p v-if="invalid" class="invalid-feedback shrink-0">
         {{ invalid }}
       </p>
-      <p v-if="message" class="help-text">
+      <p v-if="message" class="help-text text-right w-100" style="justify-self: flex-end;">
         {{ message }}
       </p>
     </div>
@@ -45,7 +51,7 @@ export default {
     },
     align: {
       type: String,
-      default: null,
+      default: '',
     },
     disabled: {
       type: Boolean,
