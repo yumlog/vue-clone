@@ -1,18 +1,12 @@
 <template>
-  <button 
-    v-bind="{ ...$attrs }"
-    @click="$emit('onClick')"
-    :class="`btn btn-${color || 'outline-gray'} btn-${size} ${disabled && 'disabled'} ${block && 'block'}`"
-    :disabled="disabled"
-    >
+  <button v-bind="{ ...$attrs }" @click="$emit('onClick')" class="btn"
+    :class="[`btn-${color}`, size ? `btn-${size}` : '', { 'disabled': disabled }, { 'block': block }]" :disabled="disabled">
 
-    <span class="prefix" v-if="isSlotVisible">
+    <span v-if="isSlotPrefix" class="prefix">
       <slot name="prefix" />
     </span>
-
     <span class="label">{{ label || 'Label' }}</span>
-    
-    <span class="suffix" v-if="isSlotVisible">
+    <span v-if="isSlotSuffix" class="suffix">
       <slot name="suffix" />
     </span>
 
@@ -24,33 +18,29 @@
 export default {
   name: 'BaseButton',
   inheritAttrs: false,
+  isSlotVisible: false,
   props: {
-    label: [String, Element],
-    color: String,
+    label: String,
+    color: {
+      type: String,
+      default: 'outline-gray'
+    },
     size: String,
-    prefix: {
-      type: [String, Boolean],
-      default: '',
-      required: false
-    },
-    suffix: {
-      type: [String, Boolean],
-      default: '',
-      required: false
-    },
     disabled: {
-      type: [String, Boolean],
-      default: null,
-      required: false 
+      type: Boolean,
+      default: false
     },
     block: {
       type: Boolean,
-      default: null,
+      default: false
     }
   },
   computed: {
-    isSlotVisible() {
-      return this.$slots.prefix || this.$slots.suffix ? true : false;
+    isSlotPrefix() {
+      return this.$slots.prefix ? true : false;
+    },
+    isSlotSuffix() {
+      return this.$slots.suffix ? true : false;
     }
   },
 }

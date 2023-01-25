@@ -1,5 +1,5 @@
 <template>
-  <div class="fieldset">
+  <div class="fieldset" :class="message ? 'text-right' : ''">
     <div :class="[
         { 'form-input': true },
         { 'invalid': invalid },
@@ -10,10 +10,13 @@
       <span v-show="prefix" class="icon">
         <slot name="prefix" />
       </span>
-      <input v-bind="{ ...$attrs }" @input="$emit('input', $event.target.value)"
+      <input v-bind="{ ...$attrs }" @input="$emit('value', $event.target.value)"
         :placeholder="placeholder" :disabled="disabled">
-      <!-- svg & img icon -->
-      <span v-show="suffix" class="icon">
+      
+      <span v-if="unit" class="unit">
+        {{ unit }}
+      </span>
+      <span v-if="suffix" class="icon">
         <slot name="suffix" />
       </span>
     </div>
@@ -22,7 +25,7 @@
       <p v-if="invalid" class="invalid-feedback shrink-0">
         {{ invalid }}
       </p>
-      <p v-if="message" class="help-text text-right w-100" style="justify-self: flex-end;">
+      <p v-if="message" class="help-text w-100" style="justify-self: flex-end;">
         {{ message }}
       </p>
     </div>
@@ -69,7 +72,7 @@ export default {
       type: Boolean,
       default: false
     },
-
+    unit: String,
   },
   watch: {},
   methods: {},

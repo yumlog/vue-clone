@@ -109,6 +109,10 @@
     color: var(--gray-4) !important;
     cursor: not-allowed;
   }
+  &.block {
+    display: block;
+    width: 100%;
+  }
 }
 
 .btn label,

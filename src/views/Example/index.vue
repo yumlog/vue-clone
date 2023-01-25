@@ -11,7 +11,7 @@
         <h6>H6 - 보다 당신의 일에 가깝게</h6>
       </div>
       <hr>
-      <div class="my-2">
+      <div class="my-2 flex flex-col" style="gap: 1rem">
         <p class="text-lg">Body1 - 보다 당신의 일에 가깝게</p>
         <p class="text-md">Body2 - 보다 당신의 일에 가깝게</p>
         <p class="text-sm">Body3 - 보다 당신의 일에 가깝게</p>
@@ -46,21 +46,40 @@
         </div>
       </div>
       <div>
-        <h5>Button Type, Size</h5>
+        <h5>Button Size</h5>
         <div class="flex align-center" style="gap: 1rem">
-          <BaseButton label="Prefix">
-            <template #prefix><SvgImg /></template>
-          </BaseButton>
-          <BaseButton label="Suffix">
-            <template #suffix><SvgImg /></template>
-          </BaseButton>
-          <BaseButton label="Disabled" disabled />
           <BaseButton label="xl" size="xl" />
           <BaseButton label="lg" size="lg" />
           <BaseButton label="Default" />
           <BaseButton label="md" size="md" />
           <BaseButton label="sm" size="sm" />
           <BaseButton label="xs" size="xs" />
+        </div>
+      </div>
+
+      <div>
+        <h5>Button Type</h5>
+        <div class="flex align-center" style="gap: 1rem">
+          <BaseButton label="Block Button" block />
+          <BaseButton label="Prefix + Label">
+            <template #prefix>
+              <SvgImg />
+            </template>
+          </BaseButton>
+          <BaseButton label="Suffix + Label">
+            <template #suffix>
+              <SvgImg />
+            </template>
+          </BaseButton>
+          <BaseButton>
+            <template #prefix>
+              <SvgImg />
+            </template>
+            <template #suffix>
+              <SvgImg />
+            </template>
+          </BaseButton>
+          <!-- <BaseButton label="Suffix" suffix  /> -->
         </div>
       </div>
     </section>
@@ -70,14 +89,19 @@
     <section class="flex" style="gap: 2rem;">
       <div class="flex flex-col w-50" style="gap: 1rem">
         <h5>TextField</h5>
+        
         <TextField v-model="text0" placeholder="Default Input" />
-        <TextField v-model="text1" placeholder="Default Input" message="일반 메세지 출력....아 없나?" />
+        <TextField value="9,893,573,157" unit="원" placeholder="Default Input" message="구십팔억구천삼백오십칠만삼천백오십칠원" />
         <TextField :value="text2" invalid="돈이 좀 부족해요.. 😰" message="원" />
         <TextField value="text3" disabled />
         <TextField type="search" value="text3" />
         <TextField prefix suffix>
-          <template #prefix><SvgImg /></template>
-          <template #suffix><SvgImg /></template>
+          <template #prefix>
+            <SvgImg />
+          </template>
+          <template #suffix>
+            <SvgImg />
+          </template>
         </TextField>
       </div>
       <div class="flex flex-col w-50" style="gap: 1rem">
@@ -124,7 +148,7 @@
     </section>
 
     <section>
-      <button class="btn btn-light" id="show-modal" @click="showModal = true">
+      <button class="btn btn-outline-gray" id="show-modal" @click="showModal = true">
         Modal Open
       </button>
 
@@ -251,9 +275,9 @@ section {
   width: 100%;
   max-width: 800px;
 }
-section + section {
+
+section+section {
   margin-top: 80px;
-  
 }
 
 .svg-img {
