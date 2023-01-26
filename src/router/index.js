@@ -9,7 +9,7 @@ import OneA from '@/views/One/OneA.vue'
 import OneB from '@/views/One/OneB.vue'
 import OneC from '@/views/One/OneC.vue'
 import OneD from '@/views/One/OneD.vue'
-import Two from '@/views/Two.vue'
+
 import Example from '@/views/Example/index.vue'
 import FileList from '@/views/FileList/index.vue'
 import Compo from '@/views/FileList/Compo.vue'
@@ -22,37 +22,24 @@ import SidebarNav from '@/components/Nav/SidebarNav.vue'
 const routes = [
   {
     path: '/',
-    name: '홈',
     component: Home,
-    alias: '/home',
+    alias: '/main',
+    // redirect: ''
   },
   {
     path: '*',
     name: 'NotFound', // 404
     component: NotFound,
     meta: {
-      layout: 'EmptyLayout'
+      layout: 'EmptyLayout',
     },
   },
-  // views
-
-  // 조회
-  // 이체
-  // 공가금
-  // 예적금
-  // 대출
-  // 카드
-  // 부가서비스
-  // 뱅킹관리
-  // 결재함
-
   {
-    path: '/one/:id',
+    path: '/queries',
     name: '조회',
     components: {
       default: One,
-      left: SidebarNav,
-      right: SidebarNav,
+      sidebar: SidebarNav, // sidebar가 있는 화면구성
     },
     children: [
       {
@@ -78,9 +65,61 @@ const routes = [
     ],
   },
   {
-    path: '/two',
-    name: 'Two',
-    component: Two,
+    path: '/transfer',
+    name: '이체',
+  },
+  {
+    path: '/utilityBill',
+    name: '공과금',
+  },
+  {
+    path: '/dep',
+    name: '예적금',
+  },
+  {
+    path: '/loan',
+    name: '대출',
+  },
+  {
+    path: '/card',
+    name: '카드',
+  },
+  {
+    path: '/addService',
+    name: '부가서비스',
+  },
+  {
+    path: '/banking',
+    name: '뱅킹관리',
+  },
+  {
+    path: '/approvalBox',
+    name: '결재함',
+  },
+  {
+    path: '/certification',
+    name: '인증센터',
+  },
+  {
+    path: '/customer',
+    name: '고객센터',
+  },
+  {
+    path: '/security',
+    name: '보안센터',
+  },
+  // not auth
+  {
+    path: '/mypage',
+    name: 'MY 페이지',
+  },
+  {
+    path: '/login',
+    name: '로그인',
+  },
+  {
+    path: '/inquiries',
+    name: '조회전용서비스',
   },
   {
     path: '/example',
@@ -109,13 +148,13 @@ const routes = [
       },
     ],
   },
-];
+]
 
 // eslint-disable-next-lin
 const router = new VueRouter({
   mode: 'history',
   base: __dirname,
-  routes,
+  routes
 })
 
 export default router

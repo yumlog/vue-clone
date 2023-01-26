@@ -1,15 +1,14 @@
 <template>
-  <footer>
-    <div class="container">
+  <div>
+    <footer class="footer container">
       <p>
         The Footer
       </p>
-    </div>
-  </footer>
+    </footer>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: 'TheFooter',
 
@@ -18,3 +17,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.footer {
+  border:2px solid greenyellow;
+}
+</style>

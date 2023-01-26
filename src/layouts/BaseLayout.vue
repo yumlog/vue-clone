@@ -5,11 +5,8 @@
 
     
     <main class="container flex flex-1">
-      <router-view name="left" style="width: 300px" />
-      <router-view class="w-100">
-        container
-      </router-view>
-      <router-view name="right" style="width: 300px" />
+      <router-view name="sidebar" />
+      <router-view class="w-100" />
     </main>
 
     <TheFooter />
@@ -18,7 +15,7 @@
 
 <script>
 import TheFooter from "@/components/TheFooter.vue";
-import TheHeader from "@/components/TheHeader.vue";
+import TheHeader from "@/components/Header/TheHeader.vue";
 
 export default {
   name: 'BaseLayout',

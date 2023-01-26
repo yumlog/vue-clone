@@ -1,12 +1,12 @@
 <template>
-  <aside class="sidebar">
-    Sidebar Navigation
-  </aside>
+  <div>
+    SearchBar
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'SidebarNav',
+  name: 'SearchBar',
 
   data() {
     return {
@@ -25,9 +25,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
-  width: 300px;
-  min-height: 500px;
-  border:2px solid blue;
-}
+
 </style>

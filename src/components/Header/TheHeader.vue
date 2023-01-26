@@ -33,20 +33,12 @@
           </button>
         </div>
       </nav>
-      
-      
+
+
     </header>
     <transition name="fade">
-      <section v-if="drawer" class="container">
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non, debitis beatae dicta, quo vitae fuga unde optio vel nobis itaque sapiente sequi aperiam sunt ullam laborum. Neque ducimus sit vitae?
-        </p>
-      </section>
-      <section v-if="searchBar" class="container">
-        <p>
-          Show SearchBar
-        </p>
-      </section>
+      <DrawerNav v-if="drawer" />
+      <SearchBar v-if="searchBar" />
     </transition>
   </div>
 
@@ -60,10 +52,12 @@ import UserIcon from '@/assets/images/user.svg'
 import SearchIcon from '@/assets/images/search.svg'
 import CloseIcon from '@/assets/images/vue.svg'
 import MenuIcon from '@/assets/images/menu.svg'
+import DrawerNav from './DrawerNav.vue'
+import SearchBar from './SearchBar.vue'
 
 export default {
   name: "TheHeader",
-  components: { GlobalNav, BaseButton, Logo, SearchIcon, UserIcon, CloseIcon, MenuIcon },
+  components: { GlobalNav, BaseButton, Logo, SearchIcon, UserIcon, CloseIcon, MenuIcon, DrawerNav, SearchBar },
   data() {
     return {
       drawer: false,
@@ -98,17 +92,16 @@ export default {
   align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;
-  &:has(.topnav + button) {
-    button {
-      margin-left: 30px;
-    }
+
+  .topnav+button {
+    margin-left: 30px;
   }
 }
 
 .topnav {
   display: flex;
   justify-content: flex-end;
-  align-items: center;  
+  align-items: center;
 
   li a {
     display: flex;
@@ -147,6 +140,7 @@ export default {
 }
 
 .nav-wrapper {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

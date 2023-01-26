@@ -38,6 +38,10 @@
     word-wrap: break-word;
   }
 
+  select::-ms-expand {
+    display:none
+  }
+
   // 필요한지 한번 더 쳌
   input:-webkit-autofill,
   input:-webkit-autofill:hover,

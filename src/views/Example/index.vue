@@ -11,7 +11,7 @@
         <h6>H6 - 보다 당신의 일에 가깝게</h6>
       </div>
       <hr>
-      <div class="my-2 flex flex-col" style="gap: 1rem">
+      <div class="my-2 flex flex-col">
         <p class="text-lg">Body1 - 보다 당신의 일에 가깝게</p>
         <p class="text-md">Body2 - 보다 당신의 일에 가깝게</p>
         <p class="text-sm">Body3 - 보다 당신의 일에 가깝게</p>
@@ -105,20 +105,17 @@
         </TextField>
       </div>
       <div class="flex flex-col w-50" style="gap: 1rem">
-        <h5>SelectBox</h5>
-        <SelectBox :options="[
-          { label: '옵션아이템1', value: '00' },
-          { label: '옵션아이템2', value: '01' },
-        ]" unit="원" />
-        <SelectBox :options="[
-          { label: '옵션아이템001', value: '000' },
-          { label: '옵션아이템002', value: '001' },
-        ]" disabled />
-        <SelectBox :options="[
-          { label: '옵션아이템001', value: '000' },
-          { label: '옵션아이템002', value: '001' },
-        ]" invalid="뭔가 잘못됐어요!" />
+        <h5>Dropdown</h5>
+        <p>대기</p>
       </div>
+    </section>
+
+    <section class="flex" style="gap: 2rem;">
+      <div class="flex flex-col w-50" style="gap: 1rem">
+        <h5>Checkbox & RadioButton</h5>
+        <Checkbox label="checkbox label" />  
+      </div>
+      
     </section>
 
     <section class="flex text-center">
@@ -207,11 +204,12 @@ import TableSt01 from '@/components/TableSt01.vue';
 // import TableSt02 from '@/components/TableSt02.vue'
 import TextField from '@/components/Forms/TextField.vue';
 import BaseButton from '@/components/Buttons/BaseButton.vue';
-import SelectBox from '@/components/Forms/SelectBox.vue';
+import Checkbox from '@/components/Forms/Checkbox.vue';
+
 
 export default {
   name: 'Example',
-  components: { SvgImg, Modal, TabItem, TableSt01, TextField, BaseButton, SelectBox },
+  components: { SvgImg, Modal, TabItem, TableSt01, TextField, BaseButton, Checkbox },
   data() {
     return {
       showModal: false,

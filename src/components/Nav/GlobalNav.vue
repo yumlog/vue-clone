@@ -1,5 +1,5 @@
 <template><ul class="global-nav">
-    <li class="navItem" v-for="route in navRoutes" :key="route.path" @click="toggleNav">
+    <li class="navItem" v-for="route in navRoutes.slice(2, 11)" :key="route.path" @click="toggleNav">
       <router-link :to="route.path" exact-path>{{ route.name }}</router-link>
 
       <!-- sub -->
@@ -21,21 +21,21 @@ export default {
     return {
       active: false,
       pageId: this.$route.params.id,
+      
     }
   },
 
   computed: {
     navRoutes() {
       return this.$router.options.routes
-      // navlist.splice(0, 2)
-      // return navlist
-    }
+    },
   },
 
   methods: {
     toggleNav: function () {
       this.active = !this.active
     },
+    
   }
 }
 </script>

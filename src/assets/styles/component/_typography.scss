@@ -18,13 +18,13 @@
   .h#{$key} {
     font-size: $value !important;
     font-weight: 500;
-    padding:0;
+    margin:0;
   }
 }
 
 // font-weight
 @each $key, $value in $font-weight {
-  .font-#{$key} {
+  .fw-#{$key} {
     font-weight: $value !important;
   }
 }
