@@ -1,9 +1,10 @@
 <template>
   <div>
-
     <header class="global-header">
+      <!-- load -->
+      <span class="loading" v-if="isLoading" />
       <!-- top nav -->
-      <nav class="topnav-wrapper container">
+      <nav class="topnav-wrapper container flex-1">
         <ul class="topnav">
           <li><router-link to="#">개인뱅킹</router-link></li>
           <li><router-link to="#">인증센터</router-link></li>
@@ -14,10 +15,10 @@
       </nav>
 
       <nav class="nav-wrapper container">
-        <a href="/">
+        <a class="logo" href="/">
           <Logo />
         </a>
-        <GlobalNav />
+        <GlobalNav class="global-nav" />
 
         <div class="action-btns">
           <button>
@@ -33,13 +34,11 @@
           </button>
         </div>
       </nav>
-
-
     </header>
-    <transition name="fade">
-      <DrawerNav v-if="drawer" />
+    <Transition name="dropdown" appear>
+      <DrawerNav v-if="drawer" class="drawer-nav" />
       <SearchBar v-if="searchBar" />
-    </transition>
+    </Transition>
   </div>
 
 </template>
@@ -48,10 +47,10 @@
 import BaseButton from '@/components/Buttons/BaseButton.vue'
 import GlobalNav from '@/components/Nav/GlobalNav.vue'
 import Logo from '@/assets/images/logo_wrap.svg'
-import UserIcon from '@/assets/images/user.svg'
-import SearchIcon from '@/assets/images/search.svg'
+import UserIcon from '@/assets/images/icon_24/user.svg'
+import SearchIcon from '@/assets/images/icon_24/search.svg'
 import CloseIcon from '@/assets/images/vue.svg'
-import MenuIcon from '@/assets/images/menu.svg'
+import MenuIcon from '@/assets/images/icon_24/menu.svg'
 import DrawerNav from './DrawerNav.vue'
 import SearchBar from './SearchBar.vue'
 
@@ -62,6 +61,8 @@ export default {
     return {
       drawer: false,
       searchBar: false,
+      loading: false,
+      isLoading: false
     };
   },
 
@@ -72,18 +73,58 @@ export default {
     searchToggle: function () {
       this.searchBar = !this.searchBar
     },
+    // isLoading: function () {
+    //   setTimeout(() => {
+    //     this.loading = true
+    //   }, 4000);
+    // }
   },
+  // mounted() {
+  //   this.$nextTick(() => {
+  //     this.isLoading = false
+  //   });
+  // },
+
 }
 </script>
 
 
 <style lang="scss" scoped>
+.loading {
+  display: block;
+  position: absolute;
+  height: 1px;
+  width: 0;
+  bottom: 0;
+  background-color: var(--primary-1);
+  transition: 0.3s;
+  animation: loading alternate 1s;
+
+  @keyframes loading {
+    0% {
+      width: 0;
+    }
+
+    100% {
+      width: 100%;
+    }
+  }
+}
+
 .global-header {
+  --header-height: 148px;
+
   position: relative;
-  height: 148px;
+  height: var(--header-height);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.logo {
+  display: block;
+  padding: 1rem 0;
+  width: 152px;
 }
 
 .topnav-wrapper {
@@ -128,8 +169,10 @@ export default {
 
 .action-btns {
   --svg-size: 24px;
+  flex-shrink: 0;
 
   svg {
+    display: block;
     width: var(--svg-size);
     height: var(--svg-size);
   }
@@ -145,16 +188,5 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-}
-
-// Fade Opacity
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.3s linear;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0
 }
 </style>

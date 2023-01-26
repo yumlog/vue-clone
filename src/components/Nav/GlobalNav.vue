@@ -1,4 +1,5 @@
-<template><ul class="global-nav">
+<template>
+  <ul class="global-nav">
     <li class="navItem" v-for="route in navRoutes.slice(2, 11)" :key="route.path" @click="toggleNav">
       <router-link :to="route.path" exact-path>{{ route.name }}</router-link>
 
@@ -21,7 +22,7 @@ export default {
     return {
       active: false,
       pageId: this.$route.params.id,
-      
+
     }
   },
 
@@ -35,7 +36,7 @@ export default {
     toggleNav: function () {
       this.active = !this.active
     },
-    
+
   }
 }
 </script>

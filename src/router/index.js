@@ -138,12 +138,12 @@ const routes = [
       },
       {
         path: 'qm',
-        name: '조회',
+        name: '조회0',
         component: Qm,
       },
       {
         path: 'tr',
-        name: '이체',
+        name: '이체0',
         component: Tr,
       },
     ],

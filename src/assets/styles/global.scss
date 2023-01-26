@@ -73,3 +73,26 @@ hr,
   border: 0;
   margin: 2rem 0;
 }
+
+
+// Dropdown Opacity
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all 0.3s;
+}
+
+.dropdown-enter,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+// Fade Opacity
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s linear;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
+}

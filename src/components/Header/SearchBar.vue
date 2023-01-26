@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="search-bar">
     SearchBar
   </div>
 </template>
@@ -25,5 +25,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.search-bar {
+  height: 280px;
+  background-color: var(--white);
+}
 </style>

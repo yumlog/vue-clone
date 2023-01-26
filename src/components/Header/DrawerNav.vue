@@ -1,7 +1,7 @@
 <template>
   <section class="drawer-nav">
     <div class="container">
-      <h1>전체메뉴</h1>
+      <h1 class="drawer-nav--title">전체메뉴</h1>
 
       <article class="navlist"  v-for="item in 5" :key="item">
         <h4 class="navlist--title">조회</h4>
@@ -45,23 +45,33 @@ export default {
 .drawer-nav {
   width: 100%;
   position: absolute;
-  top:0;
+  top: var(--header-height);
+  background-color: $white;
+  &--title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
 }
 
 .navlist {
   display: flex;
-  // justify-content: space-between;
   padding: 34px 0;
   width: 100%;
-  flex: 0 1 auto;
 
   &--title {
     width: 100%;
-    max-width: 180px;
     font-weight: 700;
   }
   &--items {
-    width: calc(100% / 5);
+    flex-shrink: 0;
+    width: 220px;
+    margin-right: 20px;
+  
+    &:last-child {
+      margin-right: 0;
+    }
     .lv-title {
       margin-bottom: 10px;
       font-weight: 700;

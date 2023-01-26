@@ -4,7 +4,7 @@
     <TheHeader />
 
     
-    <main class="container flex flex-1">
+    <main class="container flex flex-1" style="min-height: 500px;">
       <router-view name="sidebar" />
       <router-view class="w-100" />
     </main>
