@@ -4,7 +4,7 @@
       <h1 class="drawer-nav--title">전체메뉴</h1>
 
       <article class="navlist"  v-for="item in 5" :key="item">
-        <h4 class="navlist--title">조회</h4>
+        <h4 class="navlist--title flex-shrink-0">조회</h4>
         
         <nav v-for="nav in 5" :key="nav" class="navlist--items">
           <h6 class="lv-title">통합이체</h6>
@@ -61,11 +61,10 @@ export default {
   width: 100%;
 
   &--title {
-    width: 100%;
+    width: 220px;
     font-weight: 700;
   }
   &--items {
-    flex-shrink: 0;
     width: 220px;
     margin-right: 20px;
   

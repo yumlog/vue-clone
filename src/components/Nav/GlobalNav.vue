@@ -43,6 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 .global-nav {
+  flex-shrink: 0;
   display: flex;
   justify-content: center;
   margin: auto;
