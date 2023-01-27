@@ -2,13 +2,6 @@
   <ul class="global-nav">
     <li class="navItem" v-for="route in navRoutes.slice(2, 11)" :key="route.path" @click="toggleNav">
       <router-link :to="route.path" exact-path>{{ route.name }}</router-link>
-
-      <!-- sub -->
-      <!-- <ul class="subnav" v-show="route.children">
-          <li v-for="childNav in route.children" :key="childNav.index">
-            <router-link :to="childNav.path" exact-path>{{ childNav.name }}</router-link>
-          </li>
-        </ul> -->
     </li>
   </ul>
 
@@ -22,7 +15,6 @@ export default {
     return {
       active: false,
       pageId: this.$route.params.id,
-
     }
   },
 

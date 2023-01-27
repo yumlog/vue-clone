@@ -62,7 +62,6 @@ export default {
       drawer: false,
       searchBar: false,
       loading: false,
-      isLoading: false
     };
   },
 
@@ -73,17 +72,17 @@ export default {
     searchToggle: function () {
       this.searchBar = !this.searchBar
     },
-    // isLoading: function () {
-    //   setTimeout(() => {
-    //     this.loading = true
-    //   }, 4000);
-    // }
+    isLoading: function () {
+      setTimeout(() => {
+        this.loading = true
+      }, 4000);
+    }
   },
-  // mounted() {
-  //   this.$nextTick(() => {
-  //     this.isLoading = false
-  //   });
-  // },
+  mounted() {
+    this.$nextTick(() => {
+      this.isLoading = false
+    });
+  },
 
 }
 </script>

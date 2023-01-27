@@ -43,7 +43,7 @@ const routes = [
     },
     children: [
       {
-        path: '', // 상위 경로
+        path: '', // '' ==> 상위경로 따라감
         name: '전체계좌조회',
         component: OneA,
       },
@@ -67,6 +67,62 @@ const routes = [
   {
     path: '/transfer',
     name: '이체',
+    children: [
+      {
+        path: '',
+        name: '통합이체',
+      },
+      {
+        path: '',
+        name: '대량이체',
+        children: [
+          {
+            path: '',
+            name: '대량이체업로드',
+          },
+          {
+            path: '',
+            name: '대량이체진행',
+          },
+          {
+            path: '',
+            name: '대량이체결과',
+          },
+        ],
+      },
+      {
+        path: '',
+        name: '자동이체',
+        children: [
+          {
+            path: '',
+            name: '자동이체등록',
+          },
+          {
+            path: '',
+            name: '자동이체관리',
+          },
+          {
+            path: '',
+            name: '자동이체결과',
+          },
+        ],
+      },
+      {
+        path: '',
+        name: '이체처리결과',
+        children: [
+          {
+            path: '',
+            name: '자동납부관리',
+          }
+        ]
+      },
+      {
+        path: '',
+        name: '예약/지연이체',
+      },
+    ],
   },
   {
     path: '/utilityBill',
@@ -138,12 +194,12 @@ const routes = [
       },
       {
         path: 'qm',
-        name: '조회0',
+        name: '조회',
         component: Qm,
       },
       {
         path: 'tr',
-        name: '이체0',
+        name: '이체',
         component: Tr,
       },
     ],
