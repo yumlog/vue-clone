@@ -3,13 +3,15 @@
 
     <TheHeader />
 
-    
-    <main class="container flex flex-1" style="min-height: 500px;">
-      <router-view name="sidebar" />
-      <router-view class="w-100" />
+    <main class="main">
+      <div class="container flex flex-1">
+        <router-view name="sidebar" />
+        <router-view class="w-100" />
+      </div>
+
+      <TheFooter />
     </main>
 
-    <TheFooter />
   </div>
 </template>
 
@@ -38,6 +40,10 @@ export default {
   .sidebars {
     display: flex;
     justify-content: space-between;
+  }
+  .main {
+    position: relative;
+    top: 148px;
   }
 }
 </style>

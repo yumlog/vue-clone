@@ -1,9 +1,10 @@
 <template>
   <div>
-    <header class="global-header">
+    <header class="global-header" v-on:scroll="handleScroll">
       <!-- load -->
       <span class="loading" v-if="isLoading" />
       <!-- top nav -->
+
       <nav class="topnav-wrapper container flex-1">
         <ul class="topnav">
           <li><router-link to="#">개인뱅킹</router-link></li>
@@ -13,7 +14,6 @@
         </ul>
         <BaseButton size="xs" label="로그인" />
       </nav>
-
       <nav class="nav-wrapper container">
         <a class="logo" href="/">
           <Logo />
@@ -21,24 +21,18 @@
         <GlobalNav class="global-nav" />
 
         <div class="action-btns">
-          <button>
-            <UserIcon />
-          </button>
-          <button @click="searchToggle" :class="{ active: 'active' }">
-            <CloseIcon v-if="searchBar" />
-            <SearchIcon v-else />
-          </button>
-          <button @click="drawerToggle" :class="{ active: 'active' }">
-            <CloseIcon v-if="drawer" />
-            <MenuIcon v-else />
-          </button>
+          <button class="user" />
+          <button @click="searchToggle" class="search" />
+          <button @click="drawerToggle" class="drawer" />
         </div>
       </nav>
+      <Transition name="dropdown" appear>
+        <DrawerNav v-if="drawer" />
+        <SearchBar v-if="searchBar" />
+      </Transition>
     </header>
-    <Transition name="dropdown" appear>
-      <DrawerNav v-if="drawer" class="drawer-nav" />
-      <SearchBar v-if="searchBar" />
-    </Transition>
+
+
   </div>
 
 </template>
@@ -47,16 +41,16 @@
 import BaseButton from '@/components/Buttons/BaseButton.vue'
 import GlobalNav from '@/components/Nav/GlobalNav.vue'
 import Logo from '@/assets/images/logo_wrap.svg'
-import UserIcon from '@/assets/images/icon_24/user.svg'
-import SearchIcon from '@/assets/images/icon_24/search.svg'
-import CloseIcon from '@/assets/images/vue.svg'
-import MenuIcon from '@/assets/images/icon_24/menu.svg'
 import DrawerNav from './DrawerNav.vue'
 import SearchBar from './SearchBar.vue'
+// import UserIcon from '@/assets/images/icon_24/user.svg'
+// import SearchIcon from '@/assets/images/icon_24/search.svg'
+// import CloseIcon from '../../../public/images/close.svg'
+// import MenuIcon from '@/assets/images/icon_24/menu.svg'
 
 export default {
   name: "TheHeader",
-  components: { GlobalNav, BaseButton, Logo, SearchIcon, UserIcon, CloseIcon, MenuIcon, DrawerNav, SearchBar },
+  components: { GlobalNav, BaseButton, Logo, DrawerNav, SearchBar },
   data() {
     return {
       drawer: false,
@@ -76,14 +70,29 @@ export default {
       setTimeout(() => {
         this.loading = true
       }, 4000);
-    }
+    },
+
+    handleScroll() {
+      const globalHeader = document.querySelector('.global-header');
+      if (document.documentElement.scrollTop >= 148 || window.scrollTo >= 148) {
+        globalHeader.classList.add('active')
+      } else {
+        globalHeader.classList.remove('active')
+      }
+      return this.globalHeader
+    },
   },
   mounted() {
     this.$nextTick(() => {
-      this.isLoading = false
-    });
+      this.isLoading = false;
+    })
   },
-
+  beforeMount() {
+    window.addEventListener("scroll", this.handleScroll)
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.handleScroll)
+  },
 }
 </script>
 
@@ -112,12 +121,21 @@ export default {
 
 .global-header {
   --header-height: 148px;
-
-  position: relative;
   height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: var(--white);
+  transition: all 0.3s ease;
+
+  &.active {
+    top: -48px;
+  }
 }
 
 .logo {
@@ -148,7 +166,6 @@ export default {
     align-items: center;
     justify-content: center;
 
-
     &::after {
       content: '';
       width: 1px;
@@ -169,23 +186,34 @@ export default {
 .action-btns {
   --svg-size: 24px;
   flex-shrink: 0;
+  display: flex;
 
-  svg {
-    display: block;
+  >button {
+    display: inline-block;
     width: var(--svg-size);
     height: var(--svg-size);
-  }
-
-  button {
+    padding: 0;
     cursor: pointer;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+    &.user   {background-image: url(@/assets/images/icon_24/user.svg)}
+    &.search {background-image: url(@/assets/images/icon_24/user.svg)}
+    &.drawer {background-image: url(@/assets/images/icon_24/user.svg)}
+    &.close  {background-image: url(@/assets/images/icon_24/user.svg)}
+  }
+  button+button {
+    margin-left: 8px;
   }
 }
 
 .nav-wrapper {
   position: relative;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
+  transition: all 0.3s ease;
 }
 </style>

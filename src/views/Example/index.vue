@@ -121,7 +121,7 @@
     <section class="flex text-center">
       <figure style="padding: 1rem 0">
         <figcaption>png, 정적이미지</figcaption>
-        <img alt="Vue logo" src="../../../public/logo.png" width="100px" />
+        <img alt="Vue logo" src="../../../public/images/logo.png" width="100px" />
         <pre>/public/logo.png</pre>
       </figure>
 

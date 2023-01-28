@@ -2,12 +2,13 @@
   <section class="drawer-nav">
     <div class="container">
       <h1 class="drawer-nav--title">전체메뉴</h1>
-
+      <!-- level 1 -->
       <article class="navlist" v-for="item in navRoutes.slice(2, 11)" :key="item.index">
         <h4 class="navlist--title flex-shrink-0">{{ item.name }}</h4>
+        <!-- level 2 -->
         <nav v-for="level2 in item.children" :key="level2.index" class="navlist--items">
           <h6 class="lv-title" v-if="item.index === level2.index">{{ level2.name }}</h6>
-
+          <!-- level 3 -->
           <ul class="navs">
             <li v-for="level3 in level2.children" :key="level3.index">
               <router-link :to="level3.path">{{ level3.name }}</router-link>
@@ -15,22 +16,6 @@
           </ul>
         </nav>
       </article>
-
-      <!-- 
-      <article class="navlist"  v-for="item in 5" :key="item">
-        <h4 class="navlist--title flex-shrink-0">조회</h4>   
-        <nav v-for="nav in 5" :key="nav" class="navlist--items">
-          <h6 class="lv-title">통합이체</h6>
-          <ul class="navs">
-            <li>1111</li>
-            <li>222</li>
-            <li>33333</li>
-            <li>444444444</li>
-            <li>5555555555555</li>
-          </ul>
-        </nav>
-      </article>
-       -->
     </div>
   </section>
 </template>
@@ -58,6 +43,7 @@ export default {
   position: absolute;
   top: var(--header-height);
   background-color: var(--white);
+  z-index: 1;
 
   &--title {
     font-size: 30px;
@@ -98,7 +84,7 @@ export default {
 
 .navs {
   li + li {
-    
+    padding-top: 6px;
   }
 }
 </style>
