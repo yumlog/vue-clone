@@ -1,9 +1,10 @@
 {
-  "endOfLine": "auto",
+  "endOfLine": "lf",
   "semi": false,
   "singleQuote": true,
-  "useTabs": false,
+  "useTabs": true,
   "tabWidth": 2,
+  "indentStyle": "space",
   "trailingComma": "es5",
   "printWidth": 80,
   "bracketSpacing": true,
