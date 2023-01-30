@@ -1,16 +1,19 @@
 <template>
   <div>
-    <OneHeader />
-    <p>One Index</p>
+    <h5>OnePage Index: {{ oneId }}</h5>
+    <p>{{ this.$route.path }}</p>
     <router-view />
   </div>
 </template>
 
 <script>
-import OneHeader from './OneHeader.vue';
 
 export default {
   name: "One",
-  components: { OneHeader },
+  computed: {
+    oneId() {
+      return this.$router.currentRoute.name
+    },
+  },
 }
 </script>

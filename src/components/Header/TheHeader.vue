@@ -21,9 +21,9 @@
         <GlobalNav class="global-nav" />
 
         <div class="action-btns">
-          <button class="user" />
-          <button @click="searchToggle" class="search" />
-          <button @click="drawerToggle" class="drawer" />
+          <button class="user"><img :src="require(`@/assets/images/icon_24/user.png`)" alt="icon" /></button>
+          <button @click="searchToggle" class="search"><img :src="require(`@/assets/images/icon_24/search.png`)" alt="icon" /></button>
+          <button @click="drawerToggle" class="drawer"><img :src="require(`@/assets/images/icon_24/menu.png`)" alt="icon" /></button>
         </div>
       </nav>
       <Transition name="dropdown" appear>
@@ -194,14 +194,6 @@ export default {
     height: var(--svg-size);
     padding: 0;
     cursor: pointer;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-
-    &.user   {background-image: url(@/assets/images/icon_24/user.svg)}
-    &.search {background-image: url(@/assets/images/icon_24/user.svg)}
-    &.drawer {background-image: url(@/assets/images/icon_24/user.svg)}
-    &.close  {background-image: url(@/assets/images/icon_24/user.svg)}
   }
   button+button {
     margin-left: 8px;

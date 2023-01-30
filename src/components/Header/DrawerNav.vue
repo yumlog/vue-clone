@@ -7,7 +7,12 @@
         <h4 class="navlist--title flex-shrink-0">{{ item.name }}</h4>
         <!-- level 2 -->
         <nav v-for="level2 in item.children" :key="level2.index" class="navlist--items">
-          <h6 class="lv-title" v-if="item.index === level2.index">{{ level2.name }}</h6>
+          <h6 class="lv-title" v-if="item.index === level2.index">
+            <span v-if="level2.children">
+            {{ level2.name }}
+            </span>
+            <router-link v-else :to="level2.path">{{ level2.name }}</router-link>
+          </h6>
           <!-- level 3 -->
           <ul class="navs">
             <li v-for="level3 in level2.children" :key="level3.index">
