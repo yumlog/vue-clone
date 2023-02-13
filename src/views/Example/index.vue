@@ -136,11 +136,15 @@
       <hr />
 
       <figure style="padding: 1rem 0">
-        <figcaption>SVG 컴포넌트로만 사용</figcaption>
+        <figcaption>SVG 컴포넌트</figcaption>
+        <SvgImg />
+        <pre>import SvgImg from '블라블라.svg'</pre>
+      </figure>
 
-        <SvgImg class="svg-img" />
-
-        <pre>import SvgImg from '...'</pre>
+      <figure style="padding: 1rem 0">
+        <figcaption>SVG inline, sprite</figcaption>
+        <img svg-inline src="@/assets/images/pig7.svg" />
+        <pre>@/assets/images/pig7.svg</pre>
       </figure>
     </section>
 
@@ -197,7 +201,7 @@
 </template>
 
 <script>
-import SvgImg from '@/assets/images/vue.svg';
+import SvgImg from '@/assets/images/pig7.svg';
 import Modal from '@/components/Modal.vue';
 import TabItem from '@/components/Tabs/Tab.vue';
 import TableSt01 from '@/components/TableSt01.vue';

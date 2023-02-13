@@ -48,6 +48,7 @@
 		"dotenv": "^16.0.3",
 		"eslint": "^7.32.0",
 		"eslint-plugin-vue": "^8.0.3",
+		"file-loader": "^6.2.0",
 		"postcss-cssnext": "^3.1.1",
 		"postcss-flexbugs-fixes": "^5.0.2",
 		"postcss-gap-properties": "^3.0.5",
@@ -57,6 +58,8 @@
 		"prettier": "^2.8.2",
 		"sass": "^1.56.1",
 		"sass-loader": "^13.2.0",
+		"url-loader": "^4.1.1",
+		"vue-svg-inline-loader": "^2.1.5",
 		"vue-template-compiler": "^2.6.14"
 	},
 	"eslintConfig": {
@@ -72,7 +75,8 @@
 			"parser": "@babel/eslint-parser"
 		},
 		"rules": {
-			"vue/multi-word-component-names": 0
+			"vue/multi-word-component-names": 0,
+			"no-unused-vars": "off"
 		}
 	},
 	"browserslist": [

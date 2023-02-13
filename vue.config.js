@@ -1,4 +1,5 @@
-const { defineConfig } = require('@vue/cli-service');
+const { defineConfig } = require('@vue/cli-service')
+const { join } = require('path')
 
 module.exports = defineConfig({
 	transpileDependencies: true,
@@ -7,7 +8,7 @@ module.exports = defineConfig({
 		port: process.env.VUE_APP_PORT || 3000,
 		hot: true,
 	},
-
+	productionSourceMap: false,
 	lintOnSave: false,
 
 	// publ setup
@@ -37,16 +38,34 @@ module.exports = defineConfig({
 	},
 
 	chainWebpack: (config) => {
-		config.module.rules.delete('svg');
-    // 번들 최적화
-    config.optimization.merge({
+		// devtool
+		config.merge({
+			devtool: process.env.NODE_ENV === 'development' ? 'eval' : 'source-map',
+		})
+
+		// svg loader => svg component
+    config.module.rules.delete('svg')
+    
+		// svg inline => assets/img
+		config.module
+			.rule('vue')
+			.use('vue-svg-inline-loader')
+			.loader('vue-svg-inline-loader')
+			.options({
+				/* ... */
+			})
+      
+
+		// 번들 최적화
+		config.optimization.merge({
 			splitChunks: {
 				cacheGroups: {
-          chunks: 'all',
+					chunks: 'all',
 				},
 			},
 		})
 	},
+
 	configureWebpack: {
 		module: {
 			rules: [
@@ -54,6 +73,15 @@ module.exports = defineConfig({
 					test: /\.svg$/,
 					use: ['babel-loader', 'vue-svg-loader'],
 				},
+				// {
+				// 	test: /\.svg$/,
+				// 	loader: 'url-loader',
+				// 	options: {
+				// 		name: '[name].[ext]?[hash]',
+				// 		publicPath: './dist/',
+				// 		limit: 10000, // 10kb
+				// 	},
+				// },
 			],
 		},
 	},
