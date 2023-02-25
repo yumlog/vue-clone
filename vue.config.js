@@ -1,13 +1,22 @@
 const { defineConfig } = require('@vue/cli-service')
 const { join } = require('path')
+const path = require('path')
 
 module.exports = defineConfig({
 	transpileDependencies: true,
-	// publicPath: process.env.NODE_ENV === 'production' ? '' : '',
+	runtimeCompiler: true,
+
+	publicPath: process.env.BASE_URL,
+	assetsDir: process.env.BASE_URL,
+
 	devServer: {
 		port: process.env.VUE_APP_PORT || 3000,
 		hot: true,
+		static: {
+			directory: path.join(__dirname, ''), // background-image: url(@/assets/...") 경로 사용
+		},
 	},
+
 	productionSourceMap: false,
 	lintOnSave: false,
 
@@ -44,8 +53,8 @@ module.exports = defineConfig({
 		})
 
 		// svg loader => svg component
-    config.module.rules.delete('svg')
-    
+		config.module.rules.delete('svg')
+
 		// svg inline => assets/img
 		config.module
 			.rule('vue')
@@ -54,7 +63,6 @@ module.exports = defineConfig({
 			.options({
 				/* ... */
 			})
-      
 
 		// 번들 최적화
 		config.optimization.merge({

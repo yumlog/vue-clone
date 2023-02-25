@@ -1,6 +1,7 @@
 <template>
-  <button v-bind="{ ...$attrs }" @click="$emit('onClick')" class="btn"
-    :class="[`btn-${color}`, size ? `btn-${size}` : '', { 'disabled': disabled }, { 'block': block }]" :disabled="disabled">
+  <button v-bind="$attrs" v-on="$listeners" class="btn"
+    :class="[`btn-${color}`, size ? `btn-${size}` : '', { 'disabled': disabled }, { 'block': block }]"
+    :disabled="disabled">
 
     <span v-if="isSlotPrefix" class="prefix">
       <slot name="prefix" />
@@ -16,9 +17,6 @@
 <script>
 
 export default {
-  name: 'BaseButton',
-  inheritAttrs: false,
-  isSlotVisible: false,
   props: {
     label: String,
     color: {
@@ -33,7 +31,8 @@ export default {
     block: {
       type: Boolean,
       default: false
-    }
+    },
+
   },
   computed: {
     isSlotPrefix() {
@@ -46,6 +45,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
