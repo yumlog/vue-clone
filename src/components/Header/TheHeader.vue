@@ -122,6 +122,30 @@ export default {
 }
 </script>
 
+<style lang="scss">
+:root {
+  --header-height: 148px;
+  /* --header-height-x: 100px; */
+}
+
+.global-header {
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--white);
+  transition: all 0.3s ease;
+
+  &.active {
+    transform: translateY(-48px);
+  }
+}
+</style>
 
 <style lang="scss" scoped>
 .loading {
@@ -142,25 +166,6 @@ export default {
     100% {
       width: 100%;
     }
-  }
-}
-
-.global-header {
-  --header-height: 148px;
-  height: var(--header-height);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: var(--white);
-  transition: all 0.3s ease;
-
-  &.active {
-    top: -48px;
   }
 }
 

@@ -42,13 +42,25 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.drawer-nav {
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+}
+.global-header.active {
+  .drawer-nav {
+    height: calc(100vh - var(--header-height) + 48px);
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 .drawer-nav {
   width: 100%;
   position: absolute;
-  top: var(--header-height);
   background-color: var(--white);
   z-index: 1;
+  border:2px solid black;
 
   &--title {
     font-size: 30px;

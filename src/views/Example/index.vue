@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-example">
     
     <div class="flex" style="gap: 1rem">
       <base-button @click="handleClick" label="Click!!!" />
@@ -59,6 +59,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.page-example {
+  height: 1500px;
+}
 .bg-image {
   display: inline-block;
   width: 120px;
