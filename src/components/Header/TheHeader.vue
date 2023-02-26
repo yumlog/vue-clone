@@ -22,25 +22,29 @@
 
         <div class="action-btns">
           <button class="user"><img :src="require(`@/assets/images/icon_24/user.png`)" alt="icon" /></button>
-          <button @click="searchToggle" class="search"><img :src="require(`@/assets/images/icon_24/search.png`)" alt="icon" /></button>
-          <button @click="drawerToggle" class="drawer"><img :src="require(`@/assets/images/icon_24/menu.png`)" alt="icon" /></button>
+          <button @click="searchToggle" class="search"><img :src="require(`@/assets/images/icon_24/search.png`)"
+              alt="icon" /></button>
+          <button @click="drawerToggle" class="drawer"><img :src="require(`@/assets/images/icon_24/menu.png`)"
+              alt="icon" /></button>
         </div>
       </nav>
       <Transition name="dropdown" appear>
-        <DrawerNav v-if="drawer" />
-        <SearchBar v-if="searchBar" />
+        <DrawerNav v-if="drawer" @click="handleOutDrawer" />
+      </Transition>
+
+      <Transition name="dropdown" appear>
+        <SearchBar v-if="searchBar" @click="handleOutDrawer" />
       </Transition>
     </header>
 
 
   </div>
-
 </template>
 
 <script>
+import Logo from '@/assets/images/logo_wrap.svg'
 import BaseButton from '@/components/Buttons/BaseButton.vue'
 import GlobalNav from '@/components/Nav/GlobalNav.vue'
-import Logo from '@/assets/images/logo_wrap.svg'
 import DrawerNav from './DrawerNav.vue'
 import SearchBar from './SearchBar.vue'
 // import UserIcon from '@/assets/images/icon_24/user.svg'
@@ -60,13 +64,34 @@ export default {
   },
 
   methods: {
-    drawerToggle: function () {
+    // 전체메뉴 토글
+    drawerToggle() {
       this.drawer = !this.drawer
+      if(this.searchBar = true) {
+        this.searchBar = false
+      }
     },
-    searchToggle: function () {
+    // 바깥 영역 클릭 시 닫기
+    handleOutDrawer(event){
+      if (!this.$el.contains(event.target)) {
+        this.drawer = false;
+      }
+    },
+    // 통합검색 토글
+    searchToggle() {
       this.searchBar = !this.searchBar
+      if (this.drawer = true) {
+        this.drawer = false
+      }
     },
-    isLoading: function () {
+    // 바깥 영역 클릭 시 닫기
+    handleOutSearch(event){
+      if (!this.$el.contains(event.target)) {
+        this.searchBar = false;
+      }
+    },
+    
+    isLoading() {
       setTimeout(() => {
         this.loading = true
       }, 4000);
@@ -81,6 +106,7 @@ export default {
       }
       return this.globalHeader
     },
+    
   },
   mounted() {
     this.$nextTick(() => {
@@ -195,6 +221,7 @@ export default {
     padding: 0;
     cursor: pointer;
   }
+
   button+button {
     margin-left: 8px;
   }

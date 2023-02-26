@@ -1,6 +1,8 @@
 <template>
   <div class="search-bar">
-    SearchBar
+    <div class="container">
+      SearchBar
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,9 @@ export default {
   top: var(--header-height);
   background-color: var(--white);
   z-index: 1;
+  > * {
+    border:2px solid red;
+    height:500px;
+  }
 }
-
 </style>
