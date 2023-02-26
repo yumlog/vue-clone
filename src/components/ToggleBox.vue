@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="toggle">Toggle</button>
+    <button class="btn btn-outline-black" @click="toggle">Toggle</button>
     <div v-show="isToggled">
       {{ message }}
     </div>

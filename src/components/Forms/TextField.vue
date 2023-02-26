@@ -1,18 +1,18 @@
 <template>
   <div class="fieldset" :class="message ? 'text-right' : ''">
     <div :class="[
-        { 'form-input': true },
-        { 'invalid': invalid },
-        { 'disabled': disabled },
-        { 'prefix': prefix },
-        { 'suffix': suffix },
-      ]">
+      { 'form-input': true },
+      { 'invalid': invalid },
+      { 'disabled': disabled },
+      { 'prefix': prefix },
+      { 'suffix': suffix },
+    ]">
       <span v-show="prefix" class="icon">
         <slot name="prefix" />
       </span>
-      <input v-bind="{ ...$attrs }" @input="$emit('value', $event.target.value)"
-        :placeholder="placeholder" :disabled="disabled">
-      
+      <input v-bind="{ ...$attrs }" @input="$emit('value', $event.target.value)" :placeholder="placeholder"
+        :disabled="disabled">
+
       <span v-if="unit" class="unit">
         {{ unit }}
       </span>

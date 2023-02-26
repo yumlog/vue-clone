@@ -1,6 +1,10 @@
 <template>
   <div>
-    <BaseButton @click="handleClick" label="Click!!!" />
+    
+    <div class="flex" style="gap: 1rem">
+      <base-button @click="handleClick" label="Click!!!" />
+      <div><ToggleBox message="하하핳하" /></div>
+    </div>
     <!-- images -->
     <div class="flex text-center">
       <figure style="padding: 1rem 0">
@@ -29,7 +33,7 @@
         <pre></pre>
       </figure>
     </div>
-    <ToggleBox message="하하핳하" />
+    
   </div>
 </template>
 
@@ -39,18 +43,18 @@ import BaseButton from '@/components/Buttons/BaseButton.vue';
 import ToggleBox from '@/components/ToggleBox.vue';
 
 export default {
-    name: "Example",
-    data() {
-        return {};
-    },
-    mounted() {
-    },
-    methods: {
-      handleClick(el){
-        alert(`Hello, Button!`)
-      }
-    },
-    components: { SvgImg, ToggleBox, BaseButton }
+  name: "Example",
+  data() {
+    return {};
+  },
+  mounted() {
+  },
+  methods: {
+    handleClick(el) {
+      alert(`Hello, Button!`)
+    }
+  },
+  components: { SvgImg, ToggleBox, BaseButton }
 };
 </script>
 

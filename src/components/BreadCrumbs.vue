@@ -1,65 +1,84 @@
 <template>
-  <div class="breadcrumb">
-    <ul>
-      <li v-for="(breadcrumb, idx) in breadcrumbList" :key="idx" @click="routeTo(idx)"
-        :class="{ 'linked': !!breadcrumb.path }">
-
-        {{ breadcrumb.name }}
-
-      </li>
-    </ul>
-  </div>
+  <ol class="breadcrumb">
+    <li><router-link :to="{ path: '/' }">메인</router-link></li>
+    <!-- items -->
+    <li v-for="(crumb, index) in breadcrumbItems" :key="index">
+      <span v-if="crumb.isActive">{{ crumb.text }}</span>
+      <router-link v-else :to="crumb.link">{{ crumb.text }}</router-link>
+    </li>
+  </ol>
 </template>
 
 <script>
 export default {
-  name: 'Breadcrumb',
-  data() {
-    return {
-      breadcrumbList: []
-    }
-  },
-  mounted() { this.updateList() },
-  watch: { '$route'() { this.updateList() } },
-  methods: {
-    routeTo(r) {
-      if (this.breadcrumbList[r].path) this.$route.push(this.breadcrumbList[r].name)
+  computed: {
+    breadcrumbItems() {
+      const route = this.$route;
+      const matchedRoutes = route.matched;
+      const breadcrumbItems = matchedRoutes.map((matchedRoute) => {
+        return {
+          text: matchedRoute.meta.breadcrumb,
+          link: matchedRoute.path,
+          isActive: matchedRoute.path === route.path,
+        };
+      });
+      return breadcrumbItems;
     },
-    updateList() { this.breadcrumbList = this.$router.options.routes }
-  }
-}
+
+    // 2
+    // breadcrumbItems() {
+      // const route = this.$route;
+      // const matchedRoutes = route.matched;
+      // const breadcrumbItems = matchedRoutes.map((matchedRoute) => {
+      //   const text = matchedRoute.meta.breadcrumb;
+      //   const link = matchedRoute.path;
+      //   const isActive = matchedRoute.path === route.path;
+      //   return { text, link, isActive };
+      // });
+      // Add breadcrumb items for child routes
+      // if (matchedRoutes.length > 1) {
+      //   const childCrumb = {
+      //     text: matchedRoutes[matchedRoutes.length - 1].meta.breadcrumb,
+      //     link: route.path,
+      //     isActive: true,
+      //   };
+      //   breadcrumbItems.push(childCrumb);
+      // }
+      // return breadcrumbItems;
+    // },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-ul {
+.breadcrumb {
   display: flex;
-  justify-content: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul>li {
-  display: flex;
-  float: left;
-  height: 10px;
-  width: auto;
-  font-weight: bold;
-  font-size: .8em;
-  cursor: default;
   align-items: center;
+  margin: 10px;
+  font-size: 14px;
+}
+.breadcrumb li {
+  display: inline-flex;
+  & + li {
+    padding-left: 10px;
+    &::before {
+      content: '>';
+      margin-right: 10px;
+    }
+  }
+}
+.breadcrumb li a {
+  display: inline-block;
+  color: var(--black);
+  text-decoration: none;
 }
 
-ul>li:not(:last-child)::after {
-  content: '/';
-  float: right;
-  font-size: .8em;
-  margin: 0.5em;
+.breadcrumb li a:hover {
+  color: var(--gray-3);
+  text-decoration: underline;
 }
-
-.linked {
-  cursor: pointer;
-  font-size: 1em;
-  font-weight: normal;
+.breadcrumb li .active {
+  color: var(--primary-1);
+  font-weight: bold;
 }
 </style>
