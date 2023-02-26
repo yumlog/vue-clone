@@ -61,7 +61,14 @@ module.exports = defineConfig({
 			.use('vue-svg-inline-loader')
 			.loader('vue-svg-inline-loader')
 			.options({
-				/* ... */
+				inline: {
+					keyword: 'inline',
+					strict: true,
+				},
+				sprite: {
+					keyword: 'sprite',
+					strict: true,
+				},
 			})
 
 		// 번들 최적화
@@ -79,17 +86,8 @@ module.exports = defineConfig({
 			rules: [
 				{
 					test: /\.svg$/,
-					use: ['babel-loader', 'vue-svg-loader'],
+					use: ['vue-loader', 'vue-svg-loader', 'vue-svg-inline-loader'],
 				},
-				// {
-				// 	test: /\.svg$/,
-				// 	loader: 'url-loader',
-				// 	options: {
-				// 		name: '[name].[ext]?[hash]',
-				// 		publicPath: './dist/',
-				// 		limit: 10000, // 10kb
-				// 	},
-				// },
 			],
 		},
 	},

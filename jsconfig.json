@@ -5,10 +5,11 @@
     "baseUrl": "./",
     "moduleResolution": "node",
     "paths": {
-      "@/*": ["src/*"]
-    },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+			"@/*": ["./src/*"]
+		},
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
   },
+  "exclude": ["node_modules", "dist"],
   "vueCompilerOptions": {
     "target": 2.7
   }
