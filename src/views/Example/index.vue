@@ -16,16 +16,12 @@
       <hr />
 
       <figure style="padding: 1rem 0">
-        <figcaption>SVG 컴포넌트</figcaption>
-        <SvgImg />
-        <pre>import SvgImg from '블라블라.svg'</pre>
-      </figure>
-
-      <figure style="padding: 1rem 0">
         <figcaption>SVG inline, sprite</figcaption>
-        <img svg-inline src="@/assets/images/pig7.svg" />
-        <pre>@/assets/images/pig7.svg</pre>
+        <img inline src="@/assets/images/pig7.svg" />
+        <pre>@/assets/images/pig7.svg inline</pre>
       </figure>
+      
+      <hr />
 
       <figure style="padding: 1rem 0">
         <figcaption>Image Css, background-image:url()</figcaption>
@@ -38,7 +34,6 @@
 </template>
 
 <script>
-import SvgImg from '@/assets/images/pig7.svg';
 import BaseButton from '@/components/Buttons/BaseButton.vue';
 import ToggleBox from '@/components/ToggleBox.vue';
 
@@ -54,7 +49,7 @@ export default {
       alert(`Hello, Button!`)
     }
   },
-  components: { SvgImg, ToggleBox, BaseButton }
+  components: { ToggleBox, BaseButton }
 };
 </script>
 

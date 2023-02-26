@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import AppLayout from '@/layouts/AppLayout'
 import "@/assets/styles/main.scss";
+import AppLayout from '@/layouts/AppLayout';
 
 export default {
   name: "App",
   components: {
     AppLayout
-  }
+  },
 }
 </script>
