@@ -18,15 +18,12 @@ import FileList from '@/views/FileList/index.vue'
 import Qm from '@/views/FileList/Qm.vue'
 import Tr from '@/views/FileList/Tr.vue'
 
-import SidebarNav from '@/components/Nav/SidebarNav.vue'
-
 // login
 const routes = [
 	{
 		path: '/',
 		component: Home,
 		alias: '/main',
-		// redirect: ''
 	},
 	{
 		path: '*',
@@ -39,10 +36,7 @@ const routes = [
 	{
 		path: '/one',
 		name: '조회',
-		components: {
-			default: One,
-			sidebar: SidebarNav, // sidebar가 있는 화면구성
-		},
+		component: One,
 		meta: {
 			breadcrumb: '조회',
 		},
