@@ -20,10 +20,17 @@ section {
   margin:0;
   padding:0;
 }
+
 ol,
-ul {
+ul,
+li,
+dt,
+dd {
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;

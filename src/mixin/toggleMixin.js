@@ -1,12 +1,12 @@
 export default {
-	data() {
-		return {
-			isToggled: false,
-		}
-	},
-	methods: {
-		toggle() {
-			this.isToggled = !this.isToggled
-		},
-	},
+  data () {
+    return {
+      isOpen: false
+    }
+  },
+  methods: {
+    toggle () {
+      this.isOpen = !this.isOpen
+    }
+  }
 }

@@ -1,14 +1,19 @@
 <template>
   <div>
-    <button class="btn btn-outline-black" @click="toggle">Toggle</button>
-    <div v-show="isToggled">
+    <button
+      class="btn btn-outline-black"
+      @click="toggle"
+    >
+      Toggle
+    </button>
+    <div v-show="isOpen">
       {{ message }}
     </div>
   </div>
 </template>
 
 <script>
-import toggleMixin from '@/mixin/toggleMixin.js';
+import toggleMixin from '@/mixin/toggleMixin.js'
 
 export default {
   name: 'ToggleBox',
@@ -18,6 +23,6 @@ export default {
       type: [String, Object],
       default: '토글 테스트'
     }
-  },
+  }
 }
 </script>

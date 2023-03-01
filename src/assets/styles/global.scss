@@ -2,6 +2,10 @@
 // by. iduk
 // Kor
 
+body * {
+  background-color: rgb(#f30, 0.05);
+}
+
 *,
 *::before,
 *::after {
@@ -42,17 +46,8 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-ol,
-ul,
-li,
-dt,
-dd {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
 a {
+  cursor: pointer;
   text-decoration: none;
   color: $black;
 
@@ -94,7 +89,7 @@ img {
 // Fade Opacity
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s linear;
+  transition: all 0.3s ease-in-out;
 }
 .fade-enter,
 .fade-leave-to {
