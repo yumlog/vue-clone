@@ -1,10 +1,22 @@
 <template>
   <ol class="breadcrumb">
-    <li><router-link :to="{ path: '/' }">메인</router-link></li>
+    <li>
+      <router-link :to="{ path: '/' }">
+        메인
+      </router-link>
+    </li>
     <!-- items -->
-    <li v-for="(crumb, index) in breadcrumbItems" :key="index">
+    <li
+      v-for="(crumb, index) in breadcrumbItems"
+      :key="index"
+    >
       <span v-if="crumb.isActive">{{ crumb.text }}</span>
-      <router-link v-else :to="crumb.link">{{ crumb.text }}</router-link>
+      <router-link
+        v-else
+        :to="crumb.link"
+      >
+        {{ crumb.text }}
+      </router-link>
     </li>
   </ol>
 </template>
@@ -12,50 +24,26 @@
 <script>
 export default {
   computed: {
-    breadcrumbItems() {
-      const route = this.$route;
-      const matchedRoutes = route.matched;
+    breadcrumbItems () {
+      const route = this.$route
+      const matchedRoutes = route.matched
       const breadcrumbItems = matchedRoutes.map((matchedRoute) => {
         return {
           text: matchedRoute.meta.breadcrumb,
           link: matchedRoute.path,
-          isActive: matchedRoute.path === route.path,
-        };
-      });
-      return breadcrumbItems;
-    },
-
-    // 2
-    // breadcrumbItems() {
-      // const route = this.$route;
-      // const matchedRoutes = route.matched;
-      // const breadcrumbItems = matchedRoutes.map((matchedRoute) => {
-      //   const text = matchedRoute.meta.breadcrumb;
-      //   const link = matchedRoute.path;
-      //   const isActive = matchedRoute.path === route.path;
-      //   return { text, link, isActive };
-      // });
-      // Add breadcrumb items for child routes
-      // if (matchedRoutes.length > 1) {
-      //   const childCrumb = {
-      //     text: matchedRoutes[matchedRoutes.length - 1].meta.breadcrumb,
-      //     link: route.path,
-      //     isActive: true,
-      //   };
-      //   breadcrumbItems.push(childCrumb);
-      // }
-      // return breadcrumbItems;
-    // },
-  },
-};
+          isActive: matchedRoute.path === route.path
+        }
+      })
+      return breadcrumbItems
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
 .breadcrumb {
   display: flex;
   align-items: center;
-  margin: 10px;
-  font-size: 14px;
 }
 .breadcrumb li {
   display: inline-flex;

@@ -1,21 +1,26 @@
 <template>
   <!-- appear: 최초 렌더링시 인터랙션 -->
-  <transition name="modal" appear>
+  <transition
+    name="modal"
+    appear
+  >
     <div class="modal-backdrop">
       <div class="modal-wrapper">
         <div class="modal-container">
-  
           <div class="modal-header">
             <h3>{{ title || 'Default Title' }}</h3>
           </div>
-  
+
           <div class="modal-body">
             <slot name="body" />
           </div>
-  
+
           <div class="modal-footer">
             <slot name="footer">
-              <button class="btn btn-primary" @click="$emit('close')">
+              <button
+                class="btn btn-primary"
+                @click="$emit('close')"
+              >
                 닫기
               </button>
             </slot>
@@ -31,8 +36,8 @@ export default {
   props: {
     show: Boolean,
     title: String
-  },
-  
+  }
+
 }
 </script>
 
@@ -83,7 +88,6 @@ export default {
   justify-content: flex-end;
   padding: 1rem;
 }
-
 
 // transition
 .modal-enter {

@@ -8,20 +8,20 @@
 export default {
   name: 'NotFound',
 
-  data() {
+  data () {
     return {
-      
-    };
+
+    }
   },
 
-  mounted() {
-    
+  mounted () {
+
   },
 
   methods: {
-    
-  },
-};
+
+  }
+}
 </script>
 
 <style lang="scss" scoped>

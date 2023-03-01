@@ -2,26 +2,28 @@
   <div class="base-layout">
     <app-header />
     <main class="main">
-      <BreadCrumbs />
+      <div class="container">
+        <BreadCrumbs />
+      </div>
       <router-view />
     </main>
   </div>
 </template>
 
 <script>
-import BreadCrumbs from "@/components/BreadCrumbs.vue";
-import AppHeader from "@/components/Header/AppHeader.vue";
+import BreadCrumbs from '@/components/BreadCrumbs.vue'
+import AppHeader from '@/components/Header/AppHeader.vue'
 
 export default {
   name: 'BaseLayout',
   components: {
     AppHeader,
     BreadCrumbs
-},
-  computed: {
-    
   },
-  methods: {},
+  computed: {
+
+  },
+  methods: {}
 }
 </script>
 
@@ -34,7 +36,7 @@ export default {
   }
   .main {
     position: relative;
-    
+
   }
 }
 </style>

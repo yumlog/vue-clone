@@ -4,12 +4,12 @@
       <button class="btn">icon</button>
       <router-link to="/" class="logo"><img inline src="@/assets/images/logo_wrap.svg" alt="신협" /></router-link>
       <button class="btn menu-toggler" @click="toggle">
-        {{ !isToggled ? 'Burger' : 'Close' }}
+        {{ !isOpen ? 'Burger' : 'Close' }}
       </button>
     </nav>
 
     <transition name="menu" appear>
-      <aside v-if="isToggled" class="menu">
+      <aside v-if="isOpen" class="menu">
         안녕하세요
       </aside>
     </transition>
