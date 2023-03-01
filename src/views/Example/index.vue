@@ -2,6 +2,9 @@
   <div class="page-example container">
     <!--  -->
     <article>
+      <LoadingSpinner />
+    </article>
+    <article class="document">
       <h6>Toast</h6>
       <div>
         <base-button @click="showToast" label="토스트 클릭!" />
@@ -15,11 +18,10 @@
             @close="toast.open = false"
           />
         </toast-container>
-        
       </div>
     </article>
     <!-- button, toggle -->
-    <article>
+    <article class="document">
       <h6>버튼 테스트</h6>
       <div class="flex align-center" style="gap:1rem">
         <base-button @click="handleClick" label="Click!!!" />
@@ -27,33 +29,35 @@
       </div>
     </article>
     <!-- images -->
-    <div class="row">
-      <figure class="col-sm-12 col-lg-4">
-        <figcaption>png, 이미지 사용</figcaption>
-        <img alt="Vue logo" src="@/assets/images/logo.png" width="100px" />
-        <pre>@/assets/images/logo.png</pre>
-      </figure>
+    <article class="document">
+      <h6>Image & Svg</h6>
+      <div class="row">
+        <figure class="col-sm-12 col-lg-4">
+          <figcaption>png, 이미지 사용</figcaption>
+          <img alt="Vue logo" src="@/assets/images/logo.png" width="100px" />
+          <pre>@/assets/images/logo.png</pre>
+        </figure>
 
+        <figure class="col-sm-12 col-lg-4">
+          <figcaption>SVG inline, sprite</figcaption>
+          <img inline src="@/assets/images/pig7.svg" />
+          <pre>@/assets/images/pig7.svg inline</pre>
+        </figure>
+        
 
-      <figure class="col-sm-12 col-lg-4">
-        <figcaption>SVG inline, sprite</figcaption>
-        <img inline src="@/assets/images/pig7.svg" />
-        <pre>@/assets/images/pig7.svg inline</pre>
-      </figure>
-      
-
-      <figure class="col-sm-12 col-lg-4">
-        <figcaption>Image Css, background-image:url()</figcaption>
-        <span class="bg-image"></span>
-        <pre></pre>
-      </figure>
-    </div>
-    
+        <figure class="col-sm-12 col-lg-4">
+          <figcaption>Image Css, background-image:url()</figcaption>
+          <span class="bg-image"></span>
+          <pre></pre>
+        </figure>
+      </div>  
+    </article>
   </div>
 </template>
 
 <script>
 import BaseButton from '@/components/Buttons/BaseButton.vue';
+import LoadingSpinner from '@/components/LoadingSpinner.vue';
 import Toast from '@/components/Toast/Toast.vue';
 import ToastContainer from '@/components/Toast/ToastContainer.vue';
 import ToggleBox from '@/components/ToggleBox.vue';
@@ -87,7 +91,7 @@ export default {
       }, 3000)
     },
   },
-  components: { ToggleBox, BaseButton, Toast, ToastContainer }
+  components: { ToggleBox, BaseButton, Toast, ToastContainer, LoadingSpinner }
 };
 </script>
 
@@ -102,5 +106,12 @@ export default {
   background-image: url(@/assets/images/pig7.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.document {
+  margin-top: 60px;
+  > h6 {
+    margin-bottom: 1rem;
+  }
 }
 </style>
