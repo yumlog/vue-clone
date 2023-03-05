@@ -86,7 +86,7 @@ module.exports = defineConfig({
 			rules: [
 				{
 					test: /\.svg$/,
-					use: ['vue-loader', 'vue-svg-loader', 'vue-svg-inline-loader'],
+					use: ['babel-loader', 'vue-svg-loader'], // component Svg
 				},
 			],
 		},

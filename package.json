@@ -62,11 +62,9 @@
 		"vue-template-compiler": "2.6.14"
 	},
 	"browserslist": [
-		"> 0.2%",
-		"IE 10",
+		"> 1%",
 		"last 2 chrome version",
 		"last 2 firefox version",
-		"last 2 safari version",
-		"last 2 ie version"
+		"last 2 safari version"
 	]
 }
