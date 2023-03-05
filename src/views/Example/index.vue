@@ -34,7 +34,7 @@
       <div class="row">
         <figure class="col-sm-12 col-lg-4">
           <figcaption>png, 이미지 사용</figcaption>
-          <img alt="Vue logo" src="@/assets/images/logo.png" width="100px" />
+          <img alt="Vue logo" src="@/assets/images/pig7.png" width="100px" />
           <pre>@/assets/images/logo.png</pre>
         </figure>
 

@@ -1,25 +1,29 @@
 <template>
   <div class="base-layout">
-    <app-header />
+    <!-- appbar -->
+    <appbar />
+    
     <main class="main">
-      <div class="container">
-        <BreadCrumbs />
-      </div>
+      <!-- <BreadCrumbs /> -->
       <router-view />
     </main>
+
+    <!-- tabnav -->
+    <tab-nav />
   </div>
 </template>
 
 <script>
-import BreadCrumbs from '@/components/BreadCrumbs.vue'
-import AppHeader from '@/components/Header/AppHeader.vue'
+import Appbar from '@/components/Appbar/Appbar.vue';
+import TabNav from '@/components/TabNav/TabNav.vue';
+// import BreadCrumbs from '@/components/BreadCrumbs.vue';
 
 export default {
   name: 'BaseLayout',
   components: {
-    AppHeader,
-    BreadCrumbs
-  },
+    Appbar,
+    TabNav
+},
   computed: {
 
   },
