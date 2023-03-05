@@ -3,7 +3,8 @@
     <li class="tab-nav--item" v-for="nav in tabNavList" :key="nav.index">
       <router-link :to="nav.path">
         <span class="icon">
-          <IconHome />
+          <icon-home-off v-if="!nav.active" />
+          <icon-home-on v-else />
         </span>
         <span class="name">{{ nav.name }}</span>
       </router-link>
@@ -12,11 +13,12 @@
 </template>
 
 <script>
-import IconHome from '@/assets/images/menu-home-off.svg';
+import IconHomeOff from '@/assets/images/menu-home-off.svg';
+import IconHomeOn from '@/assets/images/menu-home-on.svg';
 
 export default {
   components: {
-    IconHome
+    IconHomeOff, IconHomeOn
   },
   data() {
     return {
