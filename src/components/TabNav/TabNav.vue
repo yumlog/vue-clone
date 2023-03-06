@@ -1,13 +1,13 @@
 <template>  
   <ul class="tab-nav">
-    <li class="tab-nav--item" v-for="nav in tabNavList" :key="nav.index">
-      <router-link :to="nav.path">
+    <li class="tab-nav--item" v-for="(nav,index) in tabNavList" :key="index">
+      <button @click.prevent="onToggle(index)">
         <span class="icon">
-          <icon-home-off v-if="!nav.active" />
-          <icon-home-on v-else />
+          <icon-home-on v-if="nav.isActive" />
+          <icon-home-off v-else />
         </span>
         <span class="name">{{ nav.name }}</span>
-      </router-link>
+      </button>
     </li>
   </ul>
 </template>
@@ -24,11 +24,35 @@ export default {
     return {
       tabNavList: [
         {
-          path: '#',
+          path: '',
           name: '홈',
           icon: 'home',
-          active: false,
-        }
+          isActive: false,
+        },
+        {
+          path: '',
+          name: '결제',
+          icon: 'home',
+          isActive: false,
+        },
+        {
+          path: '',
+          name: '조회',
+          icon: 'home',
+          isActive: false,
+        },
+        {
+          path: '',
+          name: '이체',
+          icon: 'home',
+          isActive: false,
+        },
+        {
+          path: '',
+          name: '미정',
+          icon: 'home',
+          isActive: false,
+        },
       ]
     };
   },
@@ -38,7 +62,15 @@ export default {
   },
 
   methods: {
-    
+    onToggle(index) {
+      this.tabNavList.map((item, x) => {
+        if (x !== index) {
+          item.isActive = false
+        } else {
+          item.isActive = true
+        }
+      })
+    }
   },
 };
 </script>

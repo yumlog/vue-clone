@@ -9,15 +9,16 @@
     </nav>
 
     <transition name="menu" appear>
-      <aside v-if="isOpen" class="menu">
+      <Sidebar v-if="isOpen" class="menu">
         안녕하세요
-      </aside>
+      </Sidebar>
     </transition>
   </header>
 </template>
 
 <script>
 import BaseButton from '@/components/Buttons/BaseButton.vue';
+import Sidebar from '@/components/Sidebar/Sidebar.vue';
 import toggleMixin from '@/mixin/toggleMixin';
 
 
@@ -25,7 +26,7 @@ let winScroll = window.scrollY
 
 export default {
   name: "AppHeader",
-  components: { BaseButton },
+  components: { BaseButton, Sidebar },
   mixins: [toggleMixin],
   // vue-meta 테스트
   metaInfo: {
