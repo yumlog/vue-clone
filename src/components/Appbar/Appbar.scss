@@ -3,28 +3,86 @@
   z-index: 10;
   position: sticky;
   top: -100%;
+  background-color: var(--white);
 
   &.active {
-    top:0;
+    top: 0;
     transition: all 0.2s ease-in-out;
     // transform: translateY(-100%);
   }
 
-  > nav {
-    background-color: var(--gray-7);
+  >nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0;
+    height: 50px;
   }
 }
 
-.logo {
-  height: 32px;
-  width: auto;
-  svg {
-    width: auto;
-    height: 100%;
+// left
+.dropdown-logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: $text-lg;
+  font-weight: 600;
+
+  &::after {
+    content: '';
+    background-image: url(@/assets/images/icon_16/arrow_open.png);
+    background-size: 16px 16px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 12px;
+    display: inline-block;
+    background-color: var(--black);
+    overflow: hidden;
+
+    svg,
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  height: 100%;
+
+  .btn {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+  }
+
+  .btn:last-child {
+    padding-right: 22px;
+  }
+
+  &.start {
+    padding-left: 22px;
+  }
+}
+
+.noti {
+  position: relative;
+
+  // 새 알림
+  .new-flag {
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--red);
+    position: absolute;
+    top: 10px;
+    right: 8px;
   }
 }
 
@@ -50,6 +108,7 @@
 .menu-leave-active {
   transition: transform 0.3s ease;
 }
+
 .menu-enter,
 .menu-leave-to {
   // opacity: 0;

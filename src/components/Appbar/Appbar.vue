@@ -1,11 +1,22 @@
 <template>
   <header class="app-bar" @scroll="handleScroll" :class="setScroll ? 'active': ''">
     <nav>
-      <button class="btn">icon</button>
-      <router-link to="/" class="logo"><img inline src="@/assets/images/logo_wrap.svg" alt="신협" /></router-link>
-      <button class="btn menu-toggler" @click="toggle">
-        {{ !isOpen ? 'Burger' : 'Close' }}
-      </button>
+      <div class="actions start">
+        <button class="dropdown-logo">
+          <h1 class="logo"><img src="@/assets/images/pig1.png" alt="로고"></h1>
+          <span>함께해요어부바</span>
+        </button>
+      </div>
+      
+      <div class="actions end">
+        <button class="btn noti" @click="setFlag = !setFlag">
+          <span class="new-flag" v-if="setFlag = true" />
+          <iconNoti />
+        </button>
+        <button class="btn menu-toggler" @click="toggle">
+          <iconMenu />
+        </button>
+      </div>
     </nav>
 
     <transition name="menu" appear>
@@ -17,6 +28,8 @@
 </template>
 
 <script>
+import iconMenu from '@/assets/images/icon_24/appbar_menu.svg';
+import iconNoti from '@/assets/images/icon_24/appbar_noti.svg';
 import BaseButton from '@/components/Buttons/BaseButton.vue';
 import Sidebar from '@/components/Sidebar/Sidebar.vue';
 import toggleMixin from '@/mixin/toggleMixin';
@@ -26,7 +39,7 @@ let winScroll = window.scrollY
 
 export default {
   name: "AppHeader",
-  components: { BaseButton, Sidebar },
+  components: { BaseButton, Sidebar, iconMenu, iconNoti },
   mixins: [toggleMixin],
   // vue-meta 테스트
   metaInfo: {
@@ -42,7 +55,8 @@ export default {
   },
   data() {
     return {
-      setScroll: false
+      setScroll: false,
+      setFlag: true
     }
   },
   
