@@ -1,13 +1,14 @@
 <template>
   <header class="app-bar" @scroll="handleScroll" :class="setScroll ? 'active': ''">
-    <nav>
+    <nav v-if="this.$route.path === '/'">
+      <!-- start -->
       <div class="actions start">
         <button class="dropdown-logo">
           <h1 class="logo"><img src="@/assets/images/pig1.png" alt="로고"></h1>
           <span>함께해요어부바</span>
         </button>
       </div>
-      
+      <!-- end -->
       <div class="actions end">
         <button class="btn noti" @click="setFlag = !setFlag">
           <span class="new-flag" v-if="setFlag = true" />

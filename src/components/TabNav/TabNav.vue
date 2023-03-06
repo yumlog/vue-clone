@@ -56,12 +56,11 @@ export default {
       ]
     };
   },
-
-  mounted() {
-    
+  mounted () {
+    this.tabNavList[0].isActive = true
   },
-
   methods: {
+    // 추후변경 => $router.path = true 이면 isActive
     onToggle(index) {
       this.tabNavList.map((item, x) => {
         if (x !== index) {

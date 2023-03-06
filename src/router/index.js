@@ -9,10 +9,10 @@ Vue.use(VueRouter)
 // login
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: '메인',
     component: Home,
-    alias: '/home'
+    alias: '/',
   },
   {
     path: '*',
