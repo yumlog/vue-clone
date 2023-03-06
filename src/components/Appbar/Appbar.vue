@@ -20,6 +20,24 @@
       </div>
     </nav>
 
+    <nav v-else>
+      <!-- start -->
+      <div class="actions start">
+        <button class="btn">
+          <iconNoti />
+        </button>
+      </div>
+
+      <router-link to="/" class="title">{{ this.$route.name }}</router-link>
+      
+      <!-- end -->
+      <div class="actions end">
+        <button class="btn menu-toggler" @click="toggle">
+          <iconMenu />
+        </button>
+      </div>
+    </nav>
+
     <transition name="menu" appear>
       <Sidebar v-if="isOpen" class="menu">
         안녕하세요
@@ -57,7 +75,7 @@ export default {
   data() {
     return {
       setScroll: false,
-      setFlag: true
+      setFlag: true,
     }
   },
   
@@ -84,7 +102,6 @@ export default {
       return winScroll = headerScroll
     },
   },
-  
 }
 </script>
 
