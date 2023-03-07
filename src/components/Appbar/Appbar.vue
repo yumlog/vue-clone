@@ -1,36 +1,33 @@
 <template>
   <header class="app-bar" @scroll="handleScroll" :class="setScroll ? 'active': ''">
+    <!-- Home Appbar -->
     <nav v-if="this.$route.path === '/'">
-      <!-- start -->
       <div class="actions start">
         <button class="dropdown-logo">
           <h1 class="logo"><img src="@/assets/images/pig1.png" alt="로고"></h1>
           <span>함께해요어부바</span>
         </button>
       </div>
-      <!-- end -->
       <div class="actions end">
         <button class="btn noti" @click="setFlag = !setFlag">
-          <span class="new-flag" v-if="setFlag = true" />
+          <span class="new-flag" v-if="setFlag = true"></span>
           <iconNoti />
         </button>
-        <button class="btn menu-toggler" @click="toggle">
+        <button class="btn">
+          <span class="sr-only">홈</span>
           <iconMenu />
         </button>
       </div>
     </nav>
 
+    <!-- Sub Appbar -->
     <nav v-else>
-      <!-- start -->
       <div class="actions start">
         <button class="btn">
-          <iconNoti />
+          <iconBack />
         </button>
       </div>
-
       <router-link to="/" class="title">{{ this.$route.name }}</router-link>
-      
-      <!-- end -->
       <div class="actions end">
         <button class="btn menu-toggler" @click="toggle">
           <iconMenu />
@@ -47,6 +44,8 @@
 </template>
 
 <script>
+import iconBack from '@/assets/images/icon_24/appbar_history_back.svg';
+import iconHome from '@/assets/images/icon_24/appbar_home.svg';
 import iconMenu from '@/assets/images/icon_24/appbar_menu.svg';
 import iconNoti from '@/assets/images/icon_24/appbar_noti.svg';
 import BaseButton from '@/components/Buttons/BaseButton.vue';
@@ -58,7 +57,7 @@ let winScroll = window.scrollY
 
 export default {
   name: "AppHeader",
-  components: { BaseButton, Sidebar, iconMenu, iconNoti },
+  components: { BaseButton, Sidebar, iconMenu, iconNoti, iconBack, iconHome },
   mixins: [toggleMixin],
   // vue-meta 테스트
   metaInfo: {

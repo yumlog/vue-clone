@@ -1,0 +1,29 @@
+// border-*
+@each $key, $value in $rounded-sizes {
+	.rounded#{$key} {
+		border-radius: $value !important;
+	}
+}
+
+.border-0 {
+	border: 0 !important;
+}
+
+.border {
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--gray-5);
+}
+
+.border-top {
+	border-top: 1px solid var(--gray-5);
+}
+.border-right {
+	border-right: 1px solid var(--gray-5);
+}
+.border-left {
+	border-left: 1px solid var(--gray-5);
+}
+.border-bottom {
+	border-bottom: 1px solid var(--gray-5);
+}

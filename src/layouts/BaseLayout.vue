@@ -2,9 +2,8 @@
   <div class="base-layout">
     <!-- appbar -->
     <appbar />
-    
+  
     <main class="main">
-      <!-- <BreadCrumbs /> -->
       <router-view />
     </main>
 
@@ -23,24 +22,20 @@ export default {
   components: {
     Appbar,
     TabNav
-},
-  computed: {
-
   },
-  methods: {}
+  
 }
 </script>
 
 <style lang="scss" scoped>
 .base-layout {
-  height: auto;
   .sidebars {
     display: flex;
     justify-content: space-between;
   }
   .main {
     position: relative;
-
   }
 }
+
 </style>
