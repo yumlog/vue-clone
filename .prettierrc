@@ -1,15 +1,14 @@
 {
-  "endOfLine": "lf",
-  "semi": false,
-  "singleQuote": true,
+  "endOfLine": "auto",
+  "semi": true,
+  "singleQuote": false,
   "useTabs": true,
   "tabWidth": 2,
   "indentStyle": "space",
   "trailingComma": "es5",
   "printWidth": 80,
   "bracketSpacing": true,
-  "bracketSameLine": true,
-  "singleAttributePerLine": true,
+  "bracketSameLine": false,
   "arrowParens": "always",
   "vueIndentScriptAndStyle": true
 }

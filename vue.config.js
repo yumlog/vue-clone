@@ -1,6 +1,6 @@
-const { defineConfig } = require('@vue/cli-service')
-const { join } = require('path')
-const path = require('path')
+const { defineConfig } = require("@vue/cli-service");
+const { join } = require("path");
+const path = require("path");
 
 module.exports = defineConfig({
 	transpileDependencies: true,
@@ -13,7 +13,7 @@ module.exports = defineConfig({
 		port: process.env.VUE_APP_PORT || 3000,
 		hot: true,
 		static: {
-			directory: path.join(__dirname, ''), // background-image: url(@/assets/...") 경로 사용
+			directory: path.join(__dirname, ""), // background-image: url(@/assets/...") 경로 사용
 		},
 	},
 
@@ -30,7 +30,7 @@ module.exports = defineConfig({
 			css: {
 				modules: {
 					auto: true,
-					localIdentName: '[local]-[hash:base64:5]',
+					localIdentName: "[local]-[hash:base64:5]",
 				},
 			},
 			// IE 10~
@@ -49,36 +49,36 @@ module.exports = defineConfig({
 	chainWebpack: (config) => {
 		// devtool
 		config.merge({
-			devtool: process.env.NODE_ENV === 'development' ? 'eval' : 'source-map',
-		})
+			devtool: process.env.NODE_ENV === "development" ? "eval" : "source-map",
+		});
 
 		// svg loader => svg component
-		config.module.rules.delete('svg')
+		config.module.rules.delete("svg");
 
 		// svg inline => assets/img
 		config.module
-			.rule('vue')
-			.use('vue-svg-inline-loader')
-			.loader('vue-svg-inline-loader')
+			.rule("vue")
+			.use("vue-svg-inline-loader")
+			.loader("vue-svg-inline-loader")
 			.options({
 				inline: {
-					keyword: 'inline',
+					keyword: "inline",
 					strict: true,
 				},
 				sprite: {
-					keyword: 'sprite',
+					keyword: "sprite",
 					strict: true,
 				},
-			})
+			});
 
 		// 번들 최적화
 		config.optimization.merge({
 			splitChunks: {
 				cacheGroups: {
-					chunks: 'all',
+					chunks: "all",
 				},
 			},
-		})
+		});
 	},
 
 	configureWebpack: {
@@ -86,9 +86,9 @@ module.exports = defineConfig({
 			rules: [
 				{
 					test: /\.svg$/,
-					use: ['babel-loader', 'vue-svg-loader'], // component Svg
+					use: ["babel-loader", "vue-svg-loader"], // component Svg
 				},
 			],
 		},
 	},
-})
+});
