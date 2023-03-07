@@ -1,6 +1,6 @@
 <template>
 	<div class="fieldset" :class="message ? 'text-right' : ''">
-		<label v-if="label" :for="id">{{ label }}</label>
+		<label v-if="label" :for="$attrs.id">{{ label }}</label>
 
 		<div
 			:class="[
@@ -16,7 +16,7 @@
 			</span>
 			<input
 				v-bind="{ ...$attrs }"
-				@input="updateInput"
+				
 				v-on="{ ...$listeners, input: () => {} }"
 				:placeholder="placeholder"
 				:disabled="disabled"
