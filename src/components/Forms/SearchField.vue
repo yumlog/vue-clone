@@ -1,14 +1,24 @@
 <template>
     <div>
-        <input type="text" id="searchfield" :placeholder="placeholder" @touchstart="recentKeyword = true">
-        <div class="recent-list" v-if="recentKeyword">
+        <!-- 검색어 입력 input -->
+        <input type="text" id="searchfield"
+        :placeholder="placeholder"
+        @touchstart="recentKeyword = true, dimmed = true"
+        @keydown="recentKeyword = false">
+
+        <!-- 최근 검색어 리스트 -->
+        <div v-if="recentKeyword" class="recent-list">
             <ul>
                 <p>최근검색어</p>
                 <li>ddd</li>
                 <li>fff</li>
             </ul>
         </div>
-        <div class="dimm" aria-hidden="true" v-if="recentKeyword" @touchstart="recentKeyword = false"></div>        
+        
+        <!-- dimm -->
+        <div v-if="dimmed"
+        @touchstart="recentKeyword = false, dimmed = false"
+        class="dimm" aria-hidden="true" ></div>        
     </div>
 </template>
 
@@ -23,6 +33,7 @@ export default {
     data() {
         return {
             recentKeyword: false,
+            dimmed: false,
         }
     },
     methods: {
