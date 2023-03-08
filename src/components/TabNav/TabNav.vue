@@ -74,12 +74,18 @@ import IconHomeOn from "@/assets/images/menu-home-on.svg";
 				}
 			}
 		},
+		methods: {
+			logActiveTab() {
+				
+			},
+		},
 		watch:{
 			'$route.path':{
-				immediate: true,
-				handler(currentTab){
+				immediate: true, // 컴포넌트 생성시 즉시 발생
+				
+				handler(newValue, oldValue){
 					for(let tab of this.tabNavList){
-						if(tab.path  === currentTab) {
+						if(tab.path  === newValue) {
 							this.activeTab = tab;
 							
 							break;
@@ -87,8 +93,9 @@ import IconHomeOn from "@/assets/images/menu-home-on.svg";
 					}
 				}
 			},
-			activeTab(currentTab){
-				console.log('currentTab Index =>', this.tabNavList.indexOf(currentTab))
+			activeTab(newValue, oldValue) {
+				console.log('newValue 변경값', this.tabNavList.indexOf(newValue))
+				console.log('oldValue 이전값', this.tabNavList.indexOf(oldValue))
 			}
 		}
 		
