@@ -19,8 +19,16 @@
 </template>
 
 <script>
+import IconApvOff from "@/assets/images/menu-apv-off.svg";
+import IconApvOn from "@/assets/images/menu-apv-on.svg";
 import IconHomeOff from "@/assets/images/menu-home-off.svg";
 import IconHomeOn from "@/assets/images/menu-home-on.svg";
+import IconQmOff from "@/assets/images/menu-qm-off.svg";
+import IconQmOn from "@/assets/images/menu-qm-on.svg";
+import IconTrOff from "@/assets/images/menu-tr-off.svg";
+import IconTrOn from "@/assets/images/menu-tr-on.svg";
+import IconWindowOff from "@/assets/images/menu-window-off.svg";
+import IconWindowOn from "@/assets/images/menu-window-on.svg";
 
 	export default {
 		components: {
@@ -41,28 +49,28 @@ import IconHomeOn from "@/assets/images/menu-home-on.svg";
 					{
 						path: "/apv",
 						name: "결재",
-						icon1: IconHomeOn,
-						icon2: IconHomeOff,
+						icon1: IconApvOn,
+						icon2: IconApvOff,
 						
 					},
 					{
 						path: "/qm",
 						name: "조회",
-						icon1: IconHomeOn,
-						icon2: IconHomeOff,
+						icon1: IconQmOn,
+						icon2: IconQmOff,
 						
 					},
 					{
 						path: "/tr",
 						name: "이체",
-						icon1: IconHomeOn,
-						icon2: IconHomeOff,
+						icon1: IconTrOn,
+						icon2: IconTrOff,
 					},
 					{
 						path: "/example",
 						name: "미정",
-						icon1: IconHomeOn,
-						icon2: IconHomeOff,
+						icon1: IconWindowOn,
+						icon2: IconWindowOff,
 					},
 				],
 			};
