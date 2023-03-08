@@ -102,6 +102,12 @@ import IconHomeOn from "@/assets/images/menu-home-on.svg";
 	};
 </script>
 
+<style lang="scss">
+:root {
+	--tabnav-h: 57px;
+}
+</style>
+
 <style lang="scss" scoped>
 	@import "./TabNav.scss";
 </style>
