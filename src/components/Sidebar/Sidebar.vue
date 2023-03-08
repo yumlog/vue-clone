@@ -1,9 +1,5 @@
 <template>
   <aside>
-    <div class="btns-wrap">
-      <button class="btn-settings" @click="$emit('settings')"><span class="sr_only">설정</span></button>
-      <button class="btn-close" @click="$emit('close')"><span class="sr_only">닫기</span></button>
-    </div>
     <!-- login information -->
     <div class="user-info" @scroll="handleScroll" :class="setScroll ? 'active': ''">
       <div class="info-wrap">
@@ -23,7 +19,7 @@
 
       <!-- serach -->
       <div class="search-wrap">
-        메뉴를 찾기 어려우신가요?
+        <SearchTextField />
       </div>
 
       <!-- quick menu -->
@@ -82,17 +78,22 @@
         </li>
       </ul>
     </div>
+    <div class="btns-wrap">
+      <button class="btn-settings" @click="$emit('settings')"><span class="sr_only">설정</span></button>
+      <button class="btn-close" @click="$emit('close')"><span class="sr_only">닫기</span></button>
+    </div>
   </aside>
 </template>
 
 <script>
 import BaseButton from '@/components/Buttons/BaseButton.vue';
+import SearchTextField from '@/components/Forms/SearchTextField.vue';
 import $ from 'jquery';
 
 let winScroll = window.scrollY
 
 export default {
-  components: { BaseButton },
+  components: { BaseButton, SearchTextField },
   data() {
     return {
       setScroll: true,
