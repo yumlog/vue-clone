@@ -19,7 +19,7 @@
 
       <!-- serach -->
       <div class="search-wrap">
-        <SearchTextField />
+        <SearchTextField placeholder="메뉴를 찾기 어려우신가요?" />
       </div>
 
       <!-- quick menu -->

@@ -3,6 +3,7 @@
         <input type="text" id="searchfield" :placeholder="placeholder" @touchstart="expand()">
         <div class="item-list">
             <ul>
+                <p>최근검색어</p>
                 <li>ddd</li>
                 <li>fff</li>
             </ul>
