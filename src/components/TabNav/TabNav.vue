@@ -1,23 +1,25 @@
 <template>
 	<ul class="tab-nav">
-		<li class="tab-nav--item" v-for="(nav, index) in tabNavList" :key="index">
+		<li class="tab-nav--item" v-for="(tab, index) in tabNavList" :key="index">
 			<router-link
-				:to="nav.path"
-        :active="activeTab === index"
+				:to="tab.path"
+				:class="{active: isActive(tab.path)}"
 				@click.native="activeTab = index"
 			>
 				<span class="icon">
-					<component v-if="activeTab === index" :is="nav.icon1" />
-					<component v-else :is="nav.icon2" />
+					<transition name="fade">
+						<component v-if="isActive(tab.path)" :is="tab.icon1" />
+						<component v-else :is="tab.icon2" />
+					</transition>
 				</span>
-				<span class="name">{{ nav.name }}</span>
+				<span class="name">{{ tab.name }}</span>
 			</router-link>
 		</li>
 	</ul>
 </template>
 
 <script>
-	import IconHomeOff from "@/assets/images/menu-home-off.svg";
+import IconHomeOff from "@/assets/images/menu-home-off.svg";
 import IconHomeOn from "@/assets/images/menu-home-on.svg";
 
 	export default {
@@ -27,7 +29,8 @@ import IconHomeOn from "@/assets/images/menu-home-on.svg";
 		},
 		data() {
 			return {
-        activeTab: 0,
+        activeTab: null,
+
 				tabNavList: [
 					{
 						path: "/home",
@@ -64,7 +67,30 @@ import IconHomeOn from "@/assets/images/menu-home-on.svg";
 				],
 			};
 		},
-		computed: {},
+		computed: {
+			isActive(){
+				return(route)=>{
+					return this.$route.path === route;
+				}
+			}
+		},
+		watch:{
+			'$route.path':{
+				immediate: true,
+				handler(currentTab){
+					for(let tab of this.tabNavList){
+						if(tab.path  === currentTab) {
+							this.activeTab = tab;
+							
+							break;
+						}
+					}
+				}
+			},
+			activeTab(currentTab){
+				console.log('currentTab Index =>', this.tabNavList.indexOf(currentTab))
+			}
+		}
 		
 	};
 </script>
