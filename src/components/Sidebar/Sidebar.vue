@@ -29,21 +29,25 @@
         <ul>
           <li>
             <router-link to="" title="보안센터">
+              <img src="@/assets/images/icon_32/certify.png" alt="보안센터">
               <p>보안센터</p>
             </router-link>
           </li>
           <li>
             <router-link to="" title="인증센터">
+              <img src="@/assets/images/icon_32/lock.png" alt="인증센터">
               <p>인증센터</p>
             </router-link>
           </li>
           <li>
             <router-link to="" title="고객센터">
+              <img src="@/assets/images/icon_32/cs.png" alt="고객센터">
               <p>고객센터</p>
             </router-link>
           </li>
           <li>
             <router-link to="" title="공지이벤트">
+              <img src="@/assets/images/icon_32/event.png" alt="공지이벤트">
               <p>공지/이벤트</p>
             </router-link>
           </li>
