@@ -4,20 +4,28 @@
         <input type="text" id="searchfield"
         :placeholder="placeholder"
         @touchstart="recentKeyword = true, dimmed = true"
-        @keydown="recentKeyword = false">
+        @keyup="relatedKeyword = true, recentKeyword = false">
 
         <!-- 최근 검색어 리스트 -->
-        <div v-if="recentKeyword" class="recent-list">
+        <div v-if="recentKeyword" class="recent-keyword">
+            <p>최근검색어</p>
             <ul>
-                <p>최근검색어</p>
                 <li>ddd</li>
                 <li>fff</li>
+            </ul>
+        </div>
+
+        <!-- 연관 검색어 리스트 -->
+        <div v-if="relatedKeyword" class="related-keyword">
+            <ul>
+                <li>11111</li>
+                <li>22222</li>
             </ul>
         </div>
         
         <!-- dimm -->
         <div v-if="dimmed"
-        @touchstart="recentKeyword = false, dimmed = false"
+        @touchstart="recentKeyword = false, relatedKeyword = false, dimmed = false"
         class="dimm" aria-hidden="true" ></div>        
     </div>
 </template>
@@ -33,6 +41,7 @@ export default {
     data() {
         return {
             recentKeyword: false,
+            relatedKeyword: false,
             dimmed: false,
         }
     },
@@ -53,7 +62,18 @@ export default {
     border-radius: 8px;
 }
 
-.recent-list {
+.recent-keyword {
+    position: absolute;
+    top: 124px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 30px 22px 38px;
+    background-color: var(--white);
+    z-index: 20;
+}
+
+.related-keyword {
     position: absolute;
     top: 124px;
     left: 0;
