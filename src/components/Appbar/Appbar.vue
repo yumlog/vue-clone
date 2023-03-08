@@ -13,7 +13,7 @@
           <span class="new-flag" v-if="setFlag = true"></span>
           <iconNoti />
         </button>
-        <button class="btn">
+        <button class="btn" @click="isOpen = true">
           <span class="sr-only">홈</span>
           <iconMenu />
         </button>
@@ -36,9 +36,7 @@
     </nav>
 
     <transition name="menu" appear>
-      <Sidebar v-if="isOpen" class="menu">
-        안녕하세요
-      </Sidebar>
+      <Sidebar v-if="isOpen" class="menu" @close="isOpen = false" />
     </transition>
   </header>
 </template>
@@ -75,6 +73,7 @@ export default {
     return {
       setScroll: false,
       setFlag: true,
+      isOpen: false,
     }
   },
   

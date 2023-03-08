@@ -58,6 +58,16 @@
 				</toast-container>
 			</div>
 		</article>
+		<!-- bottom sheet -->
+		<article class="document">
+			<h6>Bottom Sheet</h6>
+			<base-button @click="showBottomSheet01 = !showBottomSheet01" label="default" />
+			
+			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
+				<template #body>body</template>
+				<template #footer>footer</template>
+			</bottom-sheet>
+		</article>
 		<!-- button, toggle -->
 		<article class="document">
 			<h6>버튼 테스트</h6>
@@ -93,13 +103,14 @@
 </template>
 
 <script>
-	import BaseButton from "@/components/Buttons/BaseButton.vue";
+import BaseButton from "@/components/Buttons/BaseButton.vue";
 import TextField from "@/components/Forms/TextField.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import Toast from "@/components/Toast/Toast.vue";
 import ToastContainer from "@/components/Toast/ToastContainer.vue";
 import ToggleBox from "@/components/ToggleBox.vue";
 import { Column, Row } from "vue-grid-responsive";
+import BottomSheet from '@/components/BottomSheet.vue';
 
 	export default {
 		name: "Example",
@@ -111,12 +122,14 @@ import { Column, Row } from "vue-grid-responsive";
     LoadingSpinner,
     TextField,
     Row,
-    Column
+    Column,
+	BottomSheet,
 },
 		data() {
 			return {
 				toastId: 0,
 				toasts: [],
+				showBottomSheet01: false,
 			};
 		},
 		mounted() {},
