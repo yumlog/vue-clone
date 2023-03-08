@@ -1,8 +1,8 @@
 <template>
   <aside>
     <div class="btns-wrap">
-      <button class="btn-settings" @click="$emit('settings')"><div class="sr_only">설정</div></button>
-      <button class="btn-close" @click="$emit('close')"><div class="sr_only">닫기</div></button>
+      <button class="btn-settings" @click="$emit('settings')"><span class="sr_only">설정</span></button>
+      <button class="btn-close" @click="$emit('close')"><span class="sr_only">닫기</span></button>
     </div>
     <!-- login information -->
     <div class="user-info" @scroll="handleScroll" :class="setScroll ? 'active': ''">
