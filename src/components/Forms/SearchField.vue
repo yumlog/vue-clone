@@ -1,10 +1,13 @@
 <template>
     <div>
         <!-- 검색어 입력 input -->
-        <input type="text" id="searchfield"
-        :placeholder="placeholder"
-        @touchstart="recentKeyword = true, dimmed = true"
-        @keyup="relatedKeyword = true, recentKeyword = false">
+        <div class="searchfield-wrap">
+            <input type="text" id="searchfield"
+            :placeholder="placeholder"
+            @touchstart="recentKeyword = true, dimmed = true"
+            @keyup="relatedKeyword = true, recentKeyword = false">
+            <i class="img-search" aria-hidden="true"></i>
+        </div>
 
         <!-- 최근 검색어 리스트 -->
         <div v-if="recentKeyword" class="recent-keyword">
@@ -51,15 +54,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.searchfield-wrap {
+    position: relative;
+}
+
 #searchfield {
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 56px 0 16px;
     width: 100%;
     height: 46px;
     margin-top: 16px;
     border: 1px solid var(--gray-5);
     border-radius: 8px;
+}
+
+.img-search {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    background: url('@/assets/images/icon_24/search_input.png') center no-repeat;
+    background-size: 100%;
 }
 
 .recent-keyword {
