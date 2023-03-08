@@ -19,7 +19,9 @@
 
       <!-- serachfield-->
       <div class="search-wrap">
-        <SearchField placeholder="메뉴를 찾기 어려우신가요?" />
+        <SearchField placeholder="메뉴를 찾기 어려우신가요?"
+        :recentKeywordData="recentKeywordData"
+        :relatedKeywordData="relatedKeywordData" />
       </div>
 
       <!-- quick menu -->
@@ -79,8 +81,8 @@
       </ul>
     </div>
     <div class="btns-wrap">
-      <button class="btn-settings" @click="$emit('settings')"><span class="sr_only">설정</span></button>
-      <button class="btn-close" @click="$emit('close')"><span class="sr_only">닫기</span></button>
+      <button class="btn-settings" @click="$emit('settings')"><span class="sr-only">설정</span></button>
+      <button class="btn-close" @click="$emit('close')"><span class="sr-only">닫기</span></button>
     </div>
   </aside>
 </template>
@@ -147,7 +149,29 @@ export default {
             },
           ]
         },
-      ]
+      ],
+      recentKeywordData: [
+        {
+          name: '전체계좌조회',
+        },
+        {
+          name: '가상계좌조회',
+        },
+        {
+          name: '납부',
+        },
+      ],
+      relatedKeywordData: [
+        {
+          name: '지로납부',
+        },
+        {
+          name: '건강보험료납부',
+        },
+        {
+          name: '통신비납부',
+        },
+      ],
     };
   },
   mounted() {

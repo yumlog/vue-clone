@@ -10,19 +10,24 @@
         </div>
 
         <!-- 최근 검색어 리스트 -->
-        <div v-if="recentKeyword" class="recent-keyword">
-            <p>최근검색어</p>
+        <div v-if="showRecentKeyword" class="recent-list">
+            <p class="tit">최근검색어</p>
             <ul>
-                <li>ddd</li>
-                <li>fff</li>
+                <li v-for="item in recentKeywordData" :key="item">
+                    <button class="recent-keyword">{{ item.name }}</button>
+                    <button class="btn-close">
+                        <span class="sr-only">닫기</span>
+                    </button>
+                </li>
             </ul>
         </div>
 
         <!-- 연관 검색어 리스트 -->
-        <div v-if="relatedKeyword" class="related-keyword">
+        <div v-if="relatedKeyword" class="related-list">
             <ul>
-                <li>11111</li>
-                <li>22222</li>
+                <li v-for="item in relatedKeywordData" :key="item">
+                    <button class="related-keyword">{{ item.name }}</button>
+                </li>
             </ul>
         </div>
         
@@ -40,6 +45,8 @@ export default {
             type: String,
             default: 'placeholder',
         },
+        recentKeywordData: [],
+        relatedKeywordData: [],
     },
     data() {
         return {
@@ -48,7 +55,10 @@ export default {
             dimmed: false,
         }
     },
-    methods: {
+    computed: {
+        showRecentKeyword() {
+            return this.recentKeyword == true && this.relatedKeyword == false
+        }
     },
 }
 </script>
@@ -79,7 +89,7 @@ export default {
     background-size: 100%;
 }
 
-.recent-keyword {
+.recent-list {
     position: absolute;
     top: 124px;
     left: 0;
@@ -88,9 +98,45 @@ export default {
     padding: 30px 22px 38px;
     background-color: var(--white);
     z-index: 20;
+    .tit {
+        font-weight: 700;
+    }
+    > ul {
+        margin-top: 20px;
+        > li {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 8px 0;
+            margin-left: 30px;
+            &::before {
+                content: '';
+                position: absolute;
+                left: -30px;
+                width: 16px;
+                height: 16px;
+                background: url('@/assets/images/icon_16/time.png') center no-repeat;
+                background-size: 100%;
+            }
+            .recent-keyword {
+                width: calc(100% - 28px);
+                padding: 0;
+                margin-right: 14px;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .btn-close {
+                width: 14px;
+                height: 14px;
+                background: url('@/assets/images/icon_14/close.png') center no-repeat;
+                background-size: 100%;
+            }
+        }
+    }
 }
 
-.related-keyword {
+.related-list {
     position: absolute;
     top: 124px;
     left: 0;
@@ -99,6 +145,30 @@ export default {
     padding: 30px 22px 38px;
     background-color: var(--white);
     z-index: 20;
+    > ul {
+        > li {
+            display: flex;
+            position: relative;
+            align-items: center;
+            margin-left: 28px;
+            .related-keyword {
+                padding: 8px 0;
+                width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: left;
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                left: -28px;
+                width: 12px;
+                height: 12px;
+                background: url('@/assets/images/icon_24/link.png') center no-repeat;
+                background-size: 100%;
+            }
+        }
+    }
 }
 
 .dimm {
