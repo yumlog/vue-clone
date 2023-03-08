@@ -1,6 +1,23 @@
 <template>
 	<div class="page-example container">
 		<article>
+			<h6>Vue Grid</h6>
+			<Row>
+				<Column :xs="4"><span class="block bg-primary-1">Column</span></Column>
+				<Column :xs="4"><span class="block bg-primary-1">Column</span></Column>
+				<Column :xs="4"><span class="block bg-primary-1">Column</span></Column>
+			</Row>
+			<hr>
+			<Row>
+				<Column :xs="4" :xsOffset="4"><span class="block bg-primary-1">Column</span></Column>
+				<Column :xs="4"><span class="block bg-primary-1">Column</span></Column>
+			</Row>
+		</article>
+
+		<hr>
+		
+		<article>
+			<h6>Css Grid</h6>
 			<div class="row">
 				<div class="col-6 border">col-6</div>
 				<div class="col-6 border">col-6</div>
@@ -16,6 +33,7 @@
 				<div class="col-3"><span class="block bg-primary-1">col-3</span></div>
 			</div>
 		</article>
+
 		<article>
 			<LoadingSpinner />
 		</article>
@@ -81,17 +99,20 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import Toast from "@/components/Toast/Toast.vue";
 import ToastContainer from "@/components/Toast/ToastContainer.vue";
 import ToggleBox from "@/components/ToggleBox.vue";
+import { Column, Row } from "vue-grid-responsive";
 
 	export default {
 		name: "Example",
 		components: {
-			ToggleBox,
-			BaseButton,
-			Toast,
-			ToastContainer,
-			LoadingSpinner,
-			TextField,
-		},
+    ToggleBox,
+    BaseButton,
+    Toast,
+    ToastContainer,
+    LoadingSpinner,
+    TextField,
+    Row,
+    Column
+},
 		data() {
 			return {
 				toastId: 0,
