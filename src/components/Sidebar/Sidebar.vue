@@ -19,7 +19,7 @@
 
       <!-- serach -->
       <div class="search-wrap">
-        <SearchTextField placeholder="메뉴를 찾기 어려우신가요?" />
+        <SearchField placeholder="메뉴를 찾기 어려우신가요?" />
       </div>
 
       <!-- quick menu -->
@@ -87,13 +87,13 @@
 
 <script>
 import BaseButton from '@/components/Buttons/BaseButton.vue';
-import SearchTextField from '@/components/Forms/SearchTextField.vue';
+import SearchField from '@/components/Forms/SearchField.vue';
 import $ from 'jquery';
 
 let winScroll = window.scrollY
 
 export default {
-  components: { BaseButton, SearchTextField },
+  components: { BaseButton, SearchField },
   data() {
     return {
       setScroll: true,
