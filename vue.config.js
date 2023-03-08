@@ -82,12 +82,19 @@ module.exports = defineConfig({
 	},
 
 	configureWebpack: {
+		resolve: {
+			extensions: [".js", ".vue"],
+		},
 		module: {
 			rules: [
 				{
 					test: /\.svg$/,
 					use: ["babel-loader", "vue-svg-loader"], // component Svg
 				},
+				// {
+				// 	test: /\.(png|jpe?g|gif|webp)$/,
+				// 	use: "file-loader",
+				// },
 			],
 		},
 	},

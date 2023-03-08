@@ -103,14 +103,14 @@
 </template>
 
 <script>
-import BaseButton from "@/components/Buttons/BaseButton.vue";
-import TextField from "@/components/Forms/TextField.vue";
-import LoadingSpinner from "@/components/LoadingSpinner.vue";
-import Toast from "@/components/Toast/Toast.vue";
-import ToastContainer from "@/components/Toast/ToastContainer.vue";
-import ToggleBox from "@/components/ToggleBox.vue";
+import BottomSheet from '@/components/BottomSheet';
+import BaseButton from "@/components/Buttons/BaseButton";
+import TextField from "@/components/Forms/TextField";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import Toast from "@/components/Toast/Toast";
+import ToastContainer from "@/components/Toast/ToastContainer";
+import ToggleBox from "@/components/ToggleBox";
 import { Column, Row } from "vue-grid-responsive";
-import BottomSheet from '@/components/BottomSheet.vue';
 
 	export default {
 		name: "Example",
