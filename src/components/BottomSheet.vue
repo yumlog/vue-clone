@@ -3,9 +3,7 @@
       <div class="dimm" aria-hidden="true"></div>
       <transition name="slide-up" appear>
         <div class="pop">
-          <div class="title-wrap">{{ label }}
-            <button class="btn-close" @click="$emit('close')"></button>
-          </div>
+          <div class="title-wrap">{{ label }}</div>
           <div class="body">
             <div class="contents">
               <slot name="body"></slot>
@@ -14,6 +12,7 @@
           <div class="footer">
             <slot name="footer"></slot>
           </div>
+          <button class="btn-close" @click="$emit('close')"></button>
         </div>
       </transition>
     </div>
@@ -65,14 +64,6 @@
       padding: 20px 66px 30px 22px;
       font-size: 20px;
       font-weight: 600;
-      .btn-close {
-        position: absolute;
-        right: 22px;
-        width: 20px;
-        height: 20px;
-        background: url('@/assets/images/icon_24/close.png') center no-repeat;
-        background-size: 100%;
-      }
     }
     .body {
       padding: 0 22px 30px;
@@ -84,6 +75,16 @@
     .footer {
       padding: 0 22px 30px;
     }
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 21px;
+    right: 22px;
+    width: 20px;
+    height: 20px;
+    background: url('@/assets/images/icon_24/close.png') center no-repeat;
+    background-size: 100%;
   }
   
   /* slide-up 효과 정의 */

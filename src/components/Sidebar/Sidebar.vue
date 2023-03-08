@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <!-- serach -->
+      <!-- serachfield-->
       <div class="search-wrap">
         <SearchField placeholder="메뉴를 찾기 어려우신가요?" />
       </div>
