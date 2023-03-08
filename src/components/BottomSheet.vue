@@ -1,6 +1,6 @@
 <template>
     <div v-if="showBottomSheet" class="bottom-sheet">
-      <div class="dimm"></div>
+      <div class="dimm" aria-hidden="true"></div>
       <transition name="slide-up" appear>
         <div class="pop">
           <div class="title-wrap">{{ label }}

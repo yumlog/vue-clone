@@ -1,13 +1,14 @@
 <template>
     <div>
-        <input type="text" id="searchfield" :placeholder="placeholder" @touchstart="expand()">
-        <div class="item-list">
+        <input type="text" id="searchfield" :placeholder="placeholder" @touchstart="recentKeyword = true">
+        <div class="recent-list" v-if="recentKeyword">
             <ul>
                 <p>최근검색어</p>
                 <li>ddd</li>
                 <li>fff</li>
             </ul>
         </div>
+        <div class="dimm" aria-hidden="true" v-if="recentKeyword" @touchstart="recentKeyword = false"></div>        
     </div>
 </template>
 
@@ -17,13 +18,14 @@ export default {
         placeholder: {
             type: String,
             default: 'placeholder',
+        },
+    },
+    data() {
+        return {
+            recentKeyword: false,
         }
     },
     methods: {
-        expand() {
-            const searchField = document.querySelector('.item-list')
-            searchField.style.display = 'block'
-        }
     },
 }
 </script>
@@ -40,7 +42,24 @@ export default {
     border-radius: 8px;
 }
 
-.item-list {
-    display: none;
+.recent-list {
+    position: absolute;
+    top: 124px;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 30px 22px 38px;
+    background-color: var(--white);
+    z-index: 20;
+}
+
+.dimm {
+    position: absolute;
+    top: 124px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 124px);
+    background-color: rgba(22,22,22,.4);
+    z-index: 10;
 }
 </style>
