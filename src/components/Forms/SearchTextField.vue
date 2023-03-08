@@ -1,6 +1,12 @@
 <template>
     <div>
         <input type="text" id="searchfield" :placeholder="placeholder" @touchstart="expand()">
+        <div class="item-list">
+            <ul>
+                <li>ddd</li>
+                <li>fff</li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -11,7 +17,13 @@ export default {
             type: String,
             default: 'placeholder',
         }
-    }
+    },
+    methods: {
+        expand() {
+            const searchField = document.querySelector('.item-list')
+            searchField.style.display = 'block'
+        }
+    },
 }
 </script>
 
@@ -25,5 +37,9 @@ export default {
     margin-top: 16px;
     border: 1px solid var(--gray-5);
     border-radius: 8px;
+}
+
+.item-list {
+    display: none;
 }
 </style>
