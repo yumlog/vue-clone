@@ -37,10 +37,36 @@
 		<article>
 			<LoadingSpinner />
 		</article>
+
 		<article>
 			<h6>Forms</h6>
-			<text-field label="라벨입니당" />
+			<section class="my-4">
+				<h6>text-field / Component</h6>
+
+				<!-- text input -->
+				<text-field label="UserId" placeholder="아이디를 입력하세요" invalid="invalid message..." />
+				
+			</section>
+
+			<section class="my-4">
+				<h6>text-field / Legacy</h6>
+
+				<!-- text input -->
+				<fieldset class="fieldset">
+					<label for="userid">UserId</label>
+					<div class="form-input invalid">
+						<input id="userid" type="text" placeholder="아이디를 입력하세요" aria-placeholder="아이디를 입력하세요" />
+					</div>
+					<div class="flex justify-between">
+						<p class="invalid-feedback shrink-0">
+							invalid message...
+						</p>
+					</div>
+				</fieldset>
+
+			</section>
 		</article>
+
 		<article class="document">
 			<h6>Toast</h6>
 			<div>
