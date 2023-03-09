@@ -1,7 +1,6 @@
 const GroRoutes = [
 	{
 		path: "/gro",
-		name: "지로",
 		component: {
 			render(c) {
 				return c("router-view");

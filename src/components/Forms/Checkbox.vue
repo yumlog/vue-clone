@@ -1,18 +1,15 @@
 <template>
-  <div class="checkbox">
-    <input type="checkbox" :id="id" :value="value" v-bind="{ ...$attrs }" />
-    <label :for="id">{{ label }}</label>
-  </div>
+	<div class="checkbox">
+		<input
+			:id="id"
+			type="checkbox"
+			:value="value"
+			v-bind="{ ...$attrs }"
+		>
+		<label :for="id">{{ label }}</label>
+	</div>
 </template>
 
-
-<style lang="scss" scoped>
-.checkbox {
-  input {
-    appearance: none;
-  }
-}
-</style>
 
 <script>
 export default {
@@ -32,3 +29,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.checkbox {
+  input {
+    appearance: none;
+  }
+}
+</style>

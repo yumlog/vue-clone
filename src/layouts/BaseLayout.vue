@@ -1,15 +1,15 @@
 <template>
-  <div class="base-layout">
-    <!-- appbar -->
-    <appbar />
+	<div class="base-layout">
+		<!-- appbar -->
+		<appbar />
   
-    <main class="main">
-      <router-view />
-    </main>
+		<main class="main">
+			<router-view />
+		</main>
 
-    <!-- tabnav -->
-    <tab-nav />
-  </div>
+		<!-- tabnav -->
+		<tab-nav />
+	</div>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
 <template>
-  <button @click="$emit('onClick')" class="btn-link">
-    {{ label }}
-  </button>
+	<button class="btn-link" @click="$emit('onClick')">
+		{{ label }}
+	</button>
 </template>
 
 <script>

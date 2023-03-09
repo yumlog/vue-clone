@@ -1,22 +1,24 @@
 <template>
-    <div class="bottom-sheet">
-      <div class="dimm" aria-hidden="true"></div>
-      <transition name="slide-up" appear>
-        <div class="pop">
-          <div class="title-wrap">{{ label }}</div>
-          <div class="body">
-            <div class="contents">
-              <slot name="body"></slot>
-            </div>
-          </div>
-          <div class="footer">
-            <slot name="footer"></slot>
-          </div>
-          <button class="btn-close" @click="$emit('close')"></button>
-        </div>
-      </transition>
-    </div>
-  </template>
+	<div class="bottom-sheet">
+		<div class="dimm" aria-hidden="true" />
+		<transition name="slide-up" appear>
+			<div class="pop">
+				<div class="title-wrap">
+					{{ label }}
+				</div>
+				<div class="body">
+					<div class="contents">
+						<slot name="body" />
+					</div>
+				</div>
+				<div class="footer">
+					<slot name="footer" />
+				</div>
+				<button class="btn-close" @click="$emit('close')" />
+			</div>
+		</transition>
+	</div>
+</template>
   
   <script>
   export default {

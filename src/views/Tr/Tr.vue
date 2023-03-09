@@ -1,7 +1,7 @@
 <template>
-  <div>
-    Tr 이체페이지
-  </div>
+	<div>
+		Tr 이체페이지
+	</div>
 </template>
 
 <script>

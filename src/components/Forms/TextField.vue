@@ -16,14 +16,14 @@
 			</span>
 			<input
 				v-bind="{ ...$attrs }"
-				@input="updateInput"
-				v-on="{ ...$listeners, input: () => {} }"
 				:placeholder="placeholder"
 				:aria-placeholder="placeholder"
 				:invalid="invalid"
 				:aria-invalid="invalid"
 				:disabled="disabled"
-			/>
+				@input="updateInput"
+				v-on="{ ...$listeners, input: () => {} }"
+			>
 
 			<span v-if="unit" class="unit">
 				{{ unit }}

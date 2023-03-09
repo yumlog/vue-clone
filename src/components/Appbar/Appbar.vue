@@ -1,109 +1,115 @@
 <template>
-  <header class="app-bar" @scroll="handleScroll" :class="setScroll ? 'active': ''">
-    <!-- Home Appbar -->
-    <nav v-if="this.$route.path === '/'">
-      <div class="actions start">
-        <button class="dropdown-logo">
-          <h1 class="logo"><img src="@/assets/images/pig1.png" alt="로고"></h1>
-          <span>함께해요어부바</span>
-        </button>
-      </div>
-      <div class="actions end">
-        <button class="btn noti" @click="setFlag = !setFlag">
-          <span class="new-flag" v-if="setFlag = true"></span>
-          <iconNoti />
-        </button>
-        <button class="btn" @click="isOpen = true">
-          <span class="sr-only">홈</span>
-          <iconMenu />
-        </button>
-      </div>
-    </nav>
+	<header
+		class="app-bar"
+		:class="setScroll ? 'active' : ''"
+		@scroll="handleScroll"
+	>
+		<!-- Home Appbar -->
+		<nav v-if="$route.path === '/'">
+			<div class="actions start">
+				<button class="dropdown-logo">
+					<h1 class="logo">
+						<img src="@/assets/images/pig1.png" alt="로고" />
+					</h1>
+					<span>함께해요어부바</span>
+				</button>
+			</div>
+			<div class="actions end">
+				<button class="btn noti" @click="setFlag = !setFlag">
+					<span v-if="(setFlag = true)" class="new-flag" />
+					<iconNoti />
+				</button>
+				<button class="btn" @click="isOpen = true">
+					<span class="sr-only">홈</span>
+					<iconMenu />
+				</button>
+			</div>
+		</nav>
 
-    <!-- Sub Appbar -->
-    <nav v-else>
-      <div class="actions start">
-        <button class="btn">
-          <iconBack />
-        </button>
-      </div>
-      <router-link to="/" class="title">{{ this.$route.name }}</router-link>
-      <div class="actions end">
-        <button class="btn menu-toggler" @click="toggle">
-          <iconMenu />
-        </button>
-      </div>
-    </nav>
+		<!-- Sub Appbar -->
+		<nav v-else>
+			<div class="actions start">
+				<button class="btn" @click="$router.go(-1)">
+					<iconBack />
+				</button>
+			</div>
+			<router-link to="/" class="title">
+				{{ $route.name }}
+			</router-link>
+			<div class="actions end">
+				<button class="btn menu-toggler" @click="toggle">
+					<iconMenu />
+				</button>
+			</div>
+		</nav>
 
-    <transition name="menu" appear>
-      <Sidebar v-if="isOpen" class="menu" @close="isOpen = false" />
-    </transition>
-  </header>
+		<transition name="menu" appear>
+			<Sidebar v-if="isOpen" class="menu" @close="isOpen = false" />
+		</transition>
+	</header>
 </template>
 
 <script>
-import iconBack from '@/assets/images/icon_24/appbar_history_back.svg';
-import iconHome from '@/assets/images/icon_24/appbar_home.svg';
-import iconMenu from '@/assets/images/icon_24/appbar_menu.svg';
-import iconNoti from '@/assets/images/icon_24/appbar_noti.svg';
-import BaseButton from '@/components/Buttons/BaseButton.vue';
-import Sidebar from '@/components/Sidebar/Sidebar.vue';
-import toggleMixin from '@/mixin/toggleMixin';
+import iconBack from "@/assets/images/icon_24/appbar_history_back.svg";
+import iconMenu from "@/assets/images/icon_24/appbar_menu.svg";
+import iconNoti from "@/assets/images/icon_24/appbar_noti.svg";
+import Sidebar from "@/components/Sidebar/Sidebar.vue";
+import toggleMixin from "@/mixin/toggleMixin";
 
+	let winScroll = window.scrollY;
 
-let winScroll = window.scrollY
+	export default {
+		name: "AppHeader",
+		components: {  Sidebar, iconMenu, iconNoti, iconBack },
+		mixins: [toggleMixin],
+		// vue-meta 테스트
+		metaInfo: {
+			title: "신협이에요!",
+			// titleTemplate: '%s | ...',
+			meta: [
+				{ charset: "utf-8" },
+				{
+					name: "viewport",
+					content: "width=device-width, initial-scale=1, user-scalable=no",
+				},
+				{ vmid: "description", name: "description", content: "description" },
+				// vmid: Unique Metadata, index.html 에서 설정한 메타와 중복되지 않게 하기 위함
+				// index meta - component meta 순으로 노출
+			],
+		},
+		data() {
+			return {
+				setScroll: false,
+				setFlag: true,
+				isOpen: false,
+			};
+		},
 
-export default {
-  name: "AppHeader",
-  components: { BaseButton, Sidebar, iconMenu, iconNoti, iconBack, iconHome },
-  mixins: [toggleMixin],
-  // vue-meta 테스트
-  metaInfo: {
-    title: '신협이에요!',
-    // titleTemplate: '%s | ...',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1, user-scalable=no' },
-      { vmid: "description", name: "description", content: 'description' }
-      // vmid: Unique Metadata, index.html 에서 설정한 메타와 중복되지 않게 하기 위함
-      // index meta - component meta 순으로 노출
-    ]
-  },
-  data() {
-    return {
-      setScroll: false,
-      setFlag: true,
-      isOpen: false,
-    }
-  },
-  
-  created() {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
+		created() {
+			window.addEventListener("scroll", this.handleScroll);
+		},
+		beforeDestroy() {
+			window.removeEventListener("scroll", this.handleScroll);
+		},
 
-    
-  methods: {
-    handleScroll() {
-      // const header = document.querySelector('.app-header');
-      const headerScroll = window.scrollY;
-      // console.log(`스크롤: ${winScroll}`)
+		methods: {
+			handleScroll() {
+				// const header = document.querySelector('.app-header');
+				const headerScroll = window.scrollY;
+				// console.log(`스크롤: ${winScroll}`)
 
-      // Top으로 올리면 header가 내려옴
-      if (winScroll >= headerScroll) {
-        this.setScroll = true
-      } else {
-        this.setScroll = false
-      }
-      return winScroll = headerScroll
-    },
-  },
-}
+				// Top으로 올리면 header가 내려옴
+				if (winScroll >= headerScroll) {
+					this.setScroll = true;
+				} else {
+					this.setScroll = false;
+				}
+				return (winScroll = headerScroll);
+			},
+		},
+	};
 </script>
 
-
 <style lang="scss" scoped>
-@import './Appbar.scss';
+	@import "./Appbar.scss";
 </style>

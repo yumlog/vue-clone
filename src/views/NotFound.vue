@@ -1,7 +1,7 @@
 <template>
-  <div>
-    NotFound
-  </div>
+	<div>
+		NotFound
+	</div>
 </template>
 
 <script>

@@ -1,7 +1,9 @@
 <template>
-  <li class="tab-btn">
-    <router-link @click="$emit('input', id)" :class="[active, 'tab']" :to="path">{{ label }}</router-link>
-  </li>
+	<li class="tab-btn">
+		<router-link :class="[active, 'tab']" :to="path" @click="$emit('input', id)">
+			{{ label }}
+		</router-link>
+	</li>
 </template>
 
 <script>

@@ -1,41 +1,53 @@
 <template>
-    <div>
-        <!-- 검색어 입력 input -->
-        <div class="searchfield-wrap">
-            <input type="text" id="searchfield"
-            :placeholder="placeholder"
-            @touchstart="recentKeyword = true, dimmed = true"
-            @keyup="relatedKeyword = true, recentKeyword = false">
-            <i class="img-search" aria-hidden="true"></i>
-        </div>
+	<div>
+		<!-- 검색어 입력 input -->
+		<div class="searchfield-wrap">
+			<input
+				id="searchfield"
+				type="text"
+				:placeholder="placeholder"
+				@touchstart="recentKeyword = true, dimmed = true"
+				@keyup="relatedKeyword = true, recentKeyword = false"
+			>
+			<i class="img-search" aria-hidden="true" />
+		</div>
 
-        <!-- 최근 검색어 리스트 -->
-        <div v-if="showRecentKeyword" class="recent-list">
-            <p class="tit">최근검색어</p>
-            <ul>
-                <li v-for="item in recentKeywordData" :key="item">
-                    <button class="recent-keyword">{{ item.name }}</button>
-                    <button class="btn-close">
-                        <span class="sr-only">닫기</span>
-                    </button>
-                </li>
-            </ul>
-        </div>
+		<!-- 최근 검색어 리스트 -->
+		<div v-if="showRecentKeyword" class="recent-list">
+			<p class="tit">
+				최근검색어
+			</p>
+			<ul>
+				<li v-for="item in recentKeywordData" :key="item">
+					<button class="recent-keyword">
+						{{ item.name }}
+					</button>
+					<button class="btn-close">
+						<span class="sr-only">닫기</span>
+					</button>
+				</li>
+			</ul>
+		</div>
 
-        <!-- 연관 검색어 리스트 -->
-        <div v-if="relatedKeyword" class="related-list">
-            <ul>
-                <li v-for="item in relatedKeywordData" :key="item">
-                    <button class="related-keyword">{{ item.name }}</button>
-                </li>
-            </ul>
-        </div>
+		<!-- 연관 검색어 리스트 -->
+		<div v-if="relatedKeyword" class="related-list">
+			<ul>
+				<li v-for="item in relatedKeywordData" :key="item">
+					<button class="related-keyword">
+						{{ item.name }}
+					</button>
+				</li>
+			</ul>
+		</div>
         
-        <!-- dimm -->
-        <div v-if="dimmed"
-        @touchstart="recentKeyword = false, relatedKeyword = false, dimmed = false"
-        class="dimm" aria-hidden="true" ></div>        
-    </div>
+		<!-- dimm -->
+		<div
+			v-if="dimmed"
+			class="dimm"
+			aria-hidden="true"
+			@touchstart="recentKeyword = false, relatedKeyword = false, dimmed = false"
+		/>        
+	</div>
 </template>
 
 <script>

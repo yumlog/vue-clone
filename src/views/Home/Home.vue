@@ -1,11 +1,10 @@
 <template>
-  <div class="container guide">
-    
-    <p class="text-center">
-      Container Margin <br>
-      left: 22px, right: 22px
-    </p>
-  </div>
+	<div class="container guide">
+		<p class="text-center">
+			Container Margin <br>
+			left: 22px, right: 22px
+		</p>
+	</div>
 </template>
 
 <script>

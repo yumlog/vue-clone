@@ -1,94 +1,101 @@
 <template>
-  <aside>
-    <!-- login information -->
-    <div class="user-info" @scroll="handleScroll" :class="setScroll ? 'active': ''">
-      <div class="info-wrap">
-        <div class="ico-profile">
-          <img src="@/assets/images/icon_32/squircle_32x32_reflexion.png" alt="프로필">
-        </div>
-        <div class="info-area">
-          <div class="username">김신협님</div>
-          <div class="sub">
-            <div class="recent">
-              <p>최근접속 <span>2023.06.24 23:30:56</span></p>
-            </div>
-            <base-button label="로그아웃" size="xs" />
-          </div>
-        </div>
-      </div>
+	<aside>
+		<!-- login information -->
+		<div class="user-info" :class="setScroll ? 'active': ''" @scroll="handleScroll">
+			<div class="info-wrap">
+				<div class="ico-profile">
+					<img src="@/assets/images/icon_32/squircle_32x32_reflexion.png" alt="프로필">
+				</div>
+				<div class="info-area">
+					<div class="username">
+						김신협님
+					</div>
+					<div class="sub">
+						<div class="recent">
+							<p>최근접속 <span>2023.06.24 23:30:56</span></p>
+						</div>
+						<base-button label="로그아웃" size="xs" />
+					</div>
+				</div>
+			</div>
 
-      <!-- serachfield-->
-      <div class="search-wrap">
-        <SearchField placeholder="메뉴를 찾기 어려우신가요?"
-        :recentKeywordData="recentKeywordData"
-        :relatedKeywordData="relatedKeywordData" />
-      </div>
+			<!-- serachfield-->
+			<div class="search-wrap">
+				<SearchField
+					placeholder="메뉴를 찾기 어려우신가요?"
+					:recent-keyword-data="recentKeywordData"
+					:related-keyword-data="relatedKeywordData"
+				/>
+			</div>
 
-      <!-- quick menu -->
-      <div class="quick-wrap">
-        <ul>
-          <li>
-            <router-link to="" title="보안센터">
-              <img src="@/assets/images/icon_32/certify.png" alt="보안센터">
-              <p>보안센터</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="" title="인증센터">
-              <img src="@/assets/images/icon_32/lock.png" alt="인증센터">
-              <p>인증센터</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="" title="고객센터">
-              <img src="@/assets/images/icon_32/cs.png" alt="고객센터">
-              <p>고객센터</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="" title="공지이벤트">
-              <img src="@/assets/images/icon_32/event.png" alt="공지이벤트">
-              <p>공지/이벤트</p>
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
+			<!-- quick menu -->
+			<div class="quick-wrap">
+				<ul>
+					<li>
+						<router-link to="" title="보안센터">
+							<img src="@/assets/images/icon_32/certify.png" alt="보안센터">
+							<p>보안센터</p>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="" title="인증센터">
+							<img src="@/assets/images/icon_32/lock.png" alt="인증센터">
+							<p>인증센터</p>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="" title="고객센터">
+							<img src="@/assets/images/icon_32/cs.png" alt="고객센터">
+							<p>고객센터</p>
+						</router-link>
+					</li>
+					<li>
+						<router-link to="" title="공지이벤트">
+							<img src="@/assets/images/icon_32/event.png" alt="공지이벤트">
+							<p>공지/이벤트</p>
+						</router-link>
+					</li>
+				</ul>
+			</div>
+		</div>
 
-    <!-- side navigation -->
-    <div class="side-nav">
-      
-      <!-- menu list -->
-      <ul class="menulist">
-        <li v-for="(menu, index) in menulist" :key="index" :class="{active: menuActive == true}">
-          {{ menu.name }}
+		<!-- side navigation -->
+		<div class="side-nav">
+			<!-- menu list -->
+			<ul class="menulist">
+				<li v-for="(menu, index) in menulist" :key="index" :class="{active: menuActive == true}">
+					{{ menu.name }}
           
-          <!-- sub menu -->
-          <ul class="submenu">
-            {{ menu.name }}
-            <li v-for="sub in menu.children" :key="sub.index" :class="sub.children ? 'dropdown expand' : ''">
-              <router-link :to="sub.path">
-                {{ sub.name }}
-              </router-link>
+					<!-- sub menu -->
+					<ul class="submenu">
+						{{ menu.name }}
+						<li v-for="sub in menu.children" :key="sub.index" :class="sub.children ? 'dropdown expand' : ''">
+							<router-link :to="sub.path">
+								{{ sub.name }}
+							</router-link>
 
-              <!-- dep3 menu -->
-              <ul class="dep3menu">
-                <li v-for="dep3 in sub.children" :key="dep3.index">
-                  <router-link :to="dep3.path">
-                    {{ dep3.name }}
-                  </router-link>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <div class="btns-wrap">
-      <button class="btn-settings" @click="$emit('settings')"><span class="sr-only">설정</span></button>
-      <button class="btn-close" @click="$emit('close')"><span class="sr-only">닫기</span></button>
-    </div>
-  </aside>
+							<!-- dep3 menu -->
+							<ul class="dep3menu">
+								<li v-for="dep3 in sub.children" :key="dep3.index">
+									<router-link :to="dep3.path">
+										{{ dep3.name }}
+									</router-link>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="btns-wrap">
+			<button class="btn-settings" @click="$emit('settings')">
+				<span class="sr-only">설정</span>
+			</button>
+			<button class="btn-close" @click="$emit('close')">
+				<span class="sr-only">닫기</span>
+			</button>
+		</div>
+	</aside>
 </template>
 
 <script>

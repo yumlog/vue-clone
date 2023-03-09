@@ -1,6 +1,6 @@
 <template>
 	<ul class="tab-nav">
-		<li class="tab-nav--item" v-for="(tab, index) in tabNavList" :key="index">
+		<li v-for="(tab, index) in tabNavList" :key="index" class="tab-nav--item">
 			<router-link
 				:to="tab.path"
 				:class="{active: isActive(tab.path)}"
@@ -8,8 +8,8 @@
 			>
 				<span class="icon">
 					<transition name="fade">
-						<component v-if="isActive(tab.path)" :is="tab.icon1" />
-						<component v-else :is="tab.icon2" />
+						<component :is="tab.icon1" v-if="isActive(tab.path)" />
+						<component :is="tab.icon2" v-else />
 					</transition>
 				</span>
 				<span class="name">{{ tab.name }}</span>
@@ -82,11 +82,6 @@ import IconWindowOn from "@/assets/images/menu-window-on.svg";
 				}
 			}
 		},
-		methods: {
-			logActiveTab() {
-				
-			},
-		},
 		watch:{
 			'$route.path':{
 				immediate: true, // 컴포넌트 생성시 즉시 발생
@@ -105,6 +100,11 @@ import IconWindowOn from "@/assets/images/menu-window-on.svg";
 				console.log('newValue 변경값', this.tabNavList.indexOf(newValue))
 				console.log('oldValue 이전값', this.tabNavList.indexOf(oldValue))
 			}
+		},
+		methods: {
+			logActiveTab() {
+				
+			},
 		}
 		
 	};

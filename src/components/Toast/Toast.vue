@@ -1,14 +1,15 @@
 <!-- Toast & Notification -->
 <template>
-  <TransitionGroup name="list">
-    <div v-show="open"
-      class="toast"
-      :key="id"
-    >
-      <p>{{ message }}</p>
-      <!-- <button @click="close">close</button> -->
-    </div>
-  </TransitionGroup>
+	<TransitionGroup name="list">
+		<div
+			v-show="open"
+			:key="id"
+			class="toast"
+		>
+			<p>{{ message }}</p>
+			<!-- <button @click="close">close</button> -->
+		</div>
+	</TransitionGroup>
 </template>
 
 <script>
