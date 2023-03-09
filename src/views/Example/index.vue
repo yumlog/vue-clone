@@ -115,16 +115,16 @@ import { Column, Row } from "vue-grid-responsive";
 	export default {
 		name: "Example",
 		components: {
-    ToggleBox,
-    BaseButton,
-    Toast,
-    ToastContainer,
-    LoadingSpinner,
-    TextField,
-    Row,
-    Column,
-	BottomSheet,
-},
+			ToggleBox,
+			BaseButton,
+			Toast,
+			ToastContainer,
+			LoadingSpinner,
+			TextField,
+			Row,
+			Column,
+			BottomSheet,
+		},
 		data() {
 			return {
 				toastId: 0,
