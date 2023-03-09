@@ -10,18 +10,19 @@
   height: 50px;
   padding: 0 22px;
   z-index: 30;
+  > button {
+    height: 50px;
+  }
   button ~ button {
     margin-left: 14px;
   }
   .btn-settings {
     width: 24px;
-    height: 24px;
     background: url('@/assets/images/icon_20/Gear.png') center no-repeat;
     background-size: 100%;
   }
   .btn-close {
     width: 24px;
-    height: 24px;
     background: url('@/assets/images/icon_24/appbar_close.png') center no-repeat;
     background-size: 100%;
   }
@@ -166,10 +167,16 @@
         font-weight: 500;
         > li {
           position: relative;
-          margin-top: 16px;
           color: var(--gray-1);
           font-size: 15px;
           font-weight: 600;
+          > a {
+            display: block;
+            padding: 8px 0;
+          }
+          &:first-child {
+            margin-top: 8px;
+          }
           &.dropdown {
             &::after {
               content: '';
@@ -178,6 +185,7 @@
               right: 0;
               width: 18px;
               height: 18px;
+              margin-top: 7px;
               background: url('@/assets/images/icon_18/arrow.png') center no-repeat;
               background-size: 100%;
               transform: rotate(180deg);
@@ -193,11 +201,14 @@
           .dep3menu {
             display: none;
             > li {
-              margin-top: 16px;
               margin-left: 10px;
               color: var(--gray-2);
               font-size: 14px;
               font-weight: 500;
+              > a {
+                display: block;
+                padding: 8px;
+              }
             }
           }
 
