@@ -187,8 +187,8 @@ export default {
     // 메뉴 첫번째 요소 항상 활성화
     $('.menulist li').first().addClass('active')
     // dep3 메뉴 토글화
-    $('.submenu li.dropdown').on('click', function() {
-      $(this).toggleClass('expand')
+    $('.submenu li.dropdown > a').on('click', function() {
+      $(this).parent().toggleClass('expand')
     })
   },
   created() {
