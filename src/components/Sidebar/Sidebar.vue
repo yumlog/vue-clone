@@ -86,9 +86,11 @@
         </div>
         <div class="btns-wrap">
             <button class="btn-settings" @click="$emit('settings')">
+                <img inline src="@/assets/images/icon_20/Gear.svg" aria-hidden="true">
                 <span class="sr-only">설정</span>
             </button>
             <button class="btn-close" @click="$emit('close')">
+                <img inline src="@/assets/images/icon_24/appbar_close.svg" aria-hidden="true">
                 <span class="sr-only">닫기</span>
             </button>
         </div>
