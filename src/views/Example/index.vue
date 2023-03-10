@@ -13,7 +13,7 @@
 					<span class="block bg-primary-1">Column</span>
 				</Column>
 			</Row>
-			<hr>
+			<hr />
 			<Row>
 				<Column :xs="4" :xs-offset="4">
 					<span class="block bg-primary-1">Column</span>
@@ -24,26 +24,16 @@
 			</Row>
 		</article>
 
-		<hr>
+		<hr />
 
 		<article>
 			<h6>Css Grid</h6>
 			<div class="row">
-				<div class="col-6 border">
-					col-6
-				</div>
-				<div class="col-6 border">
-					col-6
-				</div>
-				<div class="col-4 border">
-					col-4
-				</div>
-				<div class="col-4 border">
-					col-4
-				</div>
-				<div class="col-4 border">
-					col-4
-				</div>
+				<div class="col-6 border">col-6</div>
+				<div class="col-6 border">col-6</div>
+				<div class="col-4 border">col-4</div>
+				<div class="col-4 border">col-4</div>
+				<div class="col-4 border">col-4</div>
 			</div>
 
 			<div class="row">
@@ -75,7 +65,6 @@
 
 				<!-- text input -->
 				<text-field id="userid" label="UserId" placeholder="아이디를 입력하세요" message="메세지입니다." />
-
 			</section>
 
 			<section class="my-4">
@@ -86,13 +75,16 @@
 					<label for="userid">UserId</label>
 					<div class="form-input invalid">
 						<input
-							id="userid" type="text" placeholder="아이디를 입력하세요" aria-placeholder="아이디를 입력하세요" invalid="..."
-							aria-invalid="...">
+							id="userid"
+							type="text"
+							placeholder="아이디를 입력하세요"
+							aria-placeholder="아이디를 입력하세요"
+							invalid="..."
+							aria-invalid="..."
+						/>
 					</div>
 					<div class="flex justify-between">
-						<p class="invalid-feedback shrink-0">
-							invalid message...
-						</p>
+						<p class="invalid-feedback shrink-0">invalid message...</p>
 					</div>
 				</div>
 				<!-- // -->
@@ -106,8 +98,13 @@
 
 				<toast-container>
 					<toast
-						v-for="(toast, index) in toasts" :id="index" :key="index" :message="toast.message" :open="toast.open"
-						@close="toast.open = false" />
+						v-for="(toast, index) in toasts"
+						:id="index"
+						:key="index"
+						:message="toast.message"
+						:open="toast.open"
+						@close="toast.open = false"
+					/>
 				</toast-container>
 			</div>
 		</article>
@@ -117,12 +114,8 @@
 			<base-button label="default" @click="showBottomSheet01 = !showBottomSheet01" />
 
 			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
-				<template #body>
-					body
-				</template>
-				<template #footer>
-					footer
-				</template>
+				<template #body> body </template>
+				<template #footer> footer </template>
 			</bottom-sheet>
 		</article>
 		<!-- button, toggle -->
@@ -140,18 +133,26 @@
 			<div class="flex align-center justify-between" style="gap: 1rem">
 				<Tooltip>
 					<template #label>
-						<button class="btn-tooltip"><span class="sr-only">툴팁</span></button>
+						<button class="btn-tooltip">
+							<span class="sr-only">툴팁</span>
+						</button>
 					</template>
 					<template #popover>
-						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+						<p>
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.
+						</p>
 					</template>
 				</Tooltip>
 				<Tooltip>
 					<template #label>
-						<button class="btn-tooltip small"><span class="sr-only">툴팁</span></button>
+						<button class="btn-tooltip small">
+							<span class="sr-only">툴팁</span>
+						</button>
 					</template>
 					<template #popover>
-						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+						<p>
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.
+						</p>
 					</template>
 				</Tooltip>
 				<Tooltip>
@@ -159,7 +160,9 @@
 						<p>텍스트툴팁</p>
 					</template>
 					<template #popover>
-						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+						<p>
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.
+						</p>
 					</template>
 				</Tooltip>
 			</div>
@@ -170,13 +173,13 @@
 			<div class="row">
 				<figure class="col-sm-12 col-lg-4">
 					<figcaption>png, 이미지 사용</figcaption>
-					<img alt="Vue logo" src="@/assets/images/pig7.png" width="100px">
+					<img alt="Vue logo" src="@/assets/images/pig7.png" width="100px" />
 					<pre>@/assets/images/logo.png</pre>
 				</figure>
 
 				<figure class="col-sm-12 col-lg-4">
 					<figcaption>SVG inline, sprite</figcaption>
-					<img inline src="@/assets/images/pig7.svg">
+					<img inline src="@/assets/images/pig7.svg" />
 					<pre>@/assets/images/pig7.svg inline</pre>
 				</figure>
 
@@ -200,48 +203,48 @@ import ToggleBox from "@/components/ToggleBox";
 import Tooltip from "@/components/Tooltip";
 import { Column, Row } from "vue-grid-responsive";
 
-	export default {
-		name: "Example",
-		components: {
-			ToggleBox,
-			BaseButton,
-			Toast,
-			ToastContainer,
-			// LoadingSpinner,
-			TextField,
-			Row,
-			Column,
-			BottomSheet,
-			Tooltip,
+export default {
+	name: "Example",
+	components: {
+		ToggleBox,
+		BaseButton,
+		Toast,
+		ToastContainer,
+		// LoadingSpinner,
+		TextField,
+		Row,
+		Column,
+		BottomSheet,
+		Tooltip,
+	},
+	data() {
+		return {
+			toastId: 0,
+			toasts: [],
+			showBottomSheet01: false,
+		};
+	},
+	mounted() {},
+	methods: {
+		handleClick() {
+			alert(`Hello, Button!`);
 		},
-		data() {
-			return {
-				toastId: 0,
-				toasts: [],
-				showBottomSheet01: false,
+
+		showToast() {
+			const newToast = {
+				id: this.toastId++,
+				message: `토스트 메세지를 스택으로 출력시켜보세 ${this.toastId}`,
+				open: true,
 			};
-		},
-		mounted() {},
-		methods: {
-			handleClick() {
-				alert(`Hello, Button!`);
-			},
+			this.toasts.push(newToast);
+			console.log(newToast.id);
 
-			showToast() {
-				const newToast = {
-					id: this.toastId++,
-					message: `토스트 메세지를 스택으로 출력시켜보세 ${this.toastId}`,
-					open: true,
-				};
-				this.toasts.push(newToast);
-				console.log(newToast.id);
-
-				setTimeout(() => {
-					newToast.open = false;
-				}, 3000);
-			},
+			setTimeout(() => {
+				newToast.open = false;
+			}, 3000);
 		},
-	};
+	},
+};
 </script>
 
 <style lang="scss" scoped>
@@ -261,7 +264,7 @@ import { Column, Row } from "vue-grid-responsive";
 .document {
 	margin-top: 60px;
 
-	>h6 {
+	> h6 {
 		margin-bottom: 1rem;
 	}
 }

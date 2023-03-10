@@ -19,77 +19,78 @@
 		</transition>
 	</div>
 </template>
-  
-  <script>
-  export default {
-    props: {
-      label: {
-        type: String,
-        default: 'Title',
-      },
-    },
-  }
-  </script>
-  
-  <style lang="scss" scoped>
-  .bottom-sheet {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-  }
-  
-  .dimm {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(22,22,22,.4);
-    
-  }
-  
-  .pop {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: var(--white);
-    border-radius: 20px 20px 0 0;
-    .title-wrap {
-      width: 100%;
-      padding: 20px 66px 30px 22px;
-      font-size: 20px;
-      font-weight: 600;
-    }
-    .body {
-      padding: 0 22px 30px;
-      .contents {
-        min-height: 66px;
-      }
-    }
-  
-    .footer {
-      padding: 0 22px 30px;
-    }
-  }
 
-  .btn-close {
-    position: absolute;
-    top: 21px;
-    right: 22px;
-    width: 20px;
-    height: 20px;
-    background: url('@/assets/images/icon_24/close.png') center no-repeat;
-    background-size: 100%;
-  }
-  
-  /* slide-up 효과 정의 */
-  .slide-up-enter-active, .slide-up-leave-active {
-    transition: all 0.3s ease;
-  }
-  .slide-up-enter, .slide-up-leave-to {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  </style>
+<script>
+export default {
+	props: {
+		label: {
+			type: String,
+			default: "Title",
+		},
+	},
+};
+</script>
+
+<style lang="scss" scoped>
+.bottom-sheet {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.dimm {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(22, 22, 22, 0.4);
+}
+
+.pop {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background-color: var(--white);
+	border-radius: 20px 20px 0 0;
+	.title-wrap {
+		width: 100%;
+		padding: 20px 66px 30px 22px;
+		font-size: 20px;
+		font-weight: 600;
+	}
+	.body {
+		padding: 0 22px 30px;
+		.contents {
+			min-height: 66px;
+		}
+	}
+
+	.footer {
+		padding: 0 22px 30px;
+	}
+}
+
+.btn-close {
+	position: absolute;
+	top: 21px;
+	right: 22px;
+	width: 20px;
+	height: 20px;
+	background: url("@/assets/images/icon_24/close.png") center no-repeat;
+	background-size: 100%;
+}
+
+/* slide-up 효과 정의 */
+.slide-up-enter-active,
+.slide-up-leave-active {
+	transition: all 0.3s ease;
+}
+.slide-up-enter,
+.slide-up-leave-to {
+	transform: translateY(100%);
+	opacity: 0;
+}
+</style>

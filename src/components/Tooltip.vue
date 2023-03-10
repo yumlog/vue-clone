@@ -8,12 +8,12 @@
 			:container="container"
 		>
 			<div class="label-wrap">
-				<slot name="label"></slot>
+				<slot name="label" />
 			</div>
 			<template slot="popover">
 				<div class="content" :class="[{close: close == true}, {error: error == true}]">
-					<div class="arrow" aria-hidden="true"></div>
-					<slot name="popover"></slot>
+					<div class="arrow" aria-hidden="true" />
+					<slot name="popover" />
 					<button v-close-popover class="btn-close">
 						<span class="sr-only">닫기</span>
 					</button>

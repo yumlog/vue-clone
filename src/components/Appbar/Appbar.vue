@@ -1,9 +1,5 @@
 <template>
-	<header
-		class="app-bar"
-		:class="setScroll ? 'active' : ''"
-		@scroll="handleScroll"
-	>
+	<header class="app-bar" :class="setScroll ? 'active' : ''" @scroll="handleScroll">
 		<!-- Home Appbar -->
 		<nav v-if="$route.path === '/'">
 			<div class="actions start">
@@ -56,60 +52,60 @@ import iconNoti from "@/assets/images/icon_24/appbar_noti.svg";
 import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import toggleMixin from "@/mixin/toggleMixin";
 
-	let winScroll = window.scrollY;
+let winScroll = window.scrollY;
 
-	export default {
-		name: "AppHeader",
-		components: {  Sidebar, iconMenu, iconNoti, iconBack },
-		mixins: [toggleMixin],
-		// vue-meta 테스트
-		metaInfo: {
-			title: "신협이에요!",
-			// titleTemplate: '%s | ...',
-			meta: [
-				{ charset: "utf-8" },
-				{
-					name: "viewport",
-					content: "width=device-width, initial-scale=1, user-scalable=no",
-				},
-				{ vmid: "description", name: "description", content: "description" },
-				// vmid: Unique Metadata, index.html 에서 설정한 메타와 중복되지 않게 하기 위함
-				// index meta - component meta 순으로 노출
-			],
-		},
-		data() {
-			return {
-				setScroll: false,
-				setFlag: true,
-				isOpen: false,
-			};
-		},
-
-		created() {
-			window.addEventListener("scroll", this.handleScroll);
-		},
-		beforeDestroy() {
-			window.removeEventListener("scroll", this.handleScroll);
-		},
-
-		methods: {
-			handleScroll() {
-				// const header = document.querySelector('.app-header');
-				const headerScroll = window.scrollY;
-				// console.log(`스크롤: ${winScroll}`)
-
-				// Top으로 올리면 header가 내려옴
-				if (winScroll >= headerScroll) {
-					this.setScroll = true;
-				} else {
-					this.setScroll = false;
-				}
-				return (winScroll = headerScroll);
+export default {
+	name: "AppHeader",
+	components: { Sidebar, iconMenu, iconNoti, iconBack },
+	mixins: [toggleMixin],
+	// vue-meta 테스트
+	metaInfo: {
+		title: "신협이에요!",
+		// titleTemplate: '%s | ...',
+		meta: [
+			{ charset: "utf-8" },
+			{
+				name: "viewport",
+				content: "width=device-width, initial-scale=1, user-scalable=no",
 			},
+			{ vmid: "description", name: "description", content: "description" },
+			// vmid: Unique Metadata, index.html 에서 설정한 메타와 중복되지 않게 하기 위함
+			// index meta - component meta 순으로 노출
+		],
+	},
+	data() {
+		return {
+			setScroll: false,
+			setFlag: true,
+			isOpen: false,
+		};
+	},
+
+	created() {
+		window.addEventListener("scroll", this.handleScroll);
+	},
+	beforeDestroy() {
+		window.removeEventListener("scroll", this.handleScroll);
+	},
+
+	methods: {
+		handleScroll() {
+			// const header = document.querySelector('.app-header');
+			const headerScroll = window.scrollY;
+			// console.log(`스크롤: ${winScroll}`)
+
+			// Top으로 올리면 header가 내려옴
+			if (winScroll >= headerScroll) {
+				this.setScroll = true;
+			} else {
+				this.setScroll = false;
+			}
+			return (winScroll = headerScroll);
 		},
-	};
+	},
+};
 </script>
 
 <style lang="scss" scoped>
-	@import "./Appbar.scss";
+@import "./Appbar.scss";
 </style>
