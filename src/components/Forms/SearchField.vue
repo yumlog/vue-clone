@@ -102,14 +102,18 @@ export default {
 }
 
 .recent-list {
-    position: absolute;
-    top: 124px;
-    left: 0;
-    width: 100%;
+    position: sticky;
+    margin-left: -22px;
+    width: calc(100% + 44px);
     height: auto;
     padding: 30px 22px 38px;
     background-color: var(--white);
     z-index: 20;
+
+    &.top {
+        top: 90px;
+    }
+
     .tit {
         font-weight: 700;
     }
@@ -119,7 +123,6 @@ export default {
             display: flex;
             align-items: center;
             position: relative;
-            padding: 8px 0;
             margin-left: 30px;
             &::before {
                 content: '';
@@ -132,7 +135,7 @@ export default {
             }
             .recent-keyword {
                 width: calc(100% - 28px);
-                padding: 0;
+                padding: 8px 0;
                 margin-right: 14px;
                 text-align: left;
                 overflow: hidden;
@@ -149,12 +152,11 @@ export default {
 }
 
 .related-list {
-    position: absolute;
-    top: 124px;
-    left: 0;
-    width: 100%;
+    position: sticky;
+    margin-left: -22px;
+    width: calc(100% + 44px);
     height: auto;
-    padding: 30px 22px 38px;
+    padding: 10px 22px 38px;
     background-color: var(--white);
     z-index: 20;
     > ul {
