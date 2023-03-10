@@ -6,12 +6,12 @@
 
 <script>
 import "@/assets/styles/main.scss";
-import AppLayout from '@/layouts/AppLayout';
+import AppLayout from "@/layouts/AppLayout";
 
 export default {
-  name: "App",
-  components: {
-    AppLayout
-  },
-}
+	name: "App",
+	components: {
+		AppLayout,
+	},
+};
 </script>

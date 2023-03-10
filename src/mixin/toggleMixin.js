@@ -1,12 +1,12 @@
 export default {
-  data () {
-    return {
-      isOpen: false
-    }
-  },
-  methods: {
-    toggle () {
-      this.isOpen = !this.isOpen
-    }
-  }
-}
+	data() {
+		return {
+			isOpen: false,
+		};
+	},
+	methods: {
+		toggle() {
+			this.isOpen = !this.isOpen;
+		},
+	},
+};

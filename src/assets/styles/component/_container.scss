@@ -1,15 +1,15 @@
 // fluid
 @mixin make-container($gutter: $grid-gutter) {
-  --gutter-x: #{$gutter};
-  width: 100%;
-  margin: auto;
-  padding-right: calc(var(--gutter-x) / 2);
-  padding-left: calc(var(--gutter-x) / 2);
+	--gutter-x: #{$gutter};
+	width: 100%;
+	margin: auto;
+	padding-right: calc(var(--gutter-x) / 2);
+	padding-left: calc(var(--gutter-x) / 2);
 }
 
 .container,
 .is-fluid {
-  @include make-container();
+	@include make-container();
 }
 
 // .container {

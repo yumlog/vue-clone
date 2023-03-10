@@ -1,28 +1,17 @@
 <template>
-	<div>
-		Qm 조회페이지
-	</div>
+	<div>Qm 조회페이지</div>
 </template>
 
 <script>
 export default {
+	data() {
+		return {};
+	},
 
-  data() {
-    return {
-      
-    };
-  },
+	mounted() {},
 
-  mounted() {
-    
-  },
-
-  methods: {
-    
-  },
+	methods: {},
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

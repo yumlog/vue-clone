@@ -1,15 +1,17 @@
 module.exports = {
 	root: true,
 	env: {
+		node: true,
 		browser: true,
 		es2021: true,
 	},
 	extends: [
 		"plugin:vue/essential",
 		"plugin:vue/recommended",
+		"eslint:recommended",
 		"plugin:import/errors",
 		"plugin:import/warnings",
-		"prettier",
+		"plugin:prettier/recommended",
 	],
 	parserOptions: {
 		parser: ["@babel/eslint-parser"],
@@ -18,11 +20,12 @@ module.exports = {
 	rules: {
 		"no-unused-vars": 1,
 		"import/no-unresolved": "off",
+		"import/no-named-as-default": 0,
 
 		/**********************/
 		/*     Vue Rules      */
 		/**********************/
-		"vue/no-unused-components": "error",
+		"vue/no-unused-components": 1,
 		"vue/multi-word-component-names": 0,
 		"vue/require-default-prop": 0,
 

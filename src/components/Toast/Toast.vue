@@ -1,11 +1,7 @@
 <!-- Toast & Notification -->
 <template>
 	<TransitionGroup name="list">
-		<div
-			v-show="open"
-			:key="id"
-			class="toast"
-		>
+		<div v-show="open" :key="id" class="toast">
 			<p>{{ message }}</p>
 			<!-- <button @click="close">close</button> -->
 		</div>
@@ -14,33 +10,33 @@
 
 <script>
 export default {
-  props: {
-    message: {
-      type: [String, Object],
-      default: '토스트 메세지 출력'
-    },
-    // color: {
-    //   type: [String, Object],
-    //   default: 'primary-1'
-    // },
-    open: {
-      type: Boolean,
-      default: false,
-    },
-    id: {
-      type: Number,
-      default: 0,
-    }
-  },
+	props: {
+		message: {
+			type: [String, Object],
+			default: "토스트 메세지 출력",
+		},
+		// color: {
+		//   type: [String, Object],
+		//   default: 'primary-1'
+		// },
+		open: {
+			type: Boolean,
+			default: false,
+		},
+		id: {
+			type: Number,
+			default: 0,
+		},
+	},
 
-  methods: {
-    close() {
-      this.$emit('close')
-    },
-  },
-}
+	methods: {
+		close() {
+			this.$emit("close");
+		},
+	},
+};
 </script>
 
 <style lang="scss" scoped>
-@import './Toast.scss';
+@import "./Toast.scss";
 </style>

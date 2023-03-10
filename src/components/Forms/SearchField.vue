@@ -14,9 +14,7 @@
 
 		<!-- 최근 검색어 리스트 -->
 		<div v-if="showRecentKeyword" class="recent-list">
-			<p class="tit">
-				최근검색어
-			</p>
+			<p class="tit">최근검색어</p>
 			<ul>
 				<li v-for="item in recentKeywordData" :key="item">
 					<button class="recent-keyword">
@@ -39,56 +37,58 @@
 				</li>
 			</ul>
 		</div>
-        
+
 		<!-- dimm -->
 		<div
 			v-if="dimmed"
 			class="dimm"
 			aria-hidden="true"
-			@touchstart="recentKeyword = false, relatedKeyword = false, dimmed = false"
-		/>        
+			@touchstart="
+				(recentKeyword = false), (relatedKeyword = false), (dimmed = false)
+			"
+		/>
 	</div>
 </template>
 
 <script>
 export default {
-    props: {
-        placeholder: {
-            type: String,
-            default: 'placeholder',
-        },
-        recentKeywordData: [],
-        relatedKeywordData: [],
-    },
-    data() {
-        return {
-            recentKeyword: false,
-            relatedKeyword: false,
-            dimmed: false,
-        }
-    },
-    computed: {
-        showRecentKeyword() {
-            return this.recentKeyword == true && this.relatedKeyword == false
-        }
-    },
-}
+	props: {
+		placeholder: {
+			type: String,
+			default: "placeholder",
+		},
+		recentKeywordData: [],
+		relatedKeywordData: [],
+	},
+	data() {
+		return {
+			recentKeyword: false,
+			relatedKeyword: false,
+			dimmed: false,
+		};
+	},
+	computed: {
+		showRecentKeyword() {
+			return this.recentKeyword == true && this.relatedKeyword == false;
+		},
+	},
+};
 </script>
 
 <style lang="scss" scoped>
 .searchfield-wrap {
-    position: relative;
+	position: relative;
 }
 
 #searchfield {
-    display: flex;
-    align-items: center;
-    padding: 0 56px 0 16px;
-    width: 100%;
-    height: 46px;
-    margin-top: 16px;
-    border: 1px solid var(--gray-5);
-    border-radius: 8px;
+	display: flex;
+	align-items: center;
+	padding: 0 56px 0 16px;
+	width: 100%;
+	height: 46px;
+	margin-top: 16px;
+	border: 1px solid var(--gray-5);
+	border-radius: 8px;
 }
 
 .img-search {
@@ -184,12 +184,12 @@ export default {
 }
 
 .dimm {
-    position: absolute;
-    top: 124px;
-    left: 0;
-    width: 100%;
-    height: calc(100vh - 124px);
-    background-color: rgba(22,22,22,.4);
-    z-index: 10;
+	position: absolute;
+	top: 124px;
+	left: 0;
+	width: 100%;
+	height: calc(100vh - 124px);
+	background-color: rgba(22, 22, 22, 0.4);
+	z-index: 10;
 }
 </style>

@@ -98,11 +98,11 @@
 </template>
 
 <script>
-import BaseButton from '@/components/Buttons/BaseButton.vue';
-import SearchField from '@/components/Forms/SearchField.vue';
-import $ from 'jquery';
+import BaseButton from "@/components/Buttons/BaseButton.vue";
+import SearchField from "@/components/Forms/SearchField.vue";
+import $ from "jquery";
 
-let winScroll = window.scrollY
+let winScroll = window.scrollY;
 
 export default {
     components: { BaseButton, SearchField },
@@ -224,5 +224,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './Sidebar.scss'
+@import "./Sidebar.scss";
 </style>

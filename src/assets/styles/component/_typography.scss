@@ -1,30 +1,30 @@
 // text-size
 @each $key, $value in $text-sizes {
-  .text-#{$key} {
-    font-size: $value !important;
-    line-height: normal;
-  }
+	.text-#{$key} {
+		font-size: $value !important;
+		line-height: normal;
+	}
 }
 // text align
 @each $key, $value in $text-align {
-  .text-#{$key} {
-    text-align: $value !important;
-  }
+	.text-#{$key} {
+		text-align: $value !important;
+	}
 }
 
 // headings
 @each $key, $value in $headings {
-  h#{$key},
-  .h#{$key} {
-    font-size: $value !important;
-    font-weight: 500;
-    margin:0;
-  }
+	h#{$key},
+	.h#{$key} {
+		font-size: $value !important;
+		font-weight: 500;
+		margin: 0;
+	}
 }
 
 // font-weight
 @each $key, $value in $font-weight {
-  .fw-#{$key} {
-    font-weight: $value !important;
-  }
+	.fw-#{$key} {
+		font-weight: $value !important;
+	}
 }

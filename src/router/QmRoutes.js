@@ -6,4 +6,4 @@ const QmRoutes = [
 	},
 ];
 
-export default QmRoutes
+export default QmRoutes;

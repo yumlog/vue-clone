@@ -1,44 +1,43 @@
-
 // tabNav
 .tab-nav {
-  z-index: 10;
-  position: fixed;
-  bottom:0;
-  left: 0;
-  right: 0;
-  background-color: var(--white);
-  box-shadow: 0px -1px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 12px 12px 0px 0px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: var(--tabnav-h);
-  
-  &--item {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+	z-index: 10;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--white);
+	box-shadow: 0px -1px 8px rgba(0, 0, 0, 0.1);
+	border-radius: 12px 12px 0px 0px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: var(--tabnav-h);
 
-  &--item :is(a, button) {
-    width: 100%;
-    display: grid;
-    place-items: center;
-    row-gap: 8px;
+	&--item {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
 
-    .icon {
-      display: grid;
-      place-items: center;
-      width: 28px;
-      height: 28px;
-      background-size: cover;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-    }
-    .name {
-      display: block;
-      font-size: 12px;
-      text-align: center;
-    }
-  }
+	&--item :is(a, button) {
+		width: 100%;
+		display: grid;
+		place-items: center;
+		row-gap: 8px;
+
+		.icon {
+			display: grid;
+			place-items: center;
+			width: 28px;
+			height: 28px;
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+		}
+		.name {
+			display: block;
+			font-size: 12px;
+			text-align: center;
+		}
+	}
 }
