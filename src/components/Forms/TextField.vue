@@ -20,19 +20,9 @@
 				</span>
 
 				<input
-					v-bind="{ ...$attrs }"
-					:id="id"
-					:placeholder="placeholder"
-					:aria-placeholder="placeholder"
-					:invalid="invalid"
-					:aria-invalid="invalid"
-					:disabled="disabled"
-					style="text-align: inherit"
-					@input="updateInput"
-					v-on="{ ...$listeners, input: () => { } }"
-					@focus="focusOn = true"
-					@blur="focusOn = false"
-				/>
+					v-bind="{ ...$attrs }" :id="id" :placeholder="placeholder" :aria-placeholder="placeholder"
+					:invalid="invalid" :aria-invalid="invalid" :disabled="disabled" style="text-align: inherit" @input="updateInput"
+					v-on="{ ...$listeners, input: () => { } }" @focus="focusOn = true" @blur="focusOn = false" />
 
 				<span v-if="unit" class="unit">
 					{{ unit }}
