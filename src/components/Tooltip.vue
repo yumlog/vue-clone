@@ -1,31 +1,31 @@
 <template>
-    <div class="tooltip-wrap">
-        <v-popover
-        :placement="position"
-        :boundariesElement="boundariesElement"
-        :open="open"
-        :handleResize="handleResize"
-        :container="container"
-        >
-            <div class="label-wrap">
-                <slot name="label"></slot>
-            </div>
-            <template slot="popover">
-                <div class="content" :class="[{close: close == true}, {error: error == true}]">
-                    <div class="arrow" aria-hidden="true"></div>
-                    <slot name="popover"></slot>
-                    <button v-close-popover class="btn-close">
-                        <span class="sr-only">닫기</span>
-                    </button>
-                </div>
-            </template>
-        </v-popover>
-    </div>
+	<div class="tooltip-wrap">
+		<v-popover
+			:placement="position"
+			:boundaries-element="boundariesElement"
+			:open="open"
+			:handle-resize="handleResize"
+			:container="container"
+		>
+			<div class="label-wrap">
+				<slot name="label"></slot>
+			</div>
+			<template slot="popover">
+				<div class="content" :class="[{close: close == true}, {error: error == true}]">
+					<div class="arrow" aria-hidden="true"></div>
+					<slot name="popover"></slot>
+					<button v-close-popover class="btn-close">
+						<span class="sr-only">닫기</span>
+					</button>
+				</div>
+			</template>
+		</v-popover>
+	</div>
 </template>
 
 <script>
+import VTooltip from 'v-tooltip';
 import Vue from 'vue';
-import VTooltip from 'v-tooltip'
 
 Vue.use(VTooltip)
 

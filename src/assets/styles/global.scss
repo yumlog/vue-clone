@@ -114,3 +114,17 @@ img {
 .fade-leave-to {
   opacity: 0
 }
+
+// text-field label transition
+
+
+// Dropdown Opacity
+.focus-enter-active,
+.focus-leave-active {
+  transition: all 0.3s;
+}
+.focus-enter,
+.focus-leave-to {
+  opacity: 0;
+  transform: translateY(-15px);
+}

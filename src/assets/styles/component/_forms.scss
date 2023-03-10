@@ -4,8 +4,8 @@
   position: relative;
   box-sizing: border-box;
   background-color: $form-bg-color;
-  border: $form-border-width solid $form-border-color;
-  border-radius: $rounded;
+  border-bottom: $form-border-width solid $form-border-color;
+  border-radius: 0;
   height: $input-height;
   transition: 0.2s;
   display: flex;
@@ -95,7 +95,20 @@
 
   // 추가
   &:is(:focus, :focus-within, :active) {
-    border-color: $form-border-active-color;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom:0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: $form-border-active-color;
+      animation: focusLine .2s alternate;
+    }
+  }
+  @keyframes focusLine {
+    0%   { width:0; }
+    100% { width:100%; }
   }
 
   input,
@@ -121,6 +134,11 @@
 // label
 @mixin label {
   font-size: $text-sm;
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  height: 17px;
 }
 
 /* ================================= form-input ================================= */
@@ -139,7 +157,6 @@
     height: 100%;
     margin: 0;
     padding: $padding;
-
   }
   
   &.prefix,
@@ -170,8 +187,6 @@
     background-color: #FFF9F9;
     border-color: var(--red) !important;
     color: var(--red) !important;
-
-
   }
 }
 

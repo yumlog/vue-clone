@@ -220,12 +220,12 @@ $btn-font-sizes: (
 $form-bg-color: transparent;
 $form-bg-disabled-color: $gray-600;
 $form-border-color: $gray-500;
-$form-border-active-color: $black;
+$form-border-active-color: $primary-1;
 $form-border-disabled-color: $gray-500;
 $form-border-width: 1px;
-$form-padding: 13px 11px 13px 12px;
+$form-padding: 0 0 6px 0;
 $form-padding-sm: 0.5rem 0.75rem;
-$input-height: 46px;
+$input-height: 32px;
 
 // ----------------------------------------------------------
 // Toggle Switch
