@@ -16,7 +16,7 @@
                 <li v-for="item in recentKeywordData" :key="item">
                     <button class="recent-keyword">{{ item.name }}</button>
                     <button class="btn-close">
-                        <span class="sr-only">닫기</span>
+                        <span class="sr-only">삭제</span>
                     </button>
                 </li>
             </ul>
