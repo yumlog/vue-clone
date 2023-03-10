@@ -109,14 +109,50 @@
 		<!-- bottom sheet -->
 		<article class="document">
 			<h6>Bottom Sheet</h6>
-			<base-button label="default" @click="showBottomSheet01 = !showBottomSheet01" />
+			<div class="flex align-center" style="gap: 1rem">
+				<base-button label="default" @click="showBottomSheet01 = !showBottomSheet01" />
+				<base-button label="계좌비밀번호 입력" @click="showBottomSheet02 = !showBottomSheet02" />
+			</div>
 
 			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
 				<template #body>
 					body
 				</template>
 				<template #footer>
-					footer
+					<BaseButton label="확인" />
+				</template>
+			</bottom-sheet>
+
+			<bottom-sheet password label="" v-if="showBottomSheet02" @close="showBottomSheet02 = false">
+				<template #body>
+					<div class="account-password">
+						<div class="top">
+							<p>계좌 비밀번호 입력</p>
+							<div class="circle">
+								<span class="active"></span>
+								<span class="active"></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+						<div class="keypad">
+							<button>0</button>
+							<button>1</button>
+							<button>2</button>
+							<button>3</button>
+							<button>4</button>
+							<button>5</button>
+							<button>6</button>
+							<button>7</button>
+							<button>8</button>
+							<button>재배열</button>
+							<button>9</button>
+							<button>
+								<img inline src="@/assets/images/icon_24/Frame.svg" aria-hidden="true">
+								<span class="sr-only">지우기</span>
+							</button>
+						</div>
+					</div>
 				</template>
 			</bottom-sheet>
 		</article>
@@ -194,10 +230,9 @@
 </template>
 
 <script>
-	import BottomSheet from "@/components/BottomSheet";
+import BottomSheet from "@/components/BottomSheet";
 import BaseButton from "@/components/Buttons/BaseButton";
-
-	import TextField from "@/components/Forms/TextField";
+import TextField from "@/components/Forms/TextField";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import Toast from "@/components/Toast/Toast";
 import ToastContainer from "@/components/Toast/ToastContainer";
@@ -224,6 +259,7 @@ import Tooltip from "@/components/Tooltip.vue";
 				toastId: 0,
 				toasts: [],
 				showBottomSheet01: false,
+				showBottomSheet02: false,
 			};
 		},
 		mounted() {},
@@ -268,6 +304,56 @@ import Tooltip from "@/components/Tooltip.vue";
 
 	>h6 {
 		margin-bottom: 1rem;
+	}
+}
+
+.account-password {
+	.top {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		justify-content: center;
+		margin-top: 20px;
+		
+		> p {
+			color: var(--white);
+			font-size: 16px;
+		}
+
+		> .circle {
+			display: flex;
+			justify-content: center;
+			margin-top: 20px;
+
+			> span {
+				width: 16px;
+				height: 16px;
+				border-radius: 8px;
+				background-color: #1D3D7A;
+
+				& ~ span {
+					margin-left: 15px;
+				}
+
+				&.active {
+					background-color: var(--white);
+				}
+			}
+		}
+	}
+
+	.keypad {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 50px;
+
+		> button {
+			width: 33.33%;
+			height: 46px;
+			color: var(--white);
+			font-size: 20px;
+			font-weight: 600;
+		}
 	}
 }
 </style>
