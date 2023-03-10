@@ -1,14 +1,14 @@
 <template>
-  <div v-if="showToast" class="toast-container">
-    <slot></slot>
-  </div>
+	<div v-if="showToast" class="toast-container">
+		<slot />
+	</div>
 </template>
 
 <script>
 export default {
   props: {
     toasts: {
-      type: []
+      type: Array
     },
   },
   data() {
@@ -24,7 +24,7 @@ export default {
         id: this.toastId++,
         open: true,
       };
-      this.toasts.push(newToast);
+      toasts.push(newToast);
       setTimeout(() => {
         newToast.open = false;
       }, 2000);

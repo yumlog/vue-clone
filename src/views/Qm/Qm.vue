@@ -1,7 +1,7 @@
 <template>
-  <div>
-    Qm 조회페이지
-  </div>
+	<div>
+		Qm 조회페이지
+	</div>
 </template>
 
 <script>

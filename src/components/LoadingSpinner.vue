@@ -1,15 +1,15 @@
 <template>
-  <div v-if="loading">
-    <div class="loading-spinner">
-      <lottie
-        :width="135"
-        :height="135"
-        :options="lottieOptions"
-        @animCreated="handleAnimation"
-      />
-      <p>{{ loadingText }}</p>
-    </div>
-  </div>
+	<div v-if="loading">
+		<div class="loading-spinner">
+			<lottie
+				:width="135"
+				:height="135"
+				:options="lottieOptions"
+				@animCreated="handleAnimation"
+			/>
+			<p>{{ loadingText }}</p>
+		</div>
+	</div>
 </template>
 
 <script>

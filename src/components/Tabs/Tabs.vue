@@ -1,20 +1,21 @@
 <template>
-  <div class="tab-wrap">
-    <ul class="tabs">
-      <TabItem
-        v-for="item in list"
-        v-bind="item" :key="item.id"
-        v-model="currentID"
-      />
-    </ul>
-    <div class="tab-content">
-      <transition>
-        <section class="item" :key="currentID">
-          {{ current.content }}
-        </section>
-      </transition>
-    </div>
-  </div>
+	<div class="tab-wrap">
+		<ul class="tabs">
+			<TabItem
+				v-for="item in list"
+				v-bind="item"
+				:key="item.id"
+				v-model="currentID"
+			/>
+		</ul>
+		<div class="tab-content">
+			<transition>
+				<section :key="currentID" class="item">
+					{{ current.content }}
+				</section>
+			</transition>
+		</div>
+	</div>
 </template>
 
 <script>

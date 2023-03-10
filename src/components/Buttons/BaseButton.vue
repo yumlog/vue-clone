@@ -1,17 +1,19 @@
 <template>
-  <button v-bind="$attrs" v-on="$listeners" class="btn"
-    :class="[`btn-${color}`, size ? `btn-${size}` : '', { 'disabled': disabled }, { 'block': block }]"
-    :disabled="disabled">
-
-    <span v-if="isSlotPrefix" class="prefix">
-      <slot name="prefix" />
-    </span>
-    <span class="label">{{ label || 'Label' }}</span>
-    <span v-if="isSlotSuffix" class="suffix">
-      <slot name="suffix" />
-    </span>
-
-  </button>
+	<button
+		v-bind="$attrs"
+		class="btn"
+		:class="[`btn-${color}`, size ? `btn-${size}` : '', { 'disabled': disabled }, { 'block': block }]"
+		:disabled="disabled"
+		v-on="$listeners"
+	>
+		<span v-if="isSlotPrefix" class="prefix">
+			<slot name="prefix" />
+		</span>
+		<span class="label">{{ label || 'Label' }}</span>
+		<span v-if="isSlotSuffix" class="suffix">
+			<slot name="suffix" />
+		</span>
+	</button>
 </template>
 
 <script>

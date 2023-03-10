@@ -1,15 +1,15 @@
 <template>
-  <div>
-    <button
-      class="btn btn-outline-black"
-      @click="toggle"
-    >
-      Toggle
-    </button>
-    <div v-show="isOpen">
-      {{ message }}
-    </div>
-  </div>
+	<div>
+		<button
+			class="btn btn-outline-black"
+			@click="toggle"
+		>
+			Toggle
+		</button>
+		<div v-show="isOpen">
+			{{ message }}
+		</div>
+	</div>
 </template>
 
 <script>

@@ -1,17 +1,17 @@
 <template>
-  <div>
-    <section
-      v-for="(item, index) in toggleboxs"
-      :key="index"
-    >
-      <button @click="onToggle(index)">
-        {{ item.name }}
-      </button>
-      <article v-show="item.isOpen">
-        {{ item.message }}
-      </article>
-    </section>
-  </div>
+	<div>
+		<section
+			v-for="(item, index) in toggleboxs"
+			:key="index"
+		>
+			<button @click="onToggle(index)">
+				{{ item.name }}
+			</button>
+			<article v-show="item.isOpen">
+				{{ item.message }}
+			</article>
+		</section>
+	</div>
 </template>
 
 <script>

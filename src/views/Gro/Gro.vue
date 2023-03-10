@@ -1,7 +1,7 @@
 <template>
-  <div>
-    나는 지로요
-  </div>
+	<div>
+		나는 지로요
+	</div>
 </template>
 
 <script>

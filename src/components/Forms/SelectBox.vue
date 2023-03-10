@@ -1,34 +1,36 @@
 <template>
-  <div class="fieldset">
-    <div :class="[
-      'form-input',
-      { 'invalid': invalid },
-      { 'disabled': disabled },
-    ]">
-      <select v-bind="{ ...$attrs }" :placeholder="placeholder" :disabled="disabled"
-        @change="$emit('onChange',$event.target.value)">
-        <option v-for="option in options" :key="option.index" :value="option.value">
-          {{ option.label }}{{ unit }}
-        </option>
-      </select>
-    </div>
-    <div class="flex justify-between">
-      <p v-if="invalid" class="invalid-feedback shrink-0">
-        {{ invalid }}
-      </p>
-      <p v-if="message" class="help-text text-right w-100" style="justify-self: flex-end;">
-        {{ message }}
-      </p>
-    </div>
-  </div>
+	<div class="fieldset">
+		<div
+			:class="[
+				'form-input',
+				{ 'invalid': invalid },
+				{ 'disabled': disabled },
+			]"
+		>
+			<select
+				v-bind="{ ...$attrs }"
+				:placeholder="placeholder"
+				:disabled="disabled"
+				@change="$emit('onChange',$event.target.value)"
+			>
+				<option v-for="option in options" :key="option.index" :value="option.value">
+					{{ option.label }}{{ unit }}
+				</option>
+			</select>
+		</div>
+		<div class="flex justify-between">
+			<p v-if="invalid" class="invalid-feedback shrink-0">
+				{{ invalid }}
+			</p>
+			<p v-if="message" class="help-text text-right w-100" style="justify-self: flex-end;">
+				{{ message }}
+			</p>
+		</div>
+	</div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-    }
-  },
   inheritAttrs: false,
   props: {
     options: [],
@@ -59,6 +61,10 @@ export default {
     placeholder: {
       type: String,
       default: "입력"
+    }
+  },
+  data() {
+    return {
     }
   },
 

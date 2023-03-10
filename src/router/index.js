@@ -1,5 +1,5 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
+import Vue from "vue";
+import VueRouter from "vue-router";
 
 // views
 import ApvRoutes from "./ApvRoutes";
@@ -7,7 +7,6 @@ import GroRoutes from "./GroRoutes";
 import MypRoutes from "./MypRoutes";
 import QmRoutes from "./QmRoutes";
 import TrRoutes from "./TrRoutes";
-
 
 const routes = [
 	{
@@ -32,22 +31,21 @@ const routes = [
 			breadcrumb: "예제페이지",
 		},
 	},
-	
+
 	...GroRoutes,
 	...ApvRoutes,
 	...QmRoutes,
 	...TrRoutes,
 	...MypRoutes,
-]
+];
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 // eslint-disable-next-lin
 const router = new VueRouter({
-  mode: 'history',
-  base: __dirname,
-  routes
-})
+	mode: "history",
+	base: __dirname,
+	routes,
+});
 
-
-export default router
+export default router;

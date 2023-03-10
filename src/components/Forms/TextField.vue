@@ -16,11 +16,14 @@
 			</span>
 			<input
 				v-bind="{ ...$attrs }"
-				
-				v-on="{ ...$listeners, input: () => {} }"
 				:placeholder="placeholder"
+				:aria-placeholder="placeholder"
+				:invalid="invalid"
+				:aria-invalid="invalid"
 				:disabled="disabled"
-			/>
+				@input="updateInput"
+				v-on="{ ...$listeners, input: () => {} }"
+			>
 
 			<span v-if="unit" class="unit">
 				{{ unit }}
@@ -42,14 +45,8 @@
 </template>
 
 <script>
-	// input options + disabled + placeholder
-	// invalid = '에러출력',
-	// 입력시 remove, search-icon
-	// 인풋 내에서 앞(뒤)쪽에 붙는 오브젝트: prefix(suffix) = <template #prefix>아이콘,텍스트</template>
-	// 필드텍스트정렬: align = 'left', 'right'
-	//
 	export default {
-		inheritAttrs: false,
+		inheritAttrs: true,
 		props: {
 			label: {
 				type: String,
@@ -83,7 +80,10 @@
 			unit: String,
 		},
 		watch: {},
-		methods: {},
-		// components: { SvgIcon }
+		methods: {
+			updateInput($event){
+				this.$emit('input', $event.target.value, $event);
+			}
+		},
 	};
 </script>
