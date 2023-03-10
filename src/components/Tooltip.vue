@@ -1,11 +1,11 @@
 <template>
     <div class="tooltip-wrap">
         <v-popover
-        :placement="position"
-        :boundariesElement="boundariesElement"
-        :open="open"
-        :handleResize="handleResize"
-        :container="container"
+            :placement="position"
+            :boundariesElement="boundariesElement"
+            :open="open"
+            :handleResize="handleResize"
+            :container="container"
         >
             <div class="label-wrap">
                 <slot name="label"></slot>
@@ -51,7 +51,7 @@ export default {
     left: -6px !important;
     z-index: 100 !important;
     min-width: 168px;
-    max-width: 200px;
+    max-width: 220px;
 
     .tooltip-inner {
         .content {
@@ -66,31 +66,31 @@ export default {
             line-height: 19.6px;
             word-break: keep-all;
             box-sizing: border-box;
+
+            .btn-close {
+                display: none;
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                width: 20px;
+                height: 20px;
+                background: url('@/assets/images/icon_20/close_white.png') center no-repeat;
+                background-size: 100%;
+                cursor: pointer;
+            }
+
+            &.close {
+                padding-right: 34px;
+
+                .btn-close {
+                    display: block;
+                }
+            }
         }
 
         p {
             color: $white;
             word-break: break-all;
-        }
-
-        .btn-close {
-            display: none;
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 20px;
-            height: 20px;
-            background: url('@/assets/images/icon_20/close_white.png') center no-repeat;
-            background-size: 100%;
-            cursor: pointer;
-        }
-
-        &.close {
-            padding-right: 34px;
-
-            .btn-close {
-                display: block;
-            }
         }
 
         &.error {
