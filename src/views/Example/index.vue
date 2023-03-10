@@ -76,6 +76,36 @@
 				<toggle-box message="하하핳하" />
 			</div>
 		</article>
+		<!-- tooltip -->
+		<article class="document">
+			<h6>Tooltip</h6>
+			<div class="flex align-center justify-between" style="gap: 1rem">
+				<Tooltip>
+					<template #label>
+						<button class="btn-tooltip"><span class="sr-only">툴팁</span></button>
+					</template>
+					<template #popover>
+						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+					</template>
+				</Tooltip>
+				<Tooltip>
+					<template #label>
+						<button class="btn-tooltip small"><span class="sr-only">툴팁</span></button>
+					</template>
+					<template #popover>
+						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+					</template>
+				</Tooltip>
+				<Tooltip>
+					<template #label>
+						<p>텍스트툴팁</p>
+					</template>
+					<template #popover>
+						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+					</template>
+				</Tooltip>
+			</div>
+		</article>
 		<!-- images -->
 		<article class="document">
 			<h6>Image & Svg</h6>
@@ -111,6 +141,7 @@ import Toast from "@/components/Toast/Toast";
 import ToastContainer from "@/components/Toast/ToastContainer";
 import ToggleBox from "@/components/ToggleBox";
 import { Column, Row } from "vue-grid-responsive";
+import Tooltip from "@/components/Tooltip.vue";
 
 	export default {
 		name: "Example",
@@ -124,6 +155,7 @@ import { Column, Row } from "vue-grid-responsive";
 			Row,
 			Column,
 			BottomSheet,
+			Tooltip,
 		},
 		data() {
 			return {
