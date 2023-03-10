@@ -15,6 +15,6 @@ const GroRoutes = [
 			},
 		],
 	},
-]
+];
 
 export default GroRoutes;

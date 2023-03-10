@@ -1,132 +1,129 @@
 // Buttons
 
 %btn-reset {
-  transition: all 0.2s ease;
-  appearance: none;
-  box-sizing: border-box;
-  box-shadow: none;
-  border-width: 1px;
-  border-radius: $rounded;
-  outline: none;
-  background-color: transparent;
-  border-color: transparent;
-  border-style: solid;
-  color: inherit;
-  line-height: 1;
-  white-space: nowrap;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
-  font-weight: 500;
-  cursor: pointer;
+	transition: all 0.2s ease;
+	appearance: none;
+	box-sizing: border-box;
+	box-shadow: none;
+	border-width: 1px;
+	border-radius: $rounded;
+	outline: none;
+	background-color: transparent;
+	border-color: transparent;
+	border-style: solid;
+	color: inherit;
+	line-height: 1;
+	white-space: nowrap;
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+	font-weight: 500;
+	cursor: pointer;
 }
-
 
 // bg,border,invert-color & hover,focus
 @mixin button-theme($color-palette) {
-  @each $name, $color in $color-palette {
-    &-#{'' + $name} {
-      background-color: #{$color};
-      border-color: #{$color};
-      @include color-invert($color);
-      &:is(:focus, :hover) {
-        background-color: darken($color, 10%);
-      }
-    }
+	@each $name, $color in $color-palette {
+		&-#{"" + $name} {
+			background-color: #{$color};
+			border-color: #{$color};
+			@include color-invert($color);
+			&:is(:focus, :hover) {
+				background-color: darken($color, 10%);
+			}
+		}
 
-    &-outline-#{'' + $name} {
-      background-color: white;
-      border-color: #{$color};
-      color: #{$color};
+		&-outline-#{"" + $name} {
+			background-color: white;
+			border-color: #{$color};
+			color: #{$color};
 
-      &:is(:focus, :hover) {
-        border-color: darken($color, 10%);
-      }
-    }
-    
-  }
+			&:is(:focus, :hover) {
+				border-color: darken($color, 10%);
+			}
+		}
+	}
 }
 
 @mixin button-padding($btn-padding-sizes) {
-  @each $name, $size in $btn-padding-sizes {
-    &#{'' + $name} {
-      padding: $size;
-    }
-  }
+	@each $name, $size in $btn-padding-sizes {
+		&#{"" + $name} {
+			padding: $size;
+		}
+	}
 }
 
 @mixin button-height($btn-height-sizes) {
-  @each $name, $size in $btn-height-sizes {
-    &#{'' + $name} {
-      height: $size;
+	@each $name, $size in $btn-height-sizes {
+		&#{"" + $name} {
+			height: $size;
 
-      // 32px 이하 border-radius 4px
-      @if $size <= 32px {
-        border-radius: $rounded-sm;
-      }
-    }
-  }
+			// 32px 이하 border-radius 4px
+			@if $size <= 32px {
+				border-radius: $rounded-sm;
+			}
+		}
+	}
 }
 
 @mixin button-font($btn-font-sizes) {
-  @each $name, $size in $btn-font-sizes {
-    &#{'' + $name} {
-      font-size: $size;
+	@each $name, $size in $btn-font-sizes {
+		&#{"" + $name} {
+			font-size: $size;
 
-      .prefix,
-      .suffix {
-        display: inline-block;
-        vertical-align: middle;
-        width: $size;
-        height: $size;
-        svg,
-        img {
-          width: 100%;
-          height: 100%;
-        }
-      }
-      .prefix {
-        margin-right: 0.5rem;
-      }
-      .suffix {
-        margin-left: 0.5rem;
-      }
-    }
-  }
+			.prefix,
+			.suffix {
+				display: inline-block;
+				vertical-align: middle;
+				width: $size;
+				height: $size;
+				svg,
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+			.prefix {
+				margin-right: 0.5rem;
+			}
+			.suffix {
+				margin-left: 0.5rem;
+			}
+		}
+	}
 }
 
 .btn {
-  @extend %btn-reset;
-  @include button-theme($color-palette);
-  @include button-padding($btn-padding-sizes);
-  @include button-height($btn-height-sizes);
-  @include button-font($btn-font-sizes);
+	@extend %btn-reset;
+	@include button-theme($color-palette);
+	@include button-padding($btn-padding-sizes);
+	@include button-height($btn-height-sizes);
+	@include button-font($btn-font-sizes);
 
-  &[disabled],
-  &.disabled {
-    background-color: var(--gray-6) !important;
-    border-color: var(--gray-6) !important;
-    color: var(--gray-4) !important;
-    cursor: not-allowed;
-  }
-  &.block {
-    display: block;
-    width: 100%;
-  }
+	&[disabled],
+	&.disabled {
+		background-color: var(--gray-6) !important;
+		border-color: var(--gray-6) !important;
+		color: var(--gray-4) !important;
+		cursor: not-allowed;
+	}
+	&.block {
+		display: block;
+		width: 100%;
+	}
 }
 
 .btn label,
 .btn .label {
-  display: inline-block;
-  // white-space: inherit;
+	display: inline-block;
+	// white-space: inherit;
 }
 
 .btn-outline-gray,
 .btn-outline-light {
-  color: $black;
-  &:is(:hover,:focus) {
-    border-color: $black;
-    transition: all 0.3s;
-  }
+	color: $black;
+	&:is(:hover, :focus) {
+		border-color: $black;
+		transition: all 0.3s;
+	}
 }
-

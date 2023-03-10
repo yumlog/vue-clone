@@ -7,15 +7,15 @@
 </template>
 
 <script>
-const defaultLayout = 'BaseLayout'
+const defaultLayout = "BaseLayout";
 
 export default {
-  name: 'AppLayout',
-  computed: {
-    layout () {
-      const layout = this.$route.meta.layout || defaultLayout
-      return () => import(`@/layouts/${layout}.vue`)
-    }
-  }
-}
+	name: "AppLayout",
+	computed: {
+		layout() {
+			const layout = this.$route.meta.layout || defaultLayout;
+			return () => import(`@/layouts/${layout}.vue`);
+		},
+	},
+};
 </script>

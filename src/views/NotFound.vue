@@ -1,29 +1,19 @@
 <template>
-	<div>
-		404 Page Not Found...
-	</div>
+	<div>404 Page Not Found...</div>
 </template>
 
 <script>
 export default {
-  name: 'NotFound',
+	name: "NotFound",
 
-  data () {
-    return {
+	data() {
+		return {};
+	},
 
-    }
-  },
+	mounted() {},
 
-  mounted () {
-
-  },
-
-  methods: {
-
-  }
-}
+	methods: {},
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

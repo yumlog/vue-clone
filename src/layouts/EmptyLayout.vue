@@ -5,15 +5,14 @@
 </template>
 
 <script>
-
 export default {
-  name: 'EmptyLayout'
-}
+	name: "EmptyLayout",
+};
 </script>
 
 <style lang="scss" scoped>
 .layout {
-  width: 100%;
-  height: 100vh;
+	width: 100%;
+	height: 100vh;
 }
 </style>

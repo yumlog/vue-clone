@@ -1,39 +1,29 @@
 <template>
 	<div class="checkbox">
-		<input
-			:id="id"
-			type="checkbox"
-			:value="value"
-			v-bind="{ ...$attrs }"
-		>
+		<input :id="id" type="checkbox" :value="value" v-bind="{ ...$attrs }" />
 		<label :for="id">{{ label }}</label>
 	</div>
 </template>
 
-
 <script>
 export default {
-  name: 'Checkbox',
-  props: {
-    id: String,
-    value: String,
-    label: String
-  },
+	name: "Checkbox",
+	props: {
+		id: String,
+		value: String,
+		label: String,
+	},
 
-  mounted() {
-    
-  },
+	mounted() {},
 
-  methods: {
-    
-  },
+	methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
 .checkbox {
-  input {
-    appearance: none;
-  }
+	input {
+		appearance: none;
+	}
 }
 </style>

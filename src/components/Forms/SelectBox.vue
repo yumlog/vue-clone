@@ -7,7 +7,11 @@
 				:disabled="disabled"
 				@change="$emit('onChange', $event.target.value)"
 			>
-				<option v-for="option in options" :key="option.index" :value="option.value">
+				<option
+					v-for="option in options"
+					:key="option.index"
+					:value="option.value"
+				>
 					{{ option.label }}{{ unit }}
 				</option>
 			</select>
@@ -16,7 +20,11 @@
 			<p v-if="invalid" class="invalid-feedback shrink-0">
 				{{ invalid }}
 			</p>
-			<p v-if="message" class="help-text text-right w-100" style="justify-self: flex-end">
+			<p
+				v-if="message"
+				class="help-text text-right w-100"
+				style="justify-self: flex-end"
+			>
 				{{ message }}
 			</p>
 		</div>

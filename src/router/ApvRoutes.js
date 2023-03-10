@@ -17,4 +17,4 @@ const ApvRoutes = [
 	},
 ];
 
-export default ApvRoutes
+export default ApvRoutes;

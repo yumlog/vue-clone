@@ -64,7 +64,12 @@
 				<h6 class="mb-4">text-field / Component</h6>
 
 				<!-- text input -->
-				<text-field id="userid" label="UserId" placeholder="아이디를 입력하세요" message="메세지입니다." />
+				<text-field
+					id="userid"
+					label="UserId"
+					placeholder="아이디를 입력하세요"
+					message="메세지입니다."
+				/>
 			</section>
 
 			<section class="my-4">
@@ -111,7 +116,10 @@
 		<!-- bottom sheet -->
 		<article class="document">
 			<h6>Bottom Sheet</h6>
-			<base-button label="default" @click="showBottomSheet01 = !showBottomSheet01" />
+			<base-button
+				label="default"
+				@click="showBottomSheet01 = !showBottomSheet01"
+			/>
 
 			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
 				<template #body> body </template>
@@ -139,7 +147,8 @@
 					</template>
 					<template #popover>
 						<p>
-							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정
+							메뉴에서 비밀번호를 변경하실 수 있습니다.
 						</p>
 					</template>
 				</Tooltip>
@@ -151,7 +160,8 @@
 					</template>
 					<template #popover>
 						<p>
-							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정
+							메뉴에서 비밀번호를 변경하실 수 있습니다.
 						</p>
 					</template>
 				</Tooltip>
@@ -161,7 +171,8 @@
 					</template>
 					<template #popover>
 						<p>
-							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정
+							메뉴에서 비밀번호를 변경하실 수 있습니다.
 						</p>
 					</template>
 				</Tooltip>

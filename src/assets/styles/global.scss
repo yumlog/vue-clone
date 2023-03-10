@@ -5,126 +5,129 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  font-weight: 700;
-  font-display: swap;
-  src: local('Pretendard Bold'), url('@/assets/fonts/woff2/Pretendard-Bold.woff2') format('woff2'), url('@/assets/fonts/woff/Pretendard-Bold.woff') format('woff');
+	font-family: "Pretendard";
+	font-weight: 700;
+	font-display: swap;
+	src: local("Pretendard Bold"),
+		url("@/assets/fonts/woff2/Pretendard-Bold.woff2") format("woff2"),
+		url("@/assets/fonts/woff/Pretendard-Bold.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  font-weight: 600;
-  font-display: swap;
-  src: local('Pretendard SemiBold'), url('@/assets/fonts/woff2/Pretendard-SemiBold.woff2') format('woff2'), url('@/assets/fonts/woff/Pretendard-SemiBold.woff') format('woff');
+	font-family: "Pretendard";
+	font-weight: 600;
+	font-display: swap;
+	src: local("Pretendard SemiBold"),
+		url("@/assets/fonts/woff2/Pretendard-SemiBold.woff2") format("woff2"),
+		url("@/assets/fonts/woff/Pretendard-SemiBold.woff") format("woff");
 }
 
 @font-face {
-  font-family: 'Pretendard';
-  font-weight: 500;
-  font-display: swap;
-  src: local('Pretendard Medium'), url('@/assets/fonts/woff2/Pretendard-Medium.woff2') format('woff2'), url('@/assets/fonts/woff/Pretendard-Medium.woff') format('woff');
+	font-family: "Pretendard";
+	font-weight: 500;
+	font-display: swap;
+	src: local("Pretendard Medium"),
+		url("@/assets/fonts/woff2/Pretendard-Medium.woff2") format("woff2"),
+		url("@/assets/fonts/woff/Pretendard-Medium.woff") format("woff");
 }
-
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
-    Roboto, 'Helvetica Neue', 'Segoe UI';
-  font-size: 14px;
-  font-weight: 500;
-  line-height: normal;
-  -webkit-font-smoothing: antialiased;
+	margin: 0;
+	padding: 0;
+	font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+		Roboto, "Helvetica Neue", "Segoe UI";
+	font-size: 14px;
+	font-weight: 500;
+	line-height: normal;
+	-webkit-font-smoothing: antialiased;
 }
 
 .guide,
 .guide * {
-  background-color: rgb(#f00, 0.15);
+	background-color: rgb(#f00, 0.15);
 }
 
 a {
-  cursor: pointer;
-  text-decoration: none;
-  color: $black;
+	cursor: pointer;
+	text-decoration: none;
+	color: $black;
 
-  &:is(:hover, :focus, :visited, :active) {
-    color: inherit;
-  }
+	&:is(:hover, :focus, :visited, :active) {
+		color: inherit;
+	}
 }
 
 button {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui,
-  Roboto, 'Helvetica Neue', 'Segoe UI';
+	font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui,
+		Roboto, "Helvetica Neue", "Segoe UI";
 }
 
 p {
-  line-height: 1.4;
-  margin: 0;
-  padding: 0;
+	line-height: 1.4;
+	margin: 0;
+	padding: 0;
 }
 
 hr,
 .hr {
-  background-color: var(--gray-5);
-  height: 1px;
-  border: 0;
-  margin: 2rem 0;
+	background-color: var(--gray-5);
+	height: 1px;
+	border: 0;
+	margin: 2rem 0;
 }
 
 img {
-  object-fit: fill;
+	object-fit: fill;
 }
 
 .sr-only {
-  position: absolute;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  border: 0;
-  clip: rect(0, 0, 0, 0);
+	position: absolute;
+	overflow: hidden;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	border: 0;
+	clip: rect(0, 0, 0, 0);
 }
-
 
 // Dropdown Opacity
 .dropdown-enter-active,
 .dropdown-leave-active {
-  transition: all 0.3s;
+	transition: all 0.3s;
 }
 
 .dropdown-enter,
 .dropdown-leave-to {
-  opacity: 0;
-  transform: translateY(-30px);
+	opacity: 0;
+	transform: translateY(-30px);
 }
 
 // Fade Opacity
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
 }
 
 .fade-enter,
 .fade-leave-to {
-  opacity: 0
+	opacity: 0;
 }
 
 // text-field label transition
 
-
 // Dropdown Opacity
 .focus-enter-active,
 .focus-leave-active {
-  transition: all 0.3s;
+	transition: all 0.3s;
 }
 .focus-enter,
 .focus-leave-to {
-  opacity: 0;
-  transform: translateY(-15px);
+	opacity: 0;
+	transform: translateY(-15px);
 }

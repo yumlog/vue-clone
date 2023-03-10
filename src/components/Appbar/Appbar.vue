@@ -1,5 +1,9 @@
 <template>
-	<header class="app-bar" :class="setScroll ? 'active' : ''" @scroll="handleScroll">
+	<header
+		class="app-bar"
+		:class="setScroll ? 'active' : ''"
+		@scroll="handleScroll"
+	>
 		<!-- Home Appbar -->
 		<nav v-if="$route.path === '/'">
 			<div class="actions start">

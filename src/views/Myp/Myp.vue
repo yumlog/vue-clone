@@ -1,28 +1,17 @@
 <template>
-	<div>
-		마이페이지
-	</div>
+	<div>마이페이지</div>
 </template>
 
 <script>
 export default {
+	data() {
+		return {};
+	},
 
-  data() {
-    return {
-      
-    };
-  },
+	mounted() {},
 
-  mounted() {
-    
-  },
-
-  methods: {
-    
-  },
+	methods: {},
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

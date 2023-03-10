@@ -1,28 +1,17 @@
 <template>
-	<div>
-		apv
-	</div>
+	<div>apv</div>
 </template>
 
 <script>
 export default {
+	data() {
+		return {};
+	},
 
-  data() {
-    return {
-      
-    };
-  },
+	mounted() {},
 
-  mounted() {
-    
-  },
-
-  methods: {
-    
-  },
+	methods: {},
 };
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

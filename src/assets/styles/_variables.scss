@@ -15,16 +15,15 @@ $gray-800: #fcfcfe;
 $black: #161616;
 $white: #fff;
 
-
 $grays: (
-  gray-1: $gray-100,
-  gray-2: $gray-200,
-  gray-3: $gray-300,
-  gray-4: $gray-400,
-  gray-5: $gray-500,
-  gray-6: $gray-600,
-  gray-7: $gray-700,
-  gray-8: $gray-800,
+	gray-1: $gray-100,
+	gray-2: $gray-200,
+	gray-3: $gray-300,
+	gray-4: $gray-400,
+	gray-5: $gray-500,
+	gray-6: $gray-600,
+	gray-7: $gray-700,
+	gray-8: $gray-800,
 ) !default;
 
 $blue-1: #2763f6;
@@ -50,42 +49,41 @@ $light: $gray-500;
 // $red-bg: #fff9f9;
 
 $color-palette: (
-  primary-1: $blue-1,
-  primary-2: $blue-2,
-  primary-3: $blue-3,
-  primary-4: $blue-4,
-  primary-5: $blue-5,
-  primary-6: $blue-6,
-  primary-7: $blue-7,
-  red: $red,
-  lime: $lime,
-  black: $black,
-  white: $white,
-  gray: $gray,
-  light: $light,
+	primary-1: $blue-1,
+	primary-2: $blue-2,
+	primary-3: $blue-3,
+	primary-4: $blue-4,
+	primary-5: $blue-5,
+	primary-6: $blue-6,
+	primary-7: $blue-7,
+	red: $red,
+	lime: $lime,
+	black: $black,
+	white: $white,
+	gray: $gray,
+	light: $light,
 ) !default;
 
 // var(--colors)
 :root {
-  @each $name, $value in $color-palette {
-    --#{''+$name}: #{$value};
-  }
-  @each $name, $value in $grays {
-    --#{''+$name}: #{$value};
-  }
+	@each $name, $value in $color-palette {
+		--#{''+$name}: #{$value};
+	}
+	@each $name, $value in $grays {
+		--#{''+$name}: #{$value};
+	}
 }
-
 
 /* ---------------------------------------------------------- 
     Typography
  ---------------------------------------------------------- */
- 
- $text-align: (
-   'left': left,
-   'center': center,
-   'right': right,
-   );
-   
+
+$text-align: (
+	"left": left,
+	"center": center,
+	"right": right,
+);
+
 $text-base: 1rem;
 
 $text-xs: 11px; // $text-size-base * 0.688;
@@ -95,30 +93,29 @@ $text-lg: 16px; // $text-size-base * 1;
 $text-xl: 18px; // $text-size-base * 1.125;
 
 $text-sizes: (
-  'xs': $text-xs,
-  'sm': $text-sm,
-  'md': $text-md,
-  'lg': $text-lg,
-  'xl': $text-xl,
+	"xs": $text-xs,
+	"sm": $text-sm,
+	"md": $text-md,
+	"lg": $text-lg,
+	"xl": $text-xl,
 ) !default;
 
 $headings: (
-  1: 40px,
-  2: 30px,
-  3: 28px,
-  4: 24px,
-  5: 20px,
-  6: 18px
+	1: 40px,
+	2: 30px,
+	3: 28px,
+	4: 24px,
+	5: 20px,
+	6: 18px,
 ) !default;
 
-
 $font-weight: (
-  'thin': 100,
-  'light': 300,
-  'normal': 400,
-  'medium': 500,
-  'bold': 700,
-  'extrabold': 800
+	"thin": 100,
+	"light": 300,
+	"normal": 400,
+	"medium": 500,
+	"bold": 700,
+	"extrabold": 800,
 ) !default;
 
 /* ---------------------------------------------------------- 
@@ -126,24 +123,23 @@ $font-weight: (
  ---------------------------------------------------------- */
 // BreakPoint
 $grid-breakpoints: (
-  xs: 0,
-  sm: 600px,
-  // md: 768px,
-  lg: 960px,
-  // xl: 1400px
+	xs: 0,
+	sm: 600px,
+	// md: 768px,
+	lg: 960px,
+	// xl: 1400px
 ) !default;
 
 // Cotainer
 $container-max-widths: (
-  sm: 599.99px,
-  // md: 767px,
-  lg: 959.99px,
-  // xl: 1399px
+	sm: 599.99px,
+	// md: 767px,
+	lg: 959.99px,
+	// xl: 1399px
 ) !default;
 
 $grid-count: 12 !default;
 $grid-gutter: 44px !default;
-
 
 $border-width: 1px;
 $border-width-lg: 2px;
@@ -156,12 +152,12 @@ $rounded-full: 24px;
 $rounded-0: 0;
 
 $rounded-sizes: (
-  '': $rounded,
-  '-xs': $rounded-xs,
-  '-sm': $rounded-sm,
-  '-lg': $rounded-lg,
-  '-full': $rounded-full,
-  '-0': $rounded-0,
+	"": $rounded,
+	"-xs": $rounded-xs,
+	"-sm": $rounded-sm,
+	"-lg": $rounded-lg,
+	"-full": $rounded-full,
+	"-0": $rounded-0,
 ) !default;
 
 /* ---------------------------------------------------------- 
@@ -181,12 +177,12 @@ $btn-padding-lg: 7px 32px;
 $btn-padding-xl: 17px 44px;
 
 $btn-padding-sizes: (
-  '':    $btn-padding,
-  '-xs': $btn-padding-xs,
-  '-sm': $btn-padding-sm,
-  '-md': $btn-padding-md,
-  '-lg': $btn-padding-lg,
-  '-xl': $btn-padding-xl,
+	"": $btn-padding,
+	"-xs": $btn-padding-xs,
+	"-sm": $btn-padding-sm,
+	"-md": $btn-padding-md,
+	"-lg": $btn-padding-lg,
+	"-xl": $btn-padding-xl,
 ) !default;
 
 $btn-height: 46px;
@@ -197,21 +193,21 @@ $btn-height-lg: 56px;
 $btn-height-xl: 60px;
 
 $btn-height-sizes: (
-  '':    $btn-height,
-  '-xs': $btn-height-xs,
-  '-sm': $btn-height-sm,
-  '-md': $btn-height-md,
-  '-lg': $btn-height-lg,
-  '-xl': $btn-height-xl,
+	"": $btn-height,
+	"-xs": $btn-height-xs,
+	"-sm": $btn-height-sm,
+	"-md": $btn-height-md,
+	"-lg": $btn-height-lg,
+	"-xl": $btn-height-xl,
 ) !default;
 
 $btn-font-sizes: (
-  '':    $text-base,
-  '-xs': $text-xs,
-  '-sm': $text-sm,
-  '-md': $text-md,
-  '-lg': $text-lg,
-  '-xl': $text-xl,
+	"": $text-base,
+	"-xs": $text-xs,
+	"-sm": $text-sm,
+	"-md": $text-md,
+	"-lg": $text-lg,
+	"-xl": $text-xl,
 ) !default;
 
 // ----------------------------------------------------------
