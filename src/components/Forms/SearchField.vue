@@ -9,7 +9,7 @@
 				@touchstart="recentKeyword = true, dimmed = true"
 				@keyup="relatedKeyword = true, recentKeyword = false"
 			>
-			<i class="img-search" aria-hidden="true" />
+			<img class="img-search" inline src="@/assets/images/icon_24/appbar_search.svg" aria-hidden="true">
 		</div>
 
 		<!-- 최근 검색어 리스트 -->
@@ -97,8 +97,6 @@ export default {
     right: 16px;
     width: 24px;
     height: 24px;
-    background: url('@/assets/images/icon_24/search_input.png') center no-repeat;
-    background-size: 100%;
 }
 
 .recent-list {
