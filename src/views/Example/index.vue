@@ -65,8 +65,8 @@
 
 				<!-- text input -->
 				<text-field
-					id="userid"
 					label="UserId"
+					id="userid"
 					placeholder="아이디를 입력하세요"
 					message="메세지입니다."
 				/>
@@ -77,22 +77,35 @@
 
 				<!-- text input -->
 				<div class="fieldset">
-					<label for="userid">UserId</label>
-					<div class="form-input invalid">
-						<input
-							id="userid"
-							type="text"
-							placeholder="아이디를 입력하세요"
-							aria-placeholder="아이디를 입력하세요"
-							invalid="..."
-							aria-invalid="..."
-						/>
+					<div class="field-container">
+						<label for="userid">
+							UserId
+							<strong class="text-red">*</strong>
+						</label>
+						<div class="form-input invalid">
+							<input
+								id="userid"
+								type="text"
+								placeholder="아이디를 입력하세요"
+								aria-placeholder="아이디를 입력하세요"
+								on-invalid="true"
+								aria-invalid="..."
+								required="true"
+							/>
+							<button class="btn-clear" title="재입력">
+								<img
+									inline
+									src="@/assets/images/icon_24/close-circle.svg"
+								/>
+							</button>
+						</div>
 					</div>
 					<div class="flex justify-between">
 						<p class="invalid-feedback shrink-0">invalid message...</p>
 					</div>
 				</div>
 				<!-- // -->
+
 			</section>
 		</article>
 

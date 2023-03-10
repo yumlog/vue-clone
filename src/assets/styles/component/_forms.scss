@@ -11,7 +11,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin: 0;
 	font-size: $text-md;
 	padding: $padding;
 }
@@ -74,7 +73,6 @@
 		padding-right: 0.5rem;
 	}
 
-	input[type="text"]:focus,
 	input[type="search"]:focus {
 		&::-webkit-search-cancel-button {
 			// 이미지 반입예정
@@ -86,13 +84,32 @@
 			cursor: pointer;
 		}
 	}
+
+	// Onfocus Clear Button
+	input:placeholder-shown + .btn-clear {
+		display: none;
+		opacity: 0;
+		pointer-events: none;
+		transition: all 0.2s;
+	}
+
+	.btn-clear {
+		cursor: pointer;
+		// position: absolute;
+		// top:0;
+		// right:0;
+		display: block;
+		width: 24px;
+		height: 24px;
+		padding: 0;
+	}
 }
 
-@mixin form-pseudo {
+@mixin form-pseudo($color) {
 	transition: 0.3s;
 
 	// 추가
-	&:is(:focus, :focus-within, :active) {
+	&:is(:focus, :focus-within, :active):not(.invalid) {
 		&::after {
 			content: "";
 			position: absolute;
@@ -100,7 +117,7 @@
 			left: 0;
 			right: 0;
 			height: 1px;
-			background-color: $form-border-active-color;
+			background-color: $color;
 			animation: focusLine 0.2s alternate;
 		}
 	}
@@ -141,6 +158,7 @@
 	left: 0;
 	right: 0;
 	height: 17px;
+	line-height: 1;
 }
 
 /* ================================= form-input ================================= */
@@ -148,7 +166,7 @@
 .form-input {
 	@include form-input($rounded, $form-padding);
 	@include form-elements;
-	@include form-pseudo;
+	@include form-pseudo($form-border-active-color);
 	font-size: $text-md;
 
 	@mixin prefix($padding) {
@@ -186,19 +204,22 @@
 
 	// 추가
 	&.invalid {
-		background-color: #fff9f9;
-		border-color: var(--red) !important;
 		color: var(--red) !important;
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 1px;
+			background-color: var(--red);
+		}
 	}
 }
 
 // field container
 .fieldset {
 	width: 100%;
-
-	label {
-		@include label;
-	}
 
 	&:has(.invalid) {
 		color: var(--red);
@@ -207,13 +228,24 @@
 			background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgOUwxMiAxNUwxOCA5IiBzdHJva2U9IiNFNzFGMkEiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==) !important;
 		}
 	}
+	.field-container {
+		position: relative;
+		height: 57px;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		width: 100%;
+
+		label {
+			@include label;
+		}
+	}
 }
 
 // 추가 수정
-.help-text,
-.invalid-feedback {
+@mixin help-text {
 	transition: all 0.3s ease-out;
-	margin-top: 5px;
+	margin-top: 6px;
 	font-size: $text-sm;
 	list-style: normal;
 	color: inherit;
@@ -223,17 +255,26 @@
 	> svg {
 		flex-shrink: 0;
 	}
+}
+.invalid-feedback {
+	@include help-text;
+}
+.help-text {
+	@include help-text;
+	color: var(--gray-3);
+	text-align: right;
+	font-size: $text-xs;
+}
 
-	@keyframes fadeUp {
-		from {
-			opacity: 0;
-			transform: translateX(-1rem);
-		}
+@keyframes fadeUp {
+	from {
+		opacity: 0;
+		transform: translateX(-1rem);
+	}
 
-		to {
-			opacity: 1;
-			transform: translateX(0);
-		}
+	to {
+		opacity: 1;
+		transform: translateX(0);
 	}
 }
 

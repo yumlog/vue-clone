@@ -1,18 +1,12 @@
 <template>
-	<div class="fieldset" :class="message ? 'text-right' : ''">
-		<div
-			style="
-				position: relative;
-				height: 57px;
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-end;
-				width: 100%;
-			"
-		>
+	<div class="fieldset">
+		<div class="field-container">
 			<!-- input focus시, label: true -->
 			<transition name="focus" appear>
-				<label v-if="focusOn && label" :for="id">{{ label }}</label>
+				<label v-if="focusOn && label" :for="id">
+					{{ label }}
+					<strong v-if="required" class="text-red">*</strong>
+				</label>
 			</transition>
 			<div
 				:class="[
@@ -36,12 +30,21 @@
 					:invalid="invalid"
 					:aria-invalid="invalid"
 					:disabled="disabled"
+					:required="required"
 					style="text-align: inherit"
 					@input="updateInput"
 					v-on="{ ...$listeners, input: () => {} }"
-					@focus="focusOn = true"
-					@blur="focusOn = false"
+					@focusin="focusOn = true"
+					@focusout="focusOn = false"
+					ref="input"
 				/>
+				<button class="btn-clear" @click="resetInput">
+					<img
+						inline
+						src="@/assets/images/icon_24/close-circle.svg"
+						alt="재입력"
+					/>
+				</button>
 
 				<span v-if="unit" class="unit">
 					{{ unit }}
@@ -89,6 +92,10 @@ export default {
 			type: Boolean,
 			default: false,
 		},
+		required: {
+			type: Boolean,
+			default: false,
+		},
 		placeholder: {
 			type: String,
 			default: "입력",
@@ -111,9 +118,19 @@ export default {
 			focusOn: false,
 		};
 	},
+	mounted() {
+		this.focusOn ? this.$refs["input"].focus() : false;
+	},
+
 	methods: {
 		updateInput($event) {
 			this.$emit("input", $event.target.value, $event);
+		},
+
+		// reset
+		resetInput() {
+			this.$refs["input"].value = "";
+			return this.$refs["input"].focus();
 		},
 	},
 };
