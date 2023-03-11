@@ -15,7 +15,7 @@
 					{ disabled: disabled },
 					{ prefix: prefix },
 					{ suffix: suffix },
-					{ 'text-right': unit },
+					{ unit: unit },
 				]"
 			>
 				<span v-if="prefix" class="icon">
@@ -23,6 +23,8 @@
 				</span>
 
 				<input
+					:value="value"
+					v-on:input="updateInput"
 					v-bind="{ ...$attrs }"
 					:id="id"
 					:placeholder="placeholder"
@@ -31,12 +33,11 @@
 					:aria-invalid="invalid"
 					:disabled="disabled"
 					:required="required"
+					:aria-required="required"
 					style="text-align: inherit"
-					@input="updateInput"
-					v-on="{ ...$listeners, input: () => {} }"
-					@focusin="focusOn = true"
-					@focusout="focusOn = false"
-					ref="input"
+					@focus="focusOn = true"
+					@blur="focusOn = false"
+					ref="inputRef"
 				/>
 				<button class="btn-clear" @click="resetInput">
 					<img
@@ -70,8 +71,10 @@
 
 <script>
 export default {
-	inheritAttrs: true,
 	props: {
+		value: {
+			type: String,
+		},
 		id: {
 			type: String,
 		},
@@ -83,10 +86,6 @@ export default {
 		},
 		message: {
 			type: String,
-		},
-		align: {
-			type: String,
-			default: "",
 		},
 		disabled: {
 			type: Boolean,
@@ -118,19 +117,16 @@ export default {
 			focusOn: false,
 		};
 	},
-	mounted() {
-		this.focusOn ? this.$refs["input"].focus() : false;
-	},
 
 	methods: {
-		updateInput($event) {
-			this.$emit("input", $event.target.value, $event);
+		updateInput: function (event) {
+			this.$emit('input', event.target.value);
 		},
 
 		// reset
 		resetInput() {
-			this.$refs["input"].value = "";
-			return this.$refs["input"].focus();
+			this.value = "";
+			return this.value.focus();
 		},
 	},
 };

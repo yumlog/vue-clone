@@ -5,7 +5,7 @@
 		@scroll="handleScroll"
 	>
 		<!-- Home Appbar -->
-		<nav v-if="$route.path === '/'">
+		<nav v-if="$route.path === '/' || '/home'">
 			<div class="actions start">
 				<button class="dropdown-logo">
 					<h1 class="logo">

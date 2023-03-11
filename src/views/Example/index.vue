@@ -65,10 +65,17 @@
 
 				<!-- text input -->
 				<text-field
-					label="UserId"
-					id="userid"
+					label="아이디 입력"
+					v-model="userId"
 					placeholder="아이디를 입력하세요"
-					message="메세지입니다."
+					invalid="다시 입력해 주세요"
+					message="일십백천만"
+					unit="원"
+				/>
+				<text-field
+					label="비밀번호 입력"
+					v-model="userPw"
+					placeholder="비밀번호를 입력하세요"
 				/>
 			</section>
 
@@ -266,7 +273,6 @@
 import BottomSheet from "@/components/BottomSheet";
 import BaseButton from "@/components/Buttons/BaseButton";
 import TextField from "@/components/Forms/TextField";
-import LoadingSpinner from "@/components/LoadingSpinner";
 import Toast from "@/components/Toast/Toast";
 import ToastContainer from "@/components/Toast/ToastContainer";
 import ToggleBox from "@/components/ToggleBox";
@@ -293,6 +299,8 @@ export default {
 				toasts: [],
 				showBottomSheet01: false,
 				showBottomSheet02: false,
+				userId: '',
+				userPw: ''
 		};
 	},
 	mounted() {},

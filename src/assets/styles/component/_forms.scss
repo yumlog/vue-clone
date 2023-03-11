@@ -136,11 +136,13 @@
 		&:is(:focus, :focus-within, :active) {
 			outline: none;
 		}
+		&::placeholder {
+			color: var(--gray-5);
+		}
 	}
 
 	&[disabled],
 	&.disabled {
-		background-color: $form-bg-disabled-color !important;
 		border-color: $form-border-disabled-color !important;
 		color: var(--gray-4) !important;
 
@@ -153,12 +155,8 @@
 // label
 @mixin label {
 	font-size: $text-sm;
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
 	height: 17px;
-	line-height: 1;
+	margin-bottom: 8px;
 }
 
 /* ================================= form-input ================================= */
@@ -192,8 +190,12 @@
 		}
 	}
 
-	.unit {
-		// padding: 0 12px 0 0;
+	&.unit {
+		font-size: $text-xl;
+		text-align: right;
+		input {
+			font-weight: 700;
+		}
 	}
 
 	// &[readonly='readonly'] {
