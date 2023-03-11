@@ -6,7 +6,7 @@
 	box-sizing: border-box;
 	box-shadow: none;
 	border-width: 1px;
-	border-radius: $rounded;
+	border-radius: 4px;
 	outline: none;
 	background-color: transparent;
 	border-color: transparent;
@@ -58,9 +58,9 @@
 		&#{"" + $name} {
 			height: $size;
 
-			// 32px 이하 border-radius 4px
-			@if $size <= 32px {
-				border-radius: $rounded-sm;
+			// 
+			@if $size == "xl" {
+				border: 1px solid red;
 			}
 		}
 	}

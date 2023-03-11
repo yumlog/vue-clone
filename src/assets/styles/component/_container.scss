@@ -8,14 +8,17 @@
 }
 
 .container,
-.is-fluid {
+.container.is-fluid {
 	@include make-container();
 }
+.container.is-fluid {
+	max-width: 100%;
+}
 
-// .container {
-//   @each $breakpoint, $width in $container-max-widths {
-//     @include breakepoint-up(#{$breakpoint}) {
-//       max-width: $width;
-//     }
-//   }
-// }
+.container {
+  @each $breakpoint, $width in $container-max-widths {
+    @include breakepoint-up(#{$breakpoint}) {
+      max-width: $width;
+    }
+  }
+}
