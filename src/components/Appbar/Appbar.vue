@@ -19,7 +19,7 @@
 					<span v-if="(setFlag = true)" class="new-flag" />
 					<iconNoti />
 				</button>
-				<button class="btn" @click="isOpen = true">
+				<button class="btn menu-toggler" @click="$emit('toggle')">
 					<span class="sr-only">홈</span>
 					<iconMenu />
 				</button>
@@ -37,15 +37,11 @@
 				{{ $route.name }}
 			</router-link>
 			<div class="actions end">
-				<button class="btn menu-toggler" @click="toggle">
+				<button class="btn menu-toggler" @click="$emit('toggle')">
 					<iconMenu />
 				</button>
 			</div>
 		</nav>
-
-		<transition name="menu" appear>
-			<Sidebar v-if="isOpen" class="menu" @close="isOpen = false" />
-		</transition>
 	</header>
 </template>
 
@@ -53,14 +49,13 @@
 import iconBack from "@/assets/images/icon_24/appbar_history_back.svg";
 import iconMenu from "@/assets/images/icon_24/appbar_menu.svg";
 import iconNoti from "@/assets/images/icon_24/appbar_noti.svg";
-import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import toggleMixin from "@/mixin/toggleMixin";
 
 let winScroll = window.scrollY;
 
 export default {
 	name: "AppHeader",
-	components: { Sidebar, iconMenu, iconNoti, iconBack },
+	components: { iconMenu, iconNoti, iconBack },
 	mixins: [toggleMixin],
 	// vue-meta 테스트
 	metaInfo: {
@@ -81,7 +76,6 @@ export default {
 		return {
 			setScroll: false,
 			setFlag: true,
-			isOpen: false,
 		};
 	},
 

@@ -102,26 +102,3 @@
 	position: relative;
 	color: inherit;
 }
-
-.menu {
-	z-index: 10;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	background-color: var(--white);
-	color: var(--black);
-}
-
-.menu-enter-active,
-.menu-leave-active {
-	transition: transform 0.3s ease;
-}
-
-.menu-enter,
-.menu-leave-to {
-	// opacity: 0;
-	transform: translateX(100%);
-}
