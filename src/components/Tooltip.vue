@@ -51,59 +51,60 @@ export default {
 
 <style lang="scss">
 .tooltip {
-    left: -6px !important;
-    z-index: 100 !important;
-    min-width: 168px;
-    max-width: 220px;
+	left: -6px !important;
+	z-index: 100 !important;
+	min-width: 168px;
+	max-width: 220px;
 
-    .tooltip-inner {
-        .content {
-            position: relative;
-            width: 100%;
-            padding: 12px 12px 12px;
-            margin: 0;
-            border-radius: 8px;
-            background-color: #2a3143;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 19.6px;
-            word-break: keep-all;
-            box-sizing: border-box;
+	.tooltip-inner {
+		.content {
+			position: relative;
+			width: 100%;
+			padding: 12px 12px 12px;
+			margin: 0;
+			border-radius: 8px;
+			background-color: #2a3143;
+			font-size: 14px;
+			font-weight: 500;
+			line-height: 19.6px;
+			word-break: keep-all;
+			box-sizing: border-box;
 
-            .btn-close {
-                display: none;
-                position: absolute;
-                top: 12px;
-                right: 12px;
-                width: 20px;
-                height: 20px;
-                background: url('@/assets/images/icon_20/close_white.png') center no-repeat;
-                background-size: 100%;
-                cursor: pointer;
-            }
+			.btn-close {
+				display: none;
+				position: absolute;
+				top: 12px;
+				right: 12px;
+				width: 20px;
+				height: 20px;
+				background: url("@/assets/images/icon_20/close_white.png") center
+					no-repeat;
+				background-size: 100%;
+				cursor: pointer;
+			}
 
-            &.close {
-                padding-right: 34px;
+			&.close {
+				padding-right: 34px;
 
-                .btn-close {
-                    display: block;
-                }
-            }
-        }
+				.btn-close {
+					display: block;
+				}
+			}
+		}
 
 		p {
 			color: $white;
 			word-break: break-all;
 		}
 
-        &.error {
-            margin-top: -1px;
-            padding-top: 0;
-            padding-bottom: 4px;
-            border-top: 5px solid var(--red);
-            background-color: var(--red);
-        }
-    }
+		&.error {
+			margin-top: -1px;
+			padding-top: 0;
+			padding-bottom: 4px;
+			border-top: 5px solid var(--red);
+			background-color: var(--red);
+		}
+	}
 }
 
 .btn-tooltip {

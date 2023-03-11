@@ -1,55 +1,69 @@
 <template>
 	<div class="page-example container">
-		<article>
-			<h6>Vue Grid</h6>
-			<Row>
+		<article class="document">
+			<h5>Typography</h5>
+			<Row :gutter="8">
+				<Column :xs="12">
+					<h1>H1: 어부어부어부바 신협</h1>
+					<h2>H2: 어부어부어부바 신협</h2>
+					<h3>H3: 어부어부어부바 신협</h3>
+					<h4>H4: 어부어부어부바 신협</h4>
+					<h5>H5: 어부어부어부바 신협</h5>
+				</Column>
+				<Column :xs="12">
+					<p class="body-1">body-1: 어부어부어부바 신협</p>
+					<p class="body-2">body-2: 어부어부어부바 신협</p>
+					<p class="body-3">body-3: 어부어부어부바 신협</p>
+					<p class="body-4">body-4: 어부어부어부바 신협</p>
+					<p class="body-5">body-5: 어부어부어부바 신협</p>
+				</Column>
+			</Row>
+		</article>
+
+		<article class="document">
+			<h5>Vue Grid</h5>
+			<Row :gutter="8">
+				<Column>
+					<div class="flex gap-1">
+						<base-button size="xs">버튼</base-button>
+						<base-button size="sm">버튼</base-button>
+						<base-button>버튼</base-button>
+						<base-button size="lg">버튼</base-button>
+						<base-button size="xl">버튼</base-button>
+					</div>
+				</Column>
+			</Row>
+		</article>
+
+		<article class="document">
+			<h5>Vue Grid</h5>
+			<Row :gutter="8">
+				<Column><span class="block bg-black text-white">gutter="8"</span></Column>
+				<Column><span class="block bg-black text-white">gutter="8"</span></Column>
+			</Row>
+			<Row :gutter="8">
 				<Column :xs="4">
-					<span class="block bg-primary-1">Column</span>
+					<span class="block bg-gray-4">Column :xs='4'</span>
 				</Column>
 				<Column :xs="4">
-					<span class="block bg-primary-1">Column</span>
+					<span class="block bg-gray-4">Column :xs='4'</span>
 				</Column>
 				<Column :xs="4">
-					<span class="block bg-primary-1">Column</span>
+					<span class="block bg-gray-4">Column :xs='4'</span>
 				</Column>
 			</Row>
 			<hr />
-			<Row>
-				<Column :xs="4" :xs-offset="4">
-					<span class="block bg-primary-1">Column</span>
-				</Column>
-				<Column :xs="4">
-					<span class="block bg-primary-1">Column</span>
+			<Row :gutter="8">
+				<Column :xs="6" :xs-offset="6">
+					<span class="block bg-gray-4">xs-offset='6'</span>
 				</Column>
 			</Row>
 		</article>
 
 		<hr />
 
-		<article>
-			<h6>Css Grid</h6>
-			<div class="row">
-				<div class="col-6 border">col-6</div>
-				<div class="col-6 border">col-6</div>
-				<div class="col-4 border">col-4</div>
-				<div class="col-4 border">col-4</div>
-				<div class="col-4 border">col-4</div>
-			</div>
-
-			<div class="row">
-				<div class="col-3">
-					<span class="block bg-primary-1">col-3</span>
-				</div>
-				<div class="col-3">
-					<span class="block bg-primary-1">col-3</span>
-				</div>
-				<div class="col-3">
-					<span class="block bg-primary-1">col-3</span>
-				</div>
-				<div class="col-3">
-					<span class="block bg-primary-1">col-3</span>
-				</div>
-			</div>
+		<article class="document">
+			<h5>Css Grid</h5>
 		</article>
 
 		<!-- 
@@ -58,29 +72,20 @@
 		</article>
 		-->
 
-		<article>
-			<h6>Forms</h6>
+		<article class="document">
+			<h5>Forms</h5>
 			<section class="my-4">
-				<h6 class="mb-4">text-field / Component</h6>
+				<h6>text-field / Component</h6>
 
 				<!-- text input -->
-				<text-field
-					label="아이디 입력"
-					v-model="userId"
-					placeholder="아이디를 입력하세요"
-					invalid="다시 입력해 주세요"
-					message="일십백천만"
-					unit="원"
-				/>
-				<text-field
-					label="비밀번호 입력"
-					v-model="userPw"
-					placeholder="비밀번호를 입력하세요"
-				/>
+				<text-field label="입금할 금액" v-model="userId" placeholder="입금할 금액을 입력" message="일십백천만" unit="원" />
+				<text-field label="입금할 금액" v-model="userId" placeholder="입금할 금액 입력" invalid="잔액이 부족합니다." message="일십백천만"
+					unit="원" />
+				<text-field label="비밀번호 입력" v-model="userPw" placeholder="비밀번호를 입력하세요" />
 			</section>
 
 			<section class="my-4">
-				<h6 class="mb-4">text-field / Legacy</h6>
+				<h6>text-field / Legacy</h6>
 
 				<!-- text input -->
 				<div class="fieldset">
@@ -90,20 +95,10 @@
 							<strong class="text-red">*</strong>
 						</label>
 						<div class="form-input invalid">
-							<input
-								id="userid"
-								type="text"
-								placeholder="아이디를 입력하세요"
-								aria-placeholder="아이디를 입력하세요"
-								on-invalid="true"
-								aria-invalid="..."
-								required="true"
-							/>
+							<input id="userid" type="text" placeholder="아이디를 입력하세요" aria-placeholder="아이디를 입력하세요" on-invalid="true"
+								aria-invalid="..." required="true" />
 							<button class="btn-clear" title="재입력">
-								<img
-									inline
-									src="@/assets/images/icon_24/close-circle.svg"
-								/>
+								<img inline src="@/assets/images/icon_24/close-circle.svg" />
 							</button>
 						</div>
 					</div>
@@ -112,39 +107,31 @@
 					</div>
 				</div>
 				<!-- // -->
-
 			</section>
 		</article>
 
 		<article class="document">
-			<h6>Toast</h6>
+			<h5>Toast</h5>
 			<div>
 				<base-button label="토스트 클릭!" @click="showToast" />
 
 				<toast-container>
-					<toast
-						v-for="(toast, index) in toasts"
-						:id="index"
-						:key="index"
-						:message="toast.message"
-						:open="toast.open"
-						@close="toast.open = false"
-					/>
+					<toast v-for="(toast, index) in toasts" :id="index" :key="index" :message="toast.message" :open="toast.open"
+						@close="toast.open = false" />
 				</toast-container>
 			</div>
 		</article>
+
 		<!-- bottom sheet -->
 		<article class="document">
-			<h6>Bottom Sheet</h6>
+			<h5>Bottom Sheet</h5>
 			<div class="flex align-center" style="gap: 1rem">
 				<base-button label="default" @click="showBottomSheet01 = !showBottomSheet01" />
 				<base-button label="계좌비밀번호 입력" @click="showBottomSheet02 = !showBottomSheet02" />
 			</div>
 
 			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
-				<template #body>
-					body
-				</template>
+				<template #body> body </template>
 				<template #footer>
 					<BaseButton label="확인" />
 				</template>
@@ -175,7 +162,7 @@
 							<button>재배열</button>
 							<button>9</button>
 							<button>
-								<img inline src="@/assets/images/icon_24/Frame.svg" aria-hidden="true">
+								<img inline src="@/assets/images/icon_24/Frame.svg" aria-hidden="true" />
 								<span class="sr-only">지우기</span>
 							</button>
 						</div>
@@ -183,18 +170,20 @@
 				</template>
 			</bottom-sheet>
 		</article>
+
 		<!-- button, toggle -->
 		<article class="document">
-			<h6>버튼 테스트</h6>
+			<h5>버튼 테스트</h5>
 			<div class="flex align-center" style="gap: 1rem">
 				<base-button label="Click!!!" @click="handleClick" />
 
 				<toggle-box message="하하핳하" />
 			</div>
 		</article>
+
 		<!-- tooltip -->
 		<article class="document">
-			<h6>Tooltip</h6>
+			<h5>Tooltip</h5>
 			<div class="flex align-center" style="gap: 1rem">
 				<Tooltip>
 					<template #label>
@@ -238,40 +227,50 @@
 						<p>닫기버튼</p>
 					</template>
 					<template #popover>
-						<p>기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정 메뉴에서 비밀번호를 변경하실 수 있습니다.</p>
+						<p>
+							기존 비밀번호를 잊어버리신 경우 기업ON뱅킹의 계좌비밀번호 재설정
+							메뉴에서 비밀번호를 변경하실 수 있습니다.
+						</p>
 					</template>
 				</Tooltip>
 			</div>
 		</article>
+
 		<!-- images -->
 		<article class="document">
-			<h6>Image & Svg</h6>
-			<div class="row">
-				<figure class="col-sm-12 col-lg-4">
-					<figcaption>png, 이미지 사용</figcaption>
-					<img alt="Vue logo" src="@/assets/images/pig7.png" width="100px" />
-					<pre>@/assets/images/logo.png</pre>
-				</figure>
+			<h5>Image & Svg</h5>
+			<Row>
+				<Column>
+					<figure>
+						<figcaption>png, 이미지 사용</figcaption>
+						<img alt="Vue logo" src="@/assets/images/pig7.png" width="100px" />
+						<pre>@/assets/images/logo.png</pre>
+					</figure>
+				</Column>
 
-				<figure class="col-sm-12 col-lg-4">
-					<figcaption>SVG inline, sprite</figcaption>
-					<img inline src="@/assets/images/pig7.svg" />
-					<pre>@/assets/images/pig7.svg inline</pre>
-				</figure>
+				<Column>
+					<figure>
+						<figcaption>SVG inline, sprite</figcaption>
+						<img inline src="@/assets/images/pig7.svg" />
+						<pre>@/assets/images/pig7.svg inline</pre>
+					</figure>
+				</Column>
 
-				<figure class="col-sm-12 col-lg-4">
-					<figcaption>Image Css, background-image:url()</figcaption>
-					<span class="bg-image" />
-					<pre />
-				</figure>
-			</div>
+				<Column>
+					<figure>
+						<figcaption>Image Css, background-image:url()</figcaption>
+						<span class="bg-image" />
+						<pre />
+					</figure>
+				</Column>
+			</Row>
 		</article>
 	</div>
 </template>
 
 <script>
+import BaseButton from "@/components/BaseButton";
 import BottomSheet from "@/components/BottomSheet";
-import BaseButton from "@/components/Buttons/BaseButton";
 import TextField from "@/components/Forms/TextField";
 import Toast from "@/components/Toast/Toast";
 import ToastContainer from "@/components/Toast/ToastContainer";
@@ -294,16 +293,16 @@ export default {
 		Tooltip,
 	},
 	data() {
-			return {
-				toastId: 0,
-				toasts: [],
-				showBottomSheet01: false,
-				showBottomSheet02: false,
-				userId: '',
-				userPw: ''
+		return {
+			toastId: 0,
+			toasts: [],
+			showBottomSheet01: false,
+			showBottomSheet02: false,
+			userId: "",
+			userPw: "",
 		};
 	},
-	mounted() {},
+	mounted() { },
 	methods: {
 		handleClick() {
 			alert(`Hello, Button!`);
@@ -326,10 +325,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-example {
-	height: 1500px;
-}
-
 .bg-image {
 	display: inline-block;
 	width: 120px;
@@ -340,10 +335,17 @@ export default {
 }
 
 .document {
-	margin-top: 60px;
+	margin-bottom: 80px;
 
-	> h6 {
-		margin-bottom: 1rem;
+	&+.document {
+		padding-top: 40px;
+		border-top: 1px solid var(--gray-5);
+	}
+
+	>h5,
+	>h6 {
+		padding-bottom: 2rem;
+		font-weight: 800;
 	}
 }
 
@@ -354,24 +356,24 @@ export default {
 		align-items: center;
 		justify-content: center;
 		margin-top: 20px;
-		
-		> p {
+
+		>p {
 			color: var(--white);
 			font-size: 16px;
 		}
 
-		> .circle {
+		>.circle {
 			display: flex;
 			justify-content: center;
 			margin-top: 20px;
 
-			> span {
+			>span {
 				width: 16px;
 				height: 16px;
 				border-radius: 8px;
-				background-color: #1D3D7A;
+				background-color: #1d3d7a;
 
-				& ~ span {
+				&~span {
 					margin-left: 15px;
 				}
 
@@ -387,7 +389,7 @@ export default {
 		flex-wrap: wrap;
 		margin-top: 50px;
 
-		> button {
+		>button {
 			width: 33.33%;
 			height: 46px;
 			color: var(--white);

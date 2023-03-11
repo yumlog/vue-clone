@@ -1,13 +1,19 @@
 <template>
 	<div class="fieldset">
 		<div class="field-container">
-			<!-- input focus시, label: true -->
-			<transition name="focus" appear>
+			<!-- input focus시, label: true >> Only 회원가입 화면 -->
+			<!-- 
+				<transition name="focus" appear>
 				<label v-if="focusOn && label" :for="id">
 					{{ label }}
 					<strong v-if="required" class="text-red">*</strong>
 				</label>
 			</transition>
+		-->
+			<label v-if="label" :for="id">
+				{{ label }}
+				<strong v-if="required" class="text-red">*</strong>
+			</label>
 			<div
 				:class="[
 					{ 'form-input': true },

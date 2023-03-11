@@ -1,6 +1,12 @@
 <template>
-	<ul class="tab-nav">
-		<li v-for="(tab, index) in tabNavList" :key="index" class="tab-nav--item">
+	<ul role="tablist" class="tab-nav">
+		<li
+			role="tab"
+			:aria-controls="tab.name"
+			v-for="(tab, index) in tabNavList"
+			:key="index"
+			class="tab-nav--item"
+		>
 			<router-link
 				:to="tab.path"
 				:class="{ active: isActive(tab.path) }"

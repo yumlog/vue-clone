@@ -2,7 +2,7 @@
 	<div class="base-layout">
 		<!-- appbar -->
 		<appbar @toggle="handleMenu" />
-		
+
 		<transition name="menu" appear>
 			<Sidebar v-show="showMenu" class="menu" @close="showMenu = false" />
 		</transition>
@@ -18,7 +18,7 @@
 
 <script>
 import Appbar from "@/components/Appbar/Appbar.vue";
-import Sidebar from '@/components/Sidebar/Sidebar.vue';
+import Sidebar from "@/components/Sidebar/Sidebar.vue";
 import TabNav from "@/components/TabNav/TabNav.vue";
 
 export default {
@@ -26,7 +26,7 @@ export default {
 	components: {
 		Appbar,
 		TabNav,
-		Sidebar
+		Sidebar,
 	},
 	data() {
 		return {
@@ -35,7 +35,7 @@ export default {
 	},
 	methods: {
 		handleMenu() {
-			this.showMenu = !this.showMenu		
+			this.showMenu = !this.showMenu;
 		},
 	},
 };
@@ -73,5 +73,4 @@ export default {
 	// opacity: 0;
 	transform: translateX(100%);
 }
-
 </style>

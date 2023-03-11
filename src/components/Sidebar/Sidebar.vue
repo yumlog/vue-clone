@@ -122,8 +122,8 @@
 </template>
 
 <script>
-import BaseButton from "@/components/Buttons/BaseButton.vue";
-import SearchField from "@/components/Forms/SearchField.vue";
+import BaseButton from "@/components/BaseButton";
+import SearchField from "@/components/Forms/SearchField";
 import $ from "jquery";
 
 let winScroll = window.scrollY;
