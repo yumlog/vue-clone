@@ -52,12 +52,10 @@ root/
     │     
     ├── components
     │   ├── LoadingSpinner.vue
+    │   ├── BaseButton.vue
     │   ├── Appbar
     │   │   ├── Appbar.scss
     │   │   └── Appbar.vue
-    │   ├── Buttons
-    │   │   ├── BaseButton.vue
-    │   │   └── BaseLink.vue
     │   ├── Dialogs
     │   │   ├── BottomSheet.vue
     │   │   ├── Dialog.vue
