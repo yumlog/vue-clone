@@ -1,9 +1,9 @@
 <template>
 	<button
-		v-bind="{ ...$attrs }"
+		v-bind="$attrs"
+		v-on="$listeners"
 		class="btn"
 		:class="[`btn-${color}`, size ? `btn-${size}` : '', { block: block }]"
-		v-on="$listeners"
 	>
 		{{ label }}
 		<slot></slot>
@@ -32,5 +32,3 @@ export default {
 	},
 };
 </script>
-
-<style lang="scss" scoped></style>

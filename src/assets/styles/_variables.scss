@@ -229,16 +229,16 @@ $input-height: 32px;
 // ----------------------------------------------------------
 // Toggle Switch
 // ----------------------------------------------------------
-$switch-bg-color-on: var(--blue-1);
-$switch-bg-color-off: var(--gray-3);
-$switch-shadow-on: -0.5px 0.5px 2px 0 var(--blue-1);
-$switch-shadow-off: 0.5px 0.5px 2px 0 var(--gray-4);
+$switch-bg-color-on: var(--primary-1) !default;
+$switch-bg-color-off: var(--gray-5) !default;
+$switch-shadow-on: -0.5px 0.5px 2px 0 var(--primary-1) !default;
+$switch-shadow-off: 0.5px 0.5px 2px 0 var(--gray-4) !default;
 $switch-control-color: white;
-$switch-width: 42px;
-$switch-height: 24px;
-$switch-gutter: 2px;
+$switch-width: 42px !default;
+$switch-height: 24px !default;
+$switch-gutter: 4px !default;
 $switch-radius: 50%;
-$switch-control-speed: 0.1s;
-$switch-control-ease: ease-in;
+$switch-control-speed: 0.1s !default;
+$switch-control-ease: ease-in !default;
 $switch-radius: calc($switch-height / 2);
-$switch-control-size: $switch-height - ($switch-gutter * 2);
+$switch-control-size: $switch-height - ($switch-gutter * 2) !default;

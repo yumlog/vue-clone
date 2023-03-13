@@ -21,7 +21,7 @@
 		</article>
 
 		<article class="document">
-			<h5>Vue Grid</h5>
+			<h5>Base Button</h5>
 			<Row :gutter="8">
 				<Column>
 					<div class="flex gap-1">
@@ -32,14 +32,24 @@
 						<base-button size="xl">버튼</base-button>
 					</div>
 				</Column>
+				<Column>
+					<div class="button-group">
+						<button class="btn btn-lg btn-outline-light rounded-0">동의안함</button>
+						<button class="btn btn-lg btn-primary-1 rounded-0">동의함</button>
+					</div>
+				</Column>
 			</Row>
 		</article>
 
 		<article class="document">
 			<h5>Vue Grid</h5>
 			<Row :gutter="8">
-				<Column><span class="block bg-black text-white">gutter="8"</span></Column>
-				<Column><span class="block bg-black text-white">gutter="8"</span></Column>
+				<Column
+					><span class="block bg-black text-white">gutter="8"</span></Column
+				>
+				<Column
+					><span class="block bg-black text-white">gutter="8"</span></Column
+				>
 			</Row>
 			<Row :gutter="8">
 				<Column :xs="4">
@@ -60,11 +70,6 @@
 			</Row>
 		</article>
 
-		<hr />
-
-		<article class="document">
-			<h5>Css Grid</h5>
-		</article>
 
 		<!-- 
 		<article>
@@ -75,13 +80,169 @@
 		<article class="document">
 			<h5>Forms</h5>
 			<section class="my-4">
-				<h6>text-field / Component</h6>
+				<h6>Checkbox & RadioButton</h6>
+				<Row :gutter="8">
+					<Column>
+						<p class="mb-3">Checkbox Type</p>
+						<div class="flex align-center gap-2">
+							<div class="form-check">
+								<input type="checkbox" id="defaultCheck" value="defaultCheck" />
+								<label for="defaultCheck">Default</label>
+							</div>
+							<div class="form-check small">
+								<input type="checkbox" id="smallCheck" value="smallCheck" />
+								<label for="smallCheck">Small</label>
+							</div>
+						</div>
+					</Column>
+					<Column>
+						<p class="mb-3">RadioButton Type</p>
+						<div class="flex align-center gap-2">
+							<div class="form-check">
+								<input
+									type="radio"
+									id="defaultRadio"
+									name="a"
+									value="defaultRadio"
+								/>
+								<label for="defaultRadio">Default</label>
+							</div>
+							<div class="form-check small">
+								<input
+									type="radio"
+									id="smallRadio"
+									name="a"
+									value="smallRadio"
+								/>
+								<label for="smallRadio">Small</label>
+							</div>
+						</div>
+					</Column>
+					<Column>
+						<p class="mb-3">ToggleSwitch Type</p>
+						<div class="flex align-center gap-2">
+							<div class="toggle-control">
+								<label>
+									<input
+										type="checkbox"
+										:value="onSwitch"
+										@change="switchToggle"
+									/>
+									<span class="control" />
+								</label>
+								<p>{{ onSwitch }}</p>
+							</div>
+							<div class="toggle-control small">
+								<label>
+									<input
+										type="checkbox"
+										:value="onSwitch"
+										@change="switchToggle"
+									/>
+									<span class="control" />
+								</label>
+								<p>{{ onSwitch }}</p>
+							</div>
+						</div>
+					</Column>
+				</Row>
+				<h6 class="my-5">Checkbox List</h6>
+				<Row :gutter="8">
+					<Column>
+						<div class="form-check">
+							<input
+								type="checkbox"
+								id="product-manager"
+								value="product-manager"
+								v-model="checkedList"
+								disabled
+							/>
+							<label for="product-manager">기획</label>
+						</div>
+					</Column>
+					<Column>
+						<div class="form-check">
+							<input
+								type="checkbox"
+								id="design"
+								value="design"
+								v-model="checkedList"
+							/>
+							<label for="design">디자인</label>
+						</div>
+					</Column>
+					<Column>
+						<div class="form-check">
+							<input
+								type="checkbox"
+								id="publ"
+								value="publ"
+								v-model="checkedList"
+							/>
+							<label for="publ">퍼블</label>
+						</div>
+					</Column>
+					<Column>
+						<div class="form-check">
+							<input
+								type="checkbox"
+								id="dev"
+								value="dev"
+								v-model="checkedList"
+							/>
+							<label for="dev">개발</label>
+						</div>
+					</Column>
+					<Column>
+						<div class="form-check">
+							<input
+								type="checkbox"
+								id="mother"
+								value="mother"
+								v-model="checkedList"
+							/>
+							<label for="mother">수행사</label>
+						</div>
+					</Column>
+					<Column>
+						<div class="form-check">
+							<input
+								type="checkbox"
+								id="agency"
+								value="agency"
+								v-model="checkedList"
+							/>
+							<label for="agency">대행사</label>
+						</div>
+					</Column>
+				</Row>
+
+				<p class="py-3">checked: {{ checkedList }}</p>
+			</section>
+			<section class="my-4">
+				<h6>text-field</h6>
 
 				<!-- text input -->
-				<text-field label="입금할 금액" v-model="userId" placeholder="입금할 금액을 입력" message="일십백천만" unit="원" />
-				<text-field label="입금할 금액" v-model="userId" placeholder="입금할 금액 입력" invalid="잔액이 부족합니다." message="일십백천만"
-					unit="원" />
-				<text-field label="비밀번호 입력" v-model="userPw" placeholder="비밀번호를 입력하세요" />
+				<text-field
+					label="입금할 금액"
+					v-model="userId"
+					placeholder="입금할 금액을 입력"
+					message="일십백천만"
+					unit="원"
+				/>
+				<text-field
+					label="입금할 금액"
+					v-model="userId"
+					placeholder="입금할 금액 입력"
+					invalid="잔액이 부족합니다."
+					message="일십백천만"
+					unit="원"
+				/>
+				<text-field
+					label="비밀번호 입력"
+					v-model="userPw"
+					placeholder="비밀번호를 입력하세요"
+				/>
 			</section>
 
 			<section class="my-4">
@@ -95,8 +256,15 @@
 							<strong class="text-red">*</strong>
 						</label>
 						<div class="form-input invalid">
-							<input id="userid" type="text" placeholder="아이디를 입력하세요" aria-placeholder="아이디를 입력하세요" on-invalid="true"
-								aria-invalid="..." required="true" />
+							<input
+								id="userid"
+								type="text"
+								placeholder="아이디를 입력하세요"
+								aria-placeholder="아이디를 입력하세요"
+								on-invalid="true"
+								aria-invalid="..."
+								required="true"
+							/>
 							<button class="btn-clear" title="재입력">
 								<img inline src="@/assets/images/icon_24/close-circle.svg" />
 							</button>
@@ -116,8 +284,14 @@
 				<base-button label="토스트 클릭!" @click="showToast" />
 
 				<toast-container>
-					<toast v-for="(toast, index) in toasts" :id="index" :key="index" :message="toast.message" :open="toast.open"
-						@close="toast.open = false" />
+					<toast
+						v-for="(toast, index) in toasts"
+						:id="index"
+						:key="index"
+						:message="toast.message"
+						:open="toast.open"
+						@close="toast.open = false"
+					/>
 				</toast-container>
 			</div>
 		</article>
@@ -126,8 +300,14 @@
 		<article class="document">
 			<h5>Bottom Sheet</h5>
 			<div class="flex align-center" style="gap: 1rem">
-				<base-button label="default" @click="showBottomSheet01 = !showBottomSheet01" />
-				<base-button label="계좌비밀번호 입력" @click="showBottomSheet02 = !showBottomSheet02" />
+				<base-button
+					label="default"
+					@click="showBottomSheet01 = !showBottomSheet01"
+				/>
+				<base-button
+					label="계좌비밀번호 입력"
+					@click="showBottomSheet02 = !showBottomSheet02"
+				/>
 			</div>
 
 			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
@@ -137,7 +317,12 @@
 				</template>
 			</bottom-sheet>
 
-			<bottom-sheet password label="" v-if="showBottomSheet02" @close="showBottomSheet02 = false">
+			<bottom-sheet
+				password
+				label=""
+				v-if="showBottomSheet02"
+				@close="showBottomSheet02 = false"
+			>
 				<template #body>
 					<div class="account-password">
 						<div class="top">
@@ -162,7 +347,11 @@
 							<button>재배열</button>
 							<button>9</button>
 							<button>
-								<img inline src="@/assets/images/icon_24/Frame.svg" aria-hidden="true" />
+								<img
+									inline
+									src="@/assets/images/icon_24/Frame.svg"
+									aria-hidden="true"
+								/>
 								<span class="sr-only">지우기</span>
 							</button>
 						</div>
@@ -171,15 +360,6 @@
 			</bottom-sheet>
 		</article>
 
-		<!-- button, toggle -->
-		<article class="document">
-			<h5>버튼 테스트</h5>
-			<div class="flex align-center" style="gap: 1rem">
-				<base-button label="Click!!!" @click="handleClick" />
-
-				<toggle-box message="하하핳하" />
-			</div>
-		</article>
 
 		<!-- tooltip -->
 		<article class="document">
@@ -269,28 +449,22 @@
 </template>
 
 <script>
-import BaseButton from "@/components/BaseButton";
 import BottomSheet from "@/components/BottomSheet";
-import TextField from "@/components/Forms/TextField";
+import Checkbox from "@/components/Forms/Checkbox";
 import Toast from "@/components/Toast/Toast";
 import ToastContainer from "@/components/Toast/ToastContainer";
-import ToggleBox from "@/components/ToggleBox";
 import Tooltip from "@/components/Tooltip";
 import { Column, Row } from "vue-grid-responsive";
 
 export default {
 	name: "Example",
 	components: {
-		ToggleBox,
-		BaseButton,
 		Toast,
 		ToastContainer,
 		// LoadingSpinner,
-		TextField,
-		Row,
-		Column,
 		BottomSheet,
 		Tooltip,
+		Checkbox,
 	},
 	data() {
 		return {
@@ -300,13 +474,17 @@ export default {
 			showBottomSheet02: false,
 			userId: "",
 			userPw: "",
+			checkedList: [],
+			onSwitch: false,
 		};
 	},
-	mounted() { },
+	mounted() {},
 	methods: {
+		// button alert
 		handleClick() {
 			alert(`Hello, Button!`);
 		},
+		// toast
 		showToast() {
 			const newToast = {
 				id: this.toastId++,
@@ -320,6 +498,10 @@ export default {
 				newToast.open = false;
 			}, 3000);
 		},
+		// toggle button
+		switchToggle(){
+			this.onSwitch = !this.onSwitch
+		}
 	},
 };
 </script>
@@ -337,15 +519,21 @@ export default {
 .document {
 	margin-bottom: 80px;
 
-	&+.document {
+	& + .document {
 		padding-top: 40px;
 		border-top: 1px solid var(--gray-5);
 	}
 
-	>h5,
-	>h6 {
-		padding-bottom: 2rem;
+	> h5,
+	h6 {
+		margin-bottom: 2rem;
 		font-weight: 800;
+	}
+
+	> h5 {
+		text-transform: uppercase;
+		background-color: #00000010;
+		font-size: 2rem;
 	}
 }
 
@@ -357,23 +545,23 @@ export default {
 		justify-content: center;
 		margin-top: 20px;
 
-		>p {
+		> p {
 			color: var(--white);
 			font-size: 16px;
 		}
 
-		>.circle {
+		> .circle {
 			display: flex;
 			justify-content: center;
 			margin-top: 20px;
 
-			>span {
+			> span {
 				width: 16px;
 				height: 16px;
 				border-radius: 8px;
 				background-color: #1d3d7a;
 
-				&~span {
+				& ~ span {
 					margin-left: 15px;
 				}
 
@@ -389,7 +577,7 @@ export default {
 		flex-wrap: wrap;
 		margin-top: 50px;
 
-		>button {
+		> button {
 			width: 33.33%;
 			height: 46px;
 			color: var(--white);

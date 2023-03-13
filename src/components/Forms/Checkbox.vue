@@ -1,7 +1,9 @@
 <template>
-	<div class="checkbox">
-		<input :id="id" type="checkbox" :value="value" v-bind="{ ...$attrs }" />
-		<label :for="id">{{ label }}</label>
+	<div class="fieldset">
+		<div class="form-check">
+			<input type="checkbox" :value="value" @click="toggleChecked"/>
+			<label :for="id">{{ label }}</label>
+		</div>
 	</div>
 </template>
 
@@ -9,21 +11,16 @@
 export default {
 	name: "Checkbox",
 	props: {
-		id: String,
-		value: String,
+		value: Boolean,
 		label: String,
 	},
 
 	mounted() {},
 
-	methods: {},
+	methods: {
+		toggleChecked() {
+			this.$emit('input', !this.value)
+		}
+	},
 };
 </script>
-
-<style lang="scss" scoped>
-.checkbox {
-	input {
-		appearance: none;
-	}
-}
-</style>

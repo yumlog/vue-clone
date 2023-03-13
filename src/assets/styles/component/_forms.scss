@@ -69,7 +69,7 @@
 		background-position: right center;
 		background-repeat: no-repeat;
 		background-size: 24px;
-		padding-right: 0.5rem;
+		padding-right: 0.8rem;
 	}
 
 	input[type="search"]:focus {
@@ -121,10 +121,10 @@
 		}
 	}
 	@keyframes focusLine {
-		0% {
+		from {
 			width: 0;
 		}
-		100% {
+		to {
 			width: 100%;
 		}
 	}
@@ -164,7 +164,6 @@
 	@include form-input($rounded, $form-padding);
 	@include form-elements;
 	@include form-pseudo($form-border-active-color);
-	
 
 	@mixin prefix($padding) {
 		flex-shrink: 0;
@@ -290,18 +289,23 @@
 
 /* =========================== Checkbox =========================== */
 
-@mixin form-check {
-	display: inline-block;
-	height: 22px;
+@mixin form-check($size) {
+	display: inline-flex;
+	height: $size;
 
 	input + label {
-		display: inline-flex;
+		display: flex;
 		align-items: center;
+		gap: 0.8rem;
 		cursor: pointer;
 	}
 
 	input {
 		display: none;
+	}
+
+	label {
+		width: 100%;
 	}
 
 	input {
@@ -311,31 +315,27 @@
 			box-sizing: border-box;
 			position: relative;
 			display: inline-block;
-			width: 22px;
-			height: 22px;
-			border-width: 2px;
-			border-style: solid;
-			border-color: #e4e4e4;
-			background-color: $form-bg-color;
-			border-radius: $rounded;
+			width: $size;
+			height: $size;
 			transition: 0.2s;
-			margin-right: 0.5rem;
+			background-position: center center;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEuOTk2NyIgY3k9IjExLjk5NjciIHI9IjkuNzg1NzEiIGZpbGw9IndoaXRlIiBzdHJva2U9IiM5Njk3OUIiLz4KPHBhdGggZD0iTTcuNzEwOTQgMTIuNzU1MkwxMC4yMTA5IDE1LjI1NTJMMTUuNjI3NiA5LjQyMTg4IiBzdHJva2U9IiM5Njk3OUIiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K");
 		}
 
 		+ label:active:before {
 			transform-origin: center;
-			transform: scale(0.5);
+			transform: scale(0.8);
 		}
 
 		&:checked + label:before {
-			background: $light svgIcon(fff) no-repeat center center;
-			border-color: $light;
+			background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEuOTk2NyIgY3k9IjExLjk5NjciIHI9IjEwLjI4NTciIGZpbGw9IiMyNzYzRjYiLz4KPHBhdGggZD0iTTcuNzEwOTQgMTIuNzU1MkwxMC4yMTA5IDE1LjI1NTJMMTUuNjI3NiA5LjQyMTg4IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==");
 		}
 
 		&:disabled + label:before {
 			transform: scale(1);
-			background: var(--gray-2);
-			border-color: var(--gray-2);
+			background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMTEuOTk2NyIgY3k9IjExLjk5NjciIHI9IjEwLjI4NTciIGZpbGw9IiNGMkYyRjIiLz4KPHBhdGggZD0iTTcuNzEwOTQgMTIuNzU1MkwxMC4yMTA5IDE1LjI1NTJMMTUuNjI3NiA5LjQyMTg4IiBzdHJva2U9IiNEM0QzRDMiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8L3N2Zz4K");
 		}
 
 		&:disabled + label,
@@ -354,42 +354,40 @@
 			box-sizing: border-box;
 			position: relative;
 			display: inline-block;
-			width: 22px;
-			height: 22px;
+			width: $size;
+			height: $size;
 			border: 0;
-			background: transparent
-				url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='10' fill='none' stroke='%23e4e4e4' stroke-width='2'/%3E%3Ccircle r='4' transform='matrix(1 0 0 -1 11 11)' fill='%23e4e4e4'/%3E%3C/svg%3E%0A")
-				no-repeat center center;
-			border-radius: $rounded-full;
+			background-position: center center;
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			background-image: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='11' cy='11' r='10' fill='none' stroke='%23e4e4e4' stroke-width='2'/%3E%3Ccircle r='4' transform='matrix(1 0 0 -1 11 11)' fill='%23e4e4e4'/%3E%3C/svg%3E%0A");
 			transition: 0.2s;
-			margin-right: 0.5rem;
 		}
 
 		&[type="radio"]:checked + label:before {
-			background: transparent
-				url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23ee7e6d' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-				no-repeat center center;
-			border: 0;
+			background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23ee7e6d' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 		}
 
 		&[type="radio"]:disabled + label:before {
-			background: transparent
-				url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23e4e4e4' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E")
-				no-repeat center center;
-			border: 0;
+			background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg viewBox='0 0 22 22' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3El-radio-base%3C/title%3E%3Cg stroke='none' stroke-width='1' fill='%23e4e4e4' fill-rule='evenodd'%3E%3Cg id='l-radio-base' transform='translate(1.000000, 1.000000)' fill-rule='nonzero'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Ccircle id='Oval' fill='%23fff' transform='translate(10.000000, 10.000000) scale(-1, 1) rotate(-180.000000) translate(-10.000000, -10.000000) ' cx='10' cy='10' r='4'%3E%3C/circle%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 		}
 	}
 }
 
 .form-check {
-	@include form-check();
-	color: var(--gray-6);
+	@include form-check(24px);
+
+	&.small {
+		@include form-check(20px);
+	}
 }
 
 /* =========================== ToggleSwitch =========================== */
 
-.toggle-control {
-	display: block;
+@mixin toggle-control($switch-width, $switch-height, $switch-gutter) {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
 	position: relative;
 	cursor: pointer;
 
@@ -412,7 +410,8 @@
 		cursor: pointer;
 
 		&::after {
-			left: $switch-width - $switch-control-size - $switch-gutter;
+			left: $switch-width - ($switch-height - ($switch-gutter * 2)) - $switch-gutter;
+			// $switch-width - $switch-control-size - $switch-gutter;
 			box-shadow: $switch-shadow-on;
 		}
 	}
@@ -423,7 +422,7 @@
 		left: 0;
 		height: $switch-height;
 		width: $switch-width;
-		border-radius: $switch-radius;
+		border-radius: calc($switch-height / 2); // $switch-radius
 		background-color: $switch-bg-color-off;
 		transition: background-color $switch-control-speed $switch-control-ease;
 		cursor: pointer;
@@ -433,14 +432,21 @@
 			position: absolute;
 			left: $switch-gutter;
 			top: $switch-gutter;
-			width: $switch-control-size;
-			height: $switch-control-size;
-			border-radius: $switch-radius;
+			width:  $switch-height - ($switch-gutter * 2); // $switch-control-size;
+			height: $switch-height - ($switch-gutter * 2); // $switch-control-size;
+			border-radius: calc($switch-height / 2);// $switch-radius;
 			background: $switch-control-color;
 			box-shadow: $switch-shadow-off;
 			transition: left $switch-control-speed $switch-control-ease;
 		}
 	}
+}
+
+.toggle-control {
+	@include toggle-control(42px, 24px, 4px);
+}
+.toggle-control.small {
+	@include toggle-control(32px, 18px, 3px);
 }
 
 .form-input.textarea {
