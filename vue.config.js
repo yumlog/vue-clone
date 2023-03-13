@@ -1,11 +1,12 @@
 const { defineConfig } = require("@vue/cli-service");
 const { join } = require("path");
 const path = require("path");
+const isDev = process.env.NODE_ENV === "development";
 
 module.exports = defineConfig({
 	transpileDependencies: true,
 	runtimeCompiler: true,
-
+	
 	publicPath: process.env.BASE_URL,
 	assetsDir: process.env.BASE_URL,
 
@@ -18,7 +19,7 @@ module.exports = defineConfig({
 	},
 
 	productionSourceMap: false,
-	lintOnSave: false,
+	lintOnSave: process.env.NODE_ENV !== 'production',
 
 	// publ setup
 	css: {
@@ -49,11 +50,15 @@ module.exports = defineConfig({
 	chainWebpack: (config) => {
 		// devtool
 		config.merge({
-			devtool: process.env.NODE_ENV === "development" ? "eval" : "source-map",
+			devtool: isDev ? "eval" : "source-map",
 		});
 
 		// svg loader => svg component
 		config.module.rules.delete("svg");
+		config.externals({
+			IMP: "IMP",
+			"vue-lottie": "lottie",
+		});
 
 		// svg inline => assets/img
 		config.module

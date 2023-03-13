@@ -26,7 +26,7 @@ const routes = [
 	{
 		path: "/example",
 		name: "예제페이지",
-		component: () => import("@/views/Example/index"),
+		component: () => import("@/views/Example"),
 		meta: {
 			breadcrumb: "예제페이지",
 		},
