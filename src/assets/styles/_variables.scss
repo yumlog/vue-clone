@@ -149,14 +149,17 @@ $container-max-widths: (
 $grid-count: 12 !default;
 $grid-gutter: 4.4rem !default;
 
+/* ---------------------------------------------------------- 
+Borders
+---------------------------------------------------------- */
 $border-width: 1px;
 $border-width-lg: 2px;
 
-$rounded: 6px;
+$rounded: 4px;
 $rounded-xs: 2px;
-$rounded-sm: 4px;
-$rounded-lg: 12px;
-$rounded-full: 24px;
+$rounded-sm: 2px;
+$rounded-lg: 30px;
+$rounded-full: 50%;
 $rounded-0: 0;
 
 $rounded-sizes: (
@@ -168,6 +171,21 @@ $rounded-sizes: (
 	"-0": $rounded-0,
 ) !default;
 
+$border-widths: (
+	"": "",
+	"-left": "left",
+	"-right": "right",
+	"-top": "top",
+	"-bottom": "bottom",
+) !default;
+
+$border-style: (
+	"-solid": "solid",
+	"-dashed": "dashed",
+	"-dotted": "dotted",
+	"-double": "double",
+) !default;
+
 /* ---------------------------------------------------------- 
 Spacing
 ---------------------------------------------------------- */
@@ -177,40 +195,40 @@ $space-count: 20 !default;
 /* ---------------------------------------------------------- 
     Buttons
  ---------------------------------------------------------- */
-$btn-padding: 10px 20px;
+$btn-padding: 13px 20px;
 $btn-padding-xs: 4px 8px;
 $btn-padding-sm: 6px 12px;
-$btn-padding-lg: 13px 20px;
-$btn-padding-xl: 18px 40px;
+$btn-padding-md: 10px 20px;
+$btn-padding-lg: 18px 40px;
 
 $btn-padding-sizes: (
 	"": $btn-padding,
 	"-xs": $btn-padding-xs,
 	"-sm": $btn-padding-sm,
+	"-md": $btn-padding-md,
 	"-lg": $btn-padding-lg,
-	"-xl": $btn-padding-xl,
 ) !default;
 
-$btn-height: 40px;
+$btn-height: 46px;
 $btn-height-xs: 23px;
 $btn-height-sm: 32px;
-$btn-height-lg: 46px;
-$btn-height-xl: 58px;
+$btn-height-md: 40px;
+$btn-height-lg: 58px;
 
 $btn-height-sizes: (
 	"": $btn-height,
 	"-xs": $btn-height-xs,
 	"-sm": $btn-height-sm,
+	"-md": $btn-height-md,
 	"-lg": $btn-height-lg,
-	"-xl": $btn-height-xl,
 ) !default;
 
 $btn-font-sizes: (
 	"": $text-base,
 	"-xs": $text-xs,
 	"-sm": $text-base,
-	"-lg": $text-base,
-	"-xl": $text-lg,
+	"-md": $text-base,
+	"-lg": $text-lg,
 ) !default;
 
 // ----------------------------------------------------------

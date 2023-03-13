@@ -25,17 +25,25 @@
 			<Row :gutter="8">
 				<Column>
 					<div class="flex gap-1">
-						<base-button size="xs">버튼</base-button>
-						<base-button size="sm">버튼</base-button>
-						<base-button>버튼</base-button>
-						<base-button size="lg">버튼</base-button>
-						<base-button size="xl">버튼</base-button>
+						<base-button size="xs">xs</base-button>
+						<base-button size="sm">sm</base-button>
+						<base-button size="md">md</base-button>
+						<base-button>Default</base-button>
+						<base-button size="lg">lg</base-button>
 					</div>
 				</Column>
 				<Column>
-					<div class="button-group">
-						<button class="btn btn-lg btn-outline-light rounded-0">동의안함</button>
-						<button class="btn btn-lg btn-primary-1 rounded-0">동의함</button>
+					<div class="btn-sticky">
+						<button class="btn btn-lg btn-outline-light">동의안함</button>
+						<button class="btn btn-lg btn-primary-1">동의함</button>
+					</div>
+					<div class="btn-group mt-4">
+						<button class="btn btn-lg btn-outline-light">동의안함</button>
+						<button class="btn btn-lg btn-primary-1">동의함</button>
+					</div>
+					<div class="btn-toggle mt-4">
+						<button class="btn btn-lg btn-outline-light">예</button>
+						<button class="btn btn-lg btn-outline-light">아니오</button>
 					</div>
 				</Column>
 			</Row>
