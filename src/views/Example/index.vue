@@ -305,23 +305,71 @@
 					@click="showBottomSheet01 = !showBottomSheet01"
 				/>
 				<base-button
-					label="계좌비밀번호 입력"
+					label="금액입력"
 					@click="showBottomSheet02 = !showBottomSheet02"
+				/>
+				<base-button
+					label="계좌비밀번호 입력"
+					@click="showBottomSheet03 = !showBottomSheet03"
 				/>
 			</div>
 
 			<bottom-sheet v-if="showBottomSheet01" @close="showBottomSheet01 = false">
 				<template #body> body </template>
 				<template #footer>
-					<BaseButton label="확인" />
+					<base-button label="확인" />
+				</template>
+			</bottom-sheet>
+
+			<bottom-sheet label="" v-if="showBottomSheet02" @close="showBottomSheet02 = false">
+				<template #body>
+					<div class="input-money">
+						<!-- 금액입력시 active 클래스 추가, 에러시 error 클래스 추가 -->
+						<div class="top active">
+							<p class="unit"><span>일만</span>원</p>
+							<p class="number active"><span>10000</span>원</p>
+							<div class="btns-number">
+								<base-button label="100만" size="sm" color="outline-light" />
+								<base-button label="10만" size="sm" color="outline-light" />
+								<base-button label="5만" size="sm" color="outline-light" />
+								<base-button label="1만" size="sm" color="outline-light" />
+								<base-button label="전액" size="sm" color="outline-light" />
+							</div>
+						</div>
+						<div class="keypad">
+							<button>1</button>
+							<button>2</button>
+							<button>3</button>
+							<button>4</button>
+							<button>5</button>
+							<button>6</button>
+							<button>7</button>
+							<button>8</button>
+							<button>9</button>
+							<button>00</button>
+							<button>0</button>	
+							<button>
+								<img
+									inline
+									src="@/assets/images/icon_24/Frame_gray.svg"
+									aria-hidden="true"
+								/>
+								<span class="sr-only">지우기</span>
+							</button>
+						</div>
+					</div>
+				</template>
+				<template #footer>
+					<!-- 금액미입력 or 에러 시 비활성화 -->
+					<base-button label="확인" size="xl" color="primary-1" block />
 				</template>
 			</bottom-sheet>
 
 			<bottom-sheet
 				password
 				label=""
-				v-if="showBottomSheet02"
-				@close="showBottomSheet02 = false"
+				v-if="showBottomSheet03"
+				@close="showBottomSheet03 = false"
 			>
 				<template #body>
 					<div class="account-password">
@@ -472,6 +520,7 @@ export default {
 			toasts: [],
 			showBottomSheet01: false,
 			showBottomSheet02: false,
+			showBottomSheet03: false,
 			userId: "",
 			userPw: "",
 			checkedList: [],
@@ -534,6 +583,68 @@ export default {
 		text-transform: uppercase;
 		background-color: #00000010;
 		font-size: 2rem;
+	}
+}
+
+.input-money {
+	.top {
+		display: flex;
+		flex-flow: column;
+		align-items: center;
+		margin-top: 10px;
+
+		> .unit {
+			color: var(--primary-1);
+		}
+
+		> .number {
+			margin-top: 4px;
+			color: var(--gray-3);
+			font-size: 30px;
+			font-weight: 700;
+		}
+
+		&.active {
+			.number {
+				color: var(--black);
+			}
+		}
+
+		&.error {
+			.unit,
+			.number {
+				color: var(--red);
+			}
+		}
+		
+
+		> .btns-number {
+			display: flex;
+			justify-content: center;
+			margin-top: 26px;
+
+			button {
+				font-weight: 600;
+			}
+
+			> button ~ button {
+				margin-left: 5px;
+			}
+		}
+	}
+
+	.keypad {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 20px;
+
+		> button {
+			width: 33.33%;
+			height: 46px;
+			color: var(--black);
+			font-size: 20px;
+			font-weight: 600;
+		}
 	}
 }
 
