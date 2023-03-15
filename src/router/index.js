@@ -14,6 +14,9 @@ const routes = [
 		name: "메인",
 		component: () => import("@/views/Home/Home"),
 		alias: "/",
+		meta: {
+			transitionName: 'fade'
+		}
 	},
 	{
 		path: "*",
@@ -29,6 +32,7 @@ const routes = [
 		component: () => import("@/views/Example"),
 		meta: {
 			breadcrumb: "예제페이지",
+			transitionName: 'slide'
 		},
 	},
 

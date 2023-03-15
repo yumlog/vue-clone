@@ -5,25 +5,42 @@
 	}
 }
 
-.border-0 {
-	border: 0 !important;
+// border-{direction}-width
+@mixin border-width {
+	@each $key, $value in $border-widths {
+		&#{$key} {
+			border#{$value}-width: #{$border-width} !important;
+		}
+		&#{$key}-0 {
+			border#{$value}-width: 0 !important;
+		}
+	}
 }
+// border-{style}
+@mixin border-style {
+	@each $key, $value in $border-style {
+		&#{$key} {
+			border-style: $value !important;
+		}
+	}
+}
+// border-{color}
+@mixin border-color {
+	@each $key, $value in $color-palette {
+		&-#{"" + $key} {
+			border-color: $value !important;
+		}
+	}
+	@each $key, $value in $grays {
+		&-#{"" + $key} {
+			border-color: $value !important;
+		}
+	}
+}
+
 
 .border {
-	border-width: 1px;
-	border-style: solid;
-	border-color: var(--gray-5);
-}
-
-.border-top {
-	border-top: 1px solid var(--gray-5);
-}
-.border-right {
-	border-right: 1px solid var(--gray-5);
-}
-.border-left {
-	border-left: 1px solid var(--gray-5);
-}
-.border-bottom {
-	border-bottom: 1px solid var(--gray-5);
+	@include border-width;
+	@include border-style;
+	@include border-color;
 }
