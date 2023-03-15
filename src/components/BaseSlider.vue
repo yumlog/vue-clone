@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<input type="range" class="styled-slider slider-progress" id="rangeSlider" v-bind="{...$attrs}" @input="updateInput" list="values" style="" />
+	<div class="slider-wrapper">
+		<input type="range" class="styled-slider slider-progress" id="baseSlider" v-bind="{...$attrs}" @input="updateInput" list="values" style="" />
 		<datalist id="values">
 			<option v-for="(option, index) in options" :key="index" :value="option.value" :label="option.label" v-bind="{...$attrs}"></option>
 		</datalist>
@@ -37,8 +37,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+div.slider-wrapper {
+	width: 100%;
+}
 input[type=range].styled-slider {
-	width: 330px;
+	width: 100%;
 	appearance: none;
 	margin: 0;
 	&:focus {
@@ -73,6 +76,10 @@ input[type=range].styled-slider {
 		background: transparent;
 		border-color: transparent;
 	}
+	&::-ms-fill-lower {
+		background: transparent;
+		border-color: transparent;
+	}
 	&::-ms-thumb {
 		width: 20px;
 		height: 20px;
@@ -93,7 +100,7 @@ input[type=range].styled-slider {
 	&.slider-progress {
 		--range: calc(var(--max) - var(--min));
 		--ratio: calc((var(--value) - var(--min)) / var(--range));
-		--sx: calc(0.5 * 20px var(--ratio) * (100% - 20px));
+		--sx: calc(0.5 * 20px + var(--ratio) * (100% - 20px));
 		&::-webkit-slider-runnable-track {
 			background: linear-gradient($blue-1, $blue-1) 0/var(--sx) 100% no-repeat, $blue-7;
 			height: 8px;
@@ -118,7 +125,7 @@ datalist {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	width: 330px;
+	width: 100%;
 	margin-top: 6px;
 	color: $gray-300;
 	option {
@@ -134,7 +141,7 @@ datalist {
 	[사용 예시]
 
 	1. Html
-	<BaseRange :min="min" :max="max" :step="step" :value="value" v-model="value" :options="options" />
+	<BaseSlider :min="min" :max="max" :step="step" :value="value" v-model="value" :options="options" />
 
 	2. Script
 	data() {

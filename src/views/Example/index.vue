@@ -501,6 +501,16 @@
 				</Column>
 			</Row>
 		</article>
+
+		<!-- base slider -->
+		<article class="document">
+			<h5>Base Slider</h5>
+			<div class="flex align-center" style="gap: 1rem">
+				<BaseSlider :min="min" :max="max" :step="step" :value="value" v-model="value" :options="options" />
+			</div>
+			<p class="base-slider-value">{{ value }}</p>
+		</article>
+
 	</div>
 </template>
 
@@ -511,6 +521,7 @@ import Toast from "@/components/Toast/Toast";
 import ToastContainer from "@/components/Toast/ToastContainer";
 import Tooltip from "@/components/Tooltip";
 import { Column, Row } from "vue-grid-responsive";
+import BaseSlider from "@/components/BaseSlider.vue";
 
 export default {
 	name: "Example",
@@ -521,6 +532,7 @@ export default {
 		BottomSheet,
 		Tooltip,
 		Checkbox,
+		BaseSlider,
 	},
 	data() {
 		return {
@@ -533,6 +545,16 @@ export default {
 			userPw: "",
 			checkedList: [],
 			onSwitch: false,
+			min: 0,
+			max: 12,
+			step: 4,
+			value: 4,
+			options: [
+				{ id: 0, value: 1, label: '1' },
+				{ id: 1, value: 4, label: '4' },
+				{ id: 2, value: 8, label: '8' },
+				{ id: 3, value: 12, label: '12' },
+			],
 		};
 	},
 	mounted() {},
@@ -703,6 +725,17 @@ export default {
 			font-size: 20px;
 			font-weight: 600;
 		}
+	}
+}
+
+.base-slider-value {
+	display: inline-block;
+	margin-top: 20px;
+	border: 1px solid $gray-500;
+	border-radius: $rounded;
+	padding: 4px 6px 3px 6px;
+	&:before {
+		content: "현재 값: ";
 	}
 }
 </style>
