@@ -369,7 +369,7 @@
 				</template>
 				<template #footer>
 					<!-- 금액미입력 or 에러 시 비활성화 -->
-					<base-button label="확인" size="xl" color="primary-1" block />
+					<base-button label="확인" size="lg" color="primary-1" block />
 				</template>
 			</bottom-sheet>
 
